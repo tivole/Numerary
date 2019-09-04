@@ -14,3 +14,17 @@ The idea is that if ![f_x_eq_1](img/fx_eq_1.gif), ![x](img/x.gif), ![sqr_x](img/
 Simpson's rule is usually applied by breaking the interval into ![N](img/N.gif) equal-sized subintervals, where ![N](img/N.gif) is an even number, and approximating the integral over each pair of adjacent subintervals using the above estimate.
 
 That is, let ![f_x](img/equations.gif). Then
+
+<p align="center">
+  <img src="img/int_2.gif">
+</p>
+
+<p align="center">
+  <img src="img/int_3.gif">
+</p>
+
+and so on. Adding these up gives
+
+<p align="center">
+  <img src="img/int_4.gif">
+</p>
