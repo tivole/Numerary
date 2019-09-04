@@ -4,7 +4,6 @@
     Integral Approximation - Simpson's Rule
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -17,10 +16,12 @@ double *Ti_Integrate(double (*f)(double), double a, double b); // Template of in
 
 int main(void) {
 
+    double from = 0; // Lower bound of integral
+    double to = 3.1415926535897932384626; // Higher bound of integral
 
-    double *x = Ti_Integrate(f, 0, 3.141592653589793);
+    double *I = Ti_Integrate(f, from, to);
 
-    printf("%lg\t%lg\n", x[0], x[1]);
+    printf("ans = %lg\nerr = %lg\n", I[0], I[1]);
 
 
     return 0;
@@ -28,7 +29,7 @@ int main(void) {
 
 
 double f(double x) {
-    return sin(x);
+    return sin(x); // You can write your own function to integrate here
 }
 
 
@@ -37,6 +38,7 @@ double *Ti_Integrate(double (*f)(double), double a, double b) {
     return_value = (double *) malloc(2 * sizeof (double));
     
     while (x < b - eps) {
+        // Simpson's rule formulas
         I_1 = (h/6) * (f(x) + 4*f(x + h/2) + f(x+h));
         I_2 = (h/12) * (f(x) + 4*f(x + h/4) + 2*f(x + h/2) + 4*f(x + (3*h)/4) + f(x + h));
 

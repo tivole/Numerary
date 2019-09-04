@@ -1,7 +1,9 @@
 # Ti_Integral
 Integral Approximation - Simpson's Rule
 
-# Definition
+
+---
+## Definition
 
 Suppose ![f_x](img/f_x.gif) is defined on the interval ![from_a_to_b](img/a_b.gif). Then Simpson's rule on the entire interval approximates the definite integral of ![f_x](img/f_x.gif) on the interval by the formula
 
@@ -26,5 +28,36 @@ That is, let ![f_x](img/equations.gif). Then
 and so on. Adding these up gives
 
 <p align="center">
-  <img src="img/int_4.gif">
+  <img src="img/int_4.gif">.
 </p>
+
+---
+## How to use
+```cpp
+// Integrates function {f} from {lower_bound} to {higher_bound}
+double *I = Ti_Integrate(f, lower_bound, higher_bound);
+```
+
+Function returns an array, where first number is value of integral, and the second is accuracy:
+```cpp
+printf("The integral is equal to %lg", I[0]); // ans
+printf("Accuracy of calculation is %lg", I[1]); // error
+```
+
+You can write your own function to integrate from code
+```cpp
+double f(double x) {
+    return sin(x); // You can write your own function to integrate here
+}
+```
+
+You can also change lower or higher bound of integration
+```cpp
+double from = 0; // Lower bound of integral
+double to = 3.1415926535897932384626; // Higher bound of integral
+```
+
+At the top of code you can edit an eps (accuracy of calculation)
+```cpp
+#define eps 1e-9 // The accuracy we want to get
+```
