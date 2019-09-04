@@ -61,3 +61,39 @@ At the top of code you can edit an eps (accuracy of calculation)
 ```cpp
 #define eps 1e-9 // The accuracy we want to get
 ```
+
+---
+## Example
+Imagine that we want to integrate the following expression:
+
+<p align="center">
+  <img src="img/int_expr.gif">.
+</p>
+
+Then the code will look like this:
+```cpp
+// ...
+
+/* The main function */
+int main(void) {
+
+    double *I = Ti_Integrate(f, 0, 1);
+
+    printf("ans = %lg\nerr = %lg\n", I[0], I[1]);
+
+    return 0;
+}
+
+/* Function to be integrated */
+double f(double x) {
+    return 5*pow(x, 3) + 2*cos(x);
+}
+
+// ...
+```
+
+Output will be:
+```
+ans = 2.93294
+err = 6.07469e-09
+```
