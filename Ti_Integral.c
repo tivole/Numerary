@@ -34,21 +34,22 @@ double f(double x) {
 
 
 double *Ti_Integrate(double (*f)(double), double a, double b) {
-    double *return_value = NULL, x = a, I_1, I_2, dt, H, h = b - a, h_new, err = 0, ans = 0;
+    double *return_value = NULL, x = a, I_1, I_2, dt, chi, h = b - a, h_new, err = 0, ans = 0, fx_1, fx_2, fx_3;
     return_value = (double *) malloc(2 * sizeof (double));
     
     while (x < b - eps) {
         // Simpson's rule formulas
-        I_1 = (h/6) * (f(x) + 4*f(x + h/2) + f(x+h));
-        I_2 = (h/12) * (f(x) + 4*f(x + h/4) + 2*f(x + h/2) + 4*f(x + (3*h)/4) + f(x + h));
+        fx_1 = f(x), fx_2 = f(x + h/2), fx_3 = f(x + h);
+        I_1 = (h/6) * (fx_1 + 4*fx_2 + fx_3);
+        I_2 = (h/12) * (fx_1 + 4*f(x + h/4) + 2*fx_2 + 4*f(x + (3*h)/4) + fx_3);
 
         dt = (I_2 - I_1) / 15;
-        H = pow(fabs(dt)/eps, 0.2);
+        chi = pow(fabs(dt)/eps, 0.2);
 
-        if(H > 10) H = 10;
-        if(H < 0.1) H = 0.1;
+        if(chi > 1e4) chi = 1e4;
+        if(chi < 1e-4) chi = 1e-4;
 
-        h_new = 0.95 * h / H;
+        h_new = 0.95 * h / chi;
 
         if(fabs(dt) < eps) {
             x += h;
