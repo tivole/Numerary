@@ -16,9 +16,9 @@ int main(void) {
 
 	if (!find_min(a, b, f, &min_x)) {
 		printf("(!) Method is not allowed.\n");
+	} else {
+		printf("Mininum x of function f is: %lg\n", min_x);
 	}
-
-	printf("Mininum x of function f is: %lg\n", min_x);
 
 	return 0;
 }
