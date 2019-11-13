@@ -18,9 +18,52 @@ At each step the method divides the interval in two by computing the midpoint ![
 Explicitly, if f(a) and f(c) have opposite signs, then the method sets c as the new value for b, and if f(b) and f(c) have opposite signs then the method sets c as the new a. (If f(c)=0 then c may be taken as the solution and the process stops.) In both cases, the new f(a) and f(b) have opposite signs, so the method is applicable to this smaller interval.
 
 
-<dt>Iteration tasks</dt>
+<dt><b>Iteration tasks</b</dt>
 
 1. Calculate c, the midpoint of the interval, ![c = (a+b)/2](img/c_eq_a_b.gif).
 2. Calculate the function value at the midpoint, f(c).
 3. If convergence is satisfactory (that is, c - a is sufficiently small, or |f(c)| is sufficiently small), return c and stop iterating.
 4. Examine the sign of f(c) and replace either (a, f(a)) or (b, f(b)) with (c, f(c)) so that there is a zero crossing within the new interval.
+
+
+## Algorithm
+
+```cpp
+double bisection_method(double a, double b, double (*f)(double), double *root_x) {
+	double fa, fb, sgn_fa, sgn_fb, x, fx, sgn_fx;
+
+	fa = f(a);
+	fb = f(b);
+
+	sgn_fa = sgn(fa);
+	sgn_fb = sgn(fb);
+	
+	if (sgn_fa == 0) { 
+		*root_x = a;
+		return 1;
+	} else if (sgn_fb == 0) {
+		*root_x = b;
+		return 1;
+	} else if (sgn_fa == sgn_fb) {
+		return 0;
+	}
+
+	while ((fabs(b - a) > eps) && (fabs(b - a) > eps*fabs(a))) {
+		x = (a + b)/2;
+		fx = f(x);
+		sgn_fx = sgn(fx);
+
+		if (sgn_fa == sgn_fx) {
+			a = x;
+		} else if (sgn_fb == sgn_fx) {
+			b = x;
+		} else {
+			break;
+		}
+	}
+	
+	*root_x = x;
+
+	return 1;
+}
+```
