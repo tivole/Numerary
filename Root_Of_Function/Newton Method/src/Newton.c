@@ -5,14 +5,14 @@
 
 #define eps 1.e-12
 
-int n=0;
+int n = 0;
 
 double f(double);
 double df(double);
 double find_root(double);
 
 
-int main(void){
+int main(void) {
     double x;
 
     scanf("%le", &x);
@@ -42,7 +42,7 @@ double find_root(double x) {
        printf("[%d]\n", n);
        y = x;
        x = - f(x) / df(x) + x;
-    } while((fabs(x - y) > eps) && (fabs(x - y) > eps*fabs(y)));
+    } while ((fabs(x - y) > eps) && (fabs(x - y) > eps*fabs(y)));
     
     return x;
 }
