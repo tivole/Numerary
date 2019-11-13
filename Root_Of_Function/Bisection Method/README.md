@@ -7,3 +7,20 @@ In mathematics, the <b>bisection method</b> is a root-finding method that applie
 <p align="center">
   <img src="img/Bisection_Method.png">
 </p>
+
+
+## The method
+
+The method is applicable for numerically solving the equation f(x) = 0 for the real variable x, where f is a continuous function defined on an interval [a, b] and where f(a) and f(b) have opposite signs. In this case a and b are said to bracket a root since, by the intermediate value theorem, the continuous function f must have at least one root in the interval (a, b).
+
+At each step the method divides the interval in two by computing the midpoint ![c = (a+b)/2](img/c_eq_a_b.gif) of the interval and the value of the function f(c) at that point. Unless c is itself a root (which is very unlikely, but possible) there are now only two possibilities: either f(a) and f(c) have opposite signs and bracket a root, or f(c) and f(b) have opposite signs and bracket a root. The method selects the subinterval that is guaranteed to be a bracket as the new interval to be used in the next step. In this way an interval that contains a zero of f is reduced in width by 50% at each step. The process is continued until the interval is sufficiently small.
+
+Explicitly, if f(a) and f(c) have opposite signs, then the method sets c as the new value for b, and if f(b) and f(c) have opposite signs then the method sets c as the new a. (If f(c)=0 then c may be taken as the solution and the process stops.) In both cases, the new f(a) and f(b) have opposite signs, so the method is applicable to this smaller interval.
+
+
+<dt>Iteration tasks</dt>
+
+1. Calculate c, the midpoint of the interval, ![c = (a+b)/2](img/c_eq_a_b.gif).
+2. Calculate the function value at the midpoint, f(c).
+3. If convergence is satisfactory (that is, c - a is sufficiently small, or |f(c)| is sufficiently small), return c and stop iterating.
+4. Examine the sign of f(c) and replace either (a, f(a)) or (b, f(b)) with (c, f(c)) so that there is a zero crossing within the new interval.
