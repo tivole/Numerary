@@ -18,7 +18,7 @@ At each step the method divides the interval in two by computing the midpoint ![
 Explicitly, if f(a) and f(c) have opposite signs, then the method sets c as the new value for b, and if f(b) and f(c) have opposite signs then the method sets c as the new a. (If f(c)=0 then c may be taken as the solution and the process stops.) In both cases, the new f(a) and f(b) have opposite signs, so the method is applicable to this smaller interval.
 
 
-<dt><b>Iteration tasks</b</dt>
+<dt><b>Iteration tasks</b></dt>
 
 1. Calculate c, the midpoint of the interval, ![c = (a+b)/2](img/c_eq_a_b.gif).
 2. Calculate the function value at the midpoint, f(c).
