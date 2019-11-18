@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Ti_Numerary
-Numericial Methods
-=======
 # Ti_Integral
 Integral Approximation - Simpson's Rule
 
@@ -101,4 +97,3 @@ Output will be:
 ans = 2.93294
 err = 6.07469e-09
 ```
->>>>>>> repo_integral/master
