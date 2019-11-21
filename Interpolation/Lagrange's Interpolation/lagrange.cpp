@@ -5,42 +5,57 @@
 
 using namespace std;
 
-struct Data 
-{ 
-    int x, y; 
-}; 
-  
+#define N 101
 
-double interpolate(Data f[], int xi, int n) 
-{ 
-    double result = 0; // Initialize result 
+
+double f(double);
+double LP(double*, double*, double, int);
+
+
+int main()  {
+
+    int i;
+    double a, b, step, x;
+    double *X = new double[N], *Y = new double[N];
+
+    a = -M_PI / 2.0;
+    b = M_PI / 2.0;
+
+    step = (b - a) / double(N - 1);
+
+    for (i = 0; i < N; i++, a+=step) {
+        X[i] = a;
+        Y[i] = f(X[i]);
+    }
+
+    x = M_PI / 4.0;
+
+    cout << "LP = " << LP(X, Y, x, N) << endl;
+    cout << "f(x) = " << f(x) << endl;
+
+    // TODO: visualisation with gnuplot and test with N*10 points (max_delta_abs)
+
+
+    return 0; 
+}
+
+
+double LP(double *X, double *Y, double x, int n) {
+    double mult, result = 0;
   
-    for (int i=0; i<n; i++) 
-    { 
-        // Compute individual terms of above formula 
-        double term = f[i].y; 
-        for (int j=0;j<n;j++) 
-        { 
-            if (j!=i) 
-                term = term*(xi - f[j].x)/double(f[i].x - f[j].x); 
-        } 
-  
-        // Add current term to result 
-        result += term; 
-    } 
+    for (int i = 0; i < n; i++) {
+        mult = Y[i];
+        for (int j = 0; j < n; j++) {
+            if (j != i)
+                mult *= (x - X[j]) / (X[i] - X[j]);
+        }
+        result += mult;
+    }
   
     return result; 
-} 
-  
-// driver function to check the program 
-int main() 
-{ 
-    // creating an array of 4 known data points 
-    Data f[] = {{0,2}, {1,3}, {2,12}, {5,147}}; 
-  
-    // Using the interpolate function to obtain a data point 
-    // corresponding to x=3 
-    cout << "Value of f(3) is : " << interpolate(f, 3, 5); 
-  
-    return 0; 
-} 
+}
+
+
+double f(double x) {
+    return sin(x);
+}
