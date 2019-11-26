@@ -1,0 +1,7 @@
+#set terminal postfile       (These commented lines would be used to )
+#set output  "d1_plot.ps"    (generate a postscript file.            )
+set title "Energy vs. Time for Sample Data"
+set xlabel "y"
+set ylabel "x"
+plot sin(x)
+pause -1 "Hit any key to continue"
