@@ -1,0 +1,12 @@
+#!/usr/bin/gnuplot
+
+set title "Lagrange Polynomial"
+set xlabel "x"
+set ylabel "y"
+set xrange [0.000000:1.000000]
+set yrange [0.000000:1.000000]
+
+plot sin(x), \
+	'input_xy.csv' with points ls 7
+
+pause -1 "Hit any key to continue"
