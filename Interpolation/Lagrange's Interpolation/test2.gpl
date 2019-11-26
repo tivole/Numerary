@@ -1,2 +1,0 @@
-plot 'input_xy.csv' with points ls 7
-pause -1 "Hit any key to continue"
