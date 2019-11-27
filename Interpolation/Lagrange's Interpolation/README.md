@@ -27,3 +27,8 @@ For all ![i neq j](img/i_neq_j.gif), ![ell_j_x](img/ell_j_x.gif) includes the te
 On the other hand,
 
 ![l_j(x_i) = 1](img/formula_5.svg)
+
+In other words, all basis polynomials are zero at ![x=x_i](img/x_eq_x_i.gif), except ![ell_i_x](img/ell_i_x.gif), for which it holds that ![ell_i_x_eq1](img/ell_i_x_eq1.gif), because it lacks the ![x - x_i](img/x_x_i.gif) term.
+
+It follows that {![ell_i_x_i_eq_y_i](img/ell_i_x_i_eq_y_i.gif), so at each point ![x_i](img/x_i.gif), ![L_x_i_eq_y_i](img/L_x_i_eq_y_i.gif), showing that ![L](img/L.gif) interpolates the function exactly.
+
