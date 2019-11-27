@@ -30,5 +30,23 @@ On the other hand,
 
 In other words, all basis polynomials are zero at ![x=x_i](img/x_eq_x_i.gif), except ![ell_i_x](img/ell_i_x.gif), for which it holds that ![ell_i_x_eq1](img/ell_i_x_eq1.gif), because it lacks the ![x - x_i](img/x_x_i.gif) term.
 
-It follows that {![ell_i_x_i_eq_y_i](img/ell_i_x_i_eq_y_i.gif), so at each point ![x_i](img/x_i.gif), ![L_x_i_eq_y_i](img/L_x_i_eq_y_i.gif), showing that ![L](img/L.gif) interpolates the function exactly.
+It follows that ![ell_i_x_i_eq_y_i](img/ell_i_x_i_eq_y_i.gif), so at each point ![x_i](img/x_i.gif), ![L_x_i_eq_y_i](img/L_x_i_eq_y_i.gif), showing that ![L](img/L.gif) interpolates the function exactly.
 
+## Algorithm
+
+```cpp
+double LP(double *X, double *Y, double x, int n) {
+    double mult, result = 0;
+  
+    for (int i = 0; i < n; i++) {
+        mult = Y[i];
+        for (int j = 0; j < n; j++) {
+            if (j != i)
+                mult *= (x - X[j]) / (X[i] - X[j]);
+        }
+        result += mult;
+    }
+  
+    return result; 
+}
+```
