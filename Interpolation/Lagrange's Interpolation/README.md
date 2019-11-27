@@ -50,3 +50,15 @@ double LP(double *X, double *Y, double x, int n) {
     return result; 
 }
 ```
+
+
+## Runge's example
+
+<p align="center">
+  <img src="img/visualisation.png">
+</p>
+
+ The function ![f(x)](img/runge.gif) cannot be interpolated accurately on [−5, 5]
+using a tenth-degree polynomial (dashed curve) with equally-spaced interpolation points. This
+example that illustrates the difficulty that one can generally expect with high-degree polynomial
+interpolation with equally-spaced points is known as <i>Runge’s example</i>.
