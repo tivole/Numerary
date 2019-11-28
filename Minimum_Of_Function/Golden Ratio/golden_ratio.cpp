@@ -1,27 +1,50 @@
+// (c) Tivole
+
 #include <iostream>
-#include <math.h>
+#include <cmath>
+
 using namespace std;
+
+#define eps 1e-9 // accuracy
+#define phi 1.618033988749894848204586834365 // Golden Ratio
+
+
+double f(double);
  
-const double goldenRatio = (1 + sqrt(5)) / 2; // "Золотое" число
- 
-// Рассматриваемая нами функция
-double function(double x) {
-	return log(1 + x * x - cos(x)) - pow(M_E, sin(M_PI * x));
-}
  
 int main() {
-	double a, b; // Концы отрезка
-	double accuracy; // Точность, с которой мы находим локальный максимум
-	double x1, x2; // Точки, делящие текущий отрезок в отношении золотого сечения
-	cin >> a >> b >> accuracy;
-	while (fabs(b - a) > accuracy) {
-		   x1 = b - (b - a) / goldenRatio; 
-	       x2 = a + (b - a) / goldenRatio;
-	       if (function(x1) => function(x2)) // Условие для поиска
-	           a = x1; 
-	       else 
-	           b = x2;
-	} // Выполняем, пока не достигнем заданной точности
-	cout << "(" << (a + b) / 2 << ", " << function((a + b) / 2) << ")"; 
-	return 0;
+	double a, b, x1, x2, fx1, fx2;
+	
+    a = 0;
+    b = 10;
+
+    x1 = b - (b - a) / phi; 
+	x2 = a + (b - a) / phi;
+    fx1 = f(x1);
+    fx2 = f(x2);
+
+    while (fabs(b - a) > eps) {
+        if (fx1 >= fx2) {
+            a = x1;
+            x1 = x2;
+            fx1 = fx2;
+            x2 = a + (b - a) / phi;
+            fx2 = f(x2);
+        } else {
+            b = x2;
+            x2 = x1;
+            fx2 = fx1;
+            x1 = b - (b - a) / phi; 
+            fx1 = f(x1);
+        }
+	}
+	
+    cout << "(" << (a + b) / 2 << ", " << f((a + b) / 2) << ")"; 
+	
+    return 0;
+}
+
+
+double f(double x) {
+	return sin(x);
 }
