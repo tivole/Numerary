@@ -10,14 +10,35 @@ using namespace std;
 
 
 double f(double);
- 
- 
+double golden_ratio_min(double, double, double (*)(double))
+
+
 int main() {
-	double a, b, x1, x2, fx1, fx2;
 	
+	double a, b, min_x;
+
+	// scanf("%lf%lf", &a, &b);
+
     a = 0;
     b = 10;
 
+    min_x = golden_ratio_min(a, b, f);
+
+	printf("Mininum x of function f(x) is:\nx = %lg\t|\tf(x) = %lg\n", min_x, f(min_x));
+	
+    return 0;
+}
+
+
+double f(double x) {
+	return sin(x);
+}
+
+
+double golden_ratio_min(double a, double b, double (*f)(double)) {
+    
+    double x1, x2, fx1, fx2;
+    
     x1 = b - (b - a) / phi; 
 	x2 = a + (b - a) / phi;
     fx1 = f(x1);
@@ -38,13 +59,6 @@ int main() {
             fx1 = f(x1);
         }
 	}
-	
-    cout << "(" << (a + b) / 2 << ", " << f((a + b) / 2) << ")"; 
-	
-    return 0;
-}
 
-
-double f(double x) {
-	return sin(x);
+    return (a + b) / 2.0;
 }
