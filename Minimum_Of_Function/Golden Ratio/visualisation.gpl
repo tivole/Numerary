@@ -1,0 +1,12 @@
+#!/usr/bin/gnuplot
+
+set terminal png size 1920, 1080
+set output 'visualisation.png'
+
+set title "Golden Ratio Minimum"
+set xlabel "x"
+set ylabel "y"
+set xrange [0.000000:10.000000]
+plot sin(x) lc rgb '#0000ff' lw 2 lt -1 title 'sin(x)', \
+	'minimum_xy.csv' with points ls 7 lc rgb '#ff0000' ps 1.6 title 'Minimum'
+pause -1 "Hit any key to continue"
