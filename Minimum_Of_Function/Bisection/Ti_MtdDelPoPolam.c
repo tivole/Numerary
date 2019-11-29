@@ -6,7 +6,7 @@
 #define eps 1.e-15
 
 double f(double);
-double find_min(double, double, double (*)(double), double*);
+int find_min(double, double, double (*)(double), double*);
 
 int main(void) {
 
@@ -29,7 +29,7 @@ double f(double x) {
 }
 
 
-double find_min(double a, double b, double (*f)(double), double *min_x){
+int find_min(double a, double b, double (*f)(double), double *min_x){
 	double c = (a + b)/2, fc = f(c), fa = f(a), fb = f(b), d1, d2, fd1, fd2;
 
 	// Check is method allowed or not.
