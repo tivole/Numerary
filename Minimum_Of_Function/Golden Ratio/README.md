@@ -1,7 +1,12 @@
 # Golden Ratio Method
 
-Golden Ratio Method
+## Introdution
 
+The <b>golden-section search</b> is a technique for finding an <i>extremum</i> (minimum or maximum) of a function inside a specified interval. For a strictly unimodal function with an extremum inside the interval, it will find that extremum, while for an interval containing multiple extrema (possibly including the interval boundaries), it will converge to one of them. If the only extremum on the interval is on a boundary of the interval, it will converge to that boundary point. The method operates by successively narrowing the range of values on the specified interval, which makes it relatively slow, but very robust. 
+
+<p align="center">
+  <img src="img/golden-ratio.png">
+</p>
 
 ## Algorithm
 
