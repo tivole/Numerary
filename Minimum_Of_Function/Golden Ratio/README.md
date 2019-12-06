@@ -34,7 +34,7 @@ double golden_ratio_min(double a, double b, double (*f)(double)) {
             x1 = b - (b - a) / phi; 
             fx1 = f(x1);
         }
-	}
+    }
 
     return (a + b) / 2.0;
 }
