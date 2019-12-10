@@ -7,16 +7,15 @@
 using namespace std;
 
 
-#define N 101
-#define eps 1e-1
+#define N 101 // Number of input points for regression
+#define eps 1e-1 // Value for generating random input values
 #define VISUALIZE true
 #define SAVE_GRAPH true
 
 
 double *linear_regression(double*, double*, int);
-double get_rand(double min_val, double max_val) {
-    return (max_val - min_val) * ( (double)rand() / (double)RAND_MAX ) + min_val;
-}
+double get_rand(double, double);
+
 
 int main() {
 
@@ -25,9 +24,9 @@ int main() {
     FILE *f_input_xy = fopen("input_xy.csv", "w");
     FILE *f_gplot = fopen("visualisation.gpl", "w");
     
-    srand(time(NULL));
+    srand(time(NULL)); // Used to get always different rand numbers
 
-    // k*x + c
+    // y = k*x + c
     k = get_rand(0, 10);
     c = get_rand(0, 10);
     
@@ -35,6 +34,7 @@ int main() {
     a = 0;
     b = 1;
 
+    // Generating random values for regression
     step = (b - a) / double(N - 1);
     for (i = 0; i < N; i++, x += step) {
         X[i] = rand() % 2 == 0 ? x + eps: x - eps;
@@ -42,9 +42,12 @@ int main() {
         // cout << "X[" << i << "] = " << X[i] << "\tY[" << i << "] = " << Y[i] << endl;
     }
 
+    // Get predicted linear regression line
     predicted_kc = linear_regression(X, Y, N);
 
+    // Visualising
     if (VISUALIZE) {
+        // Writing Xs and Ys into *.csv file to read later
         for (i = 0; i < N; i ++) fprintf(f_input_xy, "%lf, %lf\n", X[i], Y[i]);
         fclose(f_input_xy);
 
@@ -57,6 +60,7 @@ int main() {
 
         fprintf(f_gplot, "set for [i=1:3] linetype i dt i\n\n");
 
+        // Checking for save graph
         if (SAVE_GRAPH) {
             fprintf(f_gplot, "set term pngcairo dashed\n");
             fprintf(f_gplot, "set output 'visualisation.png'\n\n");
@@ -70,6 +74,7 @@ int main() {
 
         fclose(f_gplot);
 
+        // Running results immediately
         system("gnuplot visualisation.gpl");
     }
 
@@ -82,14 +87,23 @@ double *linear_regression(double *X, double *Y, int n) {
     double E_X = 0, E_Y = 0, E_XY = 0, E_X2 = 0, *ab = new double[2];
 
     for (i = 0; i < n; i++) {
-        E_X     += X[i];
-        E_X2    += (X[i]*X[i]);
-        E_Y     += Y[i];
-        E_XY    += (X[i]*Y[i]);
+        E_X     += X[i]; // Mathematical Expectation of X
+        E_X2    += (X[i]*X[i]); // Mathematical Expectation of X^2
+        E_Y     += Y[i]; // Mathematical Expectation of Y
+        E_XY    += (X[i]*Y[i]); // Mathematical Expectation of X*Y
     }
 
+    // Calculating coefficients of line (y = a*x + b)
     ab[1] = (n*E_XY - E_X*E_Y) / (n*E_X2 - E_X*E_X);
     ab[0] = (E_Y - ab[1]*E_X) / ((double) n);
     
     return ab;
+}
+
+
+double get_rand(double min_val, double max_val) {
+    /*
+        Returns random double value from interval [min_val, max_val]
+    */
+    return (max_val - min_val) * ( (double)rand() / (double)RAND_MAX ) + min_val;
 }
