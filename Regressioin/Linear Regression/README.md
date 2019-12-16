@@ -29,7 +29,7 @@ Two variables are related linearly “on average” if for fixed x the actual va
 There are parameters ![beta_0](img/formulas/beta_0.gif), ![beta_1](img/formulas/beta_1.gif), and ![sigma_sqr](img/formulas/sigma_sqr.gif), such that for any fixed value of the independent variable x, the dependent variable is a random variable related to x through the model equation
 
 <p align="center">
-  <img width="30%" src="img/formulas/formula.png">
+  <img width="35%" src="img/formulas/formula.png">
 </p>
 
 The quantity ε in the model equation is the “error” - a random variable, assumed to be symmetrically distributed with 
@@ -39,3 +39,16 @@ The quantity ε in the model equation is the “error” - a random variable, as
 </p>
 
 <i>(no assumption made about the distribution of ε, yet)</i>
+
+* <b>X</b>: the independent, predictor, or explanatory variable <i>(usually known)</i>.
+* <b>Y</b>: The dependent or response variable. For fixed x, Y will be random variable.
+* <b>ε</b>: The random deviation or random error term. For fixed x, ε will be random variable.
+
+The points ![x_dots_y](img/formulas/x_dots_y.gif) resulting from n independent
+observations will then be scattered about the true
+regression line:
+
+
+<p align="center">
+  <img width="70%" src="img/graph_1.png">
+</p>
