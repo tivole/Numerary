@@ -4,6 +4,9 @@
 ## Introdution
 In statistics, linear regression is a linear approach to modeling the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). The case of one explanatory variable is called simple linear regression. For more than one explanatory variable, the process is called multiple linear regression. This term is distinct from multivariate linear regression, where multiple correlated dependent variables are predicted, rather than a single scalar variable.
 
+<p align="center">
+  <img width="60%" src="img/lin_reg.png">
+</p>
 
 ## The Simple Linear Regression Model
 
@@ -86,4 +89,22 @@ The minimizing values of ![b_0](img/formulas/b_0.gif) and ![b_1](img/formulas/b_
 
 <p align="center">
   <img width="50%" src="img/formulas/formula_4.png">
+</p>
+
+The least squares estimate of the slope coefficient ![beta_1](img/formulas/beta_1.gif) of the true regression line is
+
+<p align="center">
+  <img width="45%" src="img/formulas/formula_5.png">
+</p>
+
+<b>Shortcut formulas<b> for the numerator and denominator of ![hat_beta_1](img/formulas/hat_beta_1.gif) are
+
+<p align="center">
+  <img width="55%" src="img/formulas/formula_6.png">
+</p>
+
+The least squares estimate of the intercept ![b_0](img/formulas/b_0.gif) of the true regression line is
+
+<p align="center">
+  <img width="50%" src="img/formulas/formula_7.png">
 </p>
