@@ -20,3 +20,22 @@ variable.
 So we assume ![Y=beta_plus_betax_eps](img/formulas/Y=beta_plus_betax_eps.gif), where ε is a random variable.
 
 Two variables are related linearly “on average” if for fixed x the actual value of Y differs from its expected value by a random amount (i.e. there is random error).
+
+
+## A Linear Probabilistic Model
+
+<b>Definition:</b> <i>(The Simple Linear Regression Model)</i>
+
+There are parameters ![beta_0](img/formulas/beta_0.gif), ![beta_1](img/formulas/beta_1.gif), and ![sigma_sqr](img/formulas/sigma_sqr.gif), such that for any fixed value of the independent variable x, the dependent variable is a random variable related to x through the model equation
+
+<p align="center">
+  <img width="30%" src="img/formulas/formula.png">
+</p>
+
+The quantity ε in the model equation is the “error” - a random variable, assumed to be symmetrically distributed with 
+
+<p align="center">
+  <img width="30%" src="img/formulas/formula_2.png">
+</p>
+
+<i>(no assumption made about the distribution of ε, yet)</i>
