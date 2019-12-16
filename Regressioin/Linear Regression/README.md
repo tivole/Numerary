@@ -71,3 +71,19 @@ A line provides the best fit to the data if the sum of the squared vertical dist
 <p align="center">
   <img width="50%" src="img/graph_2.png">
 </p>
+
+The sum of <i>squared vertical deviations</i> from the points ![x_dots_y](img/formulas/x_dots_y.gif) to the line is then
+
+<p align="center">
+  <img width="35%" src="img/formulas/formula_3.png">
+</p>
+
+The point estimates of ![beta_0](img/formulas/beta_0.gif) and ![beta_1](img/formulas/beta_1.gif), denoted by and , are called the least squares estimates – they are those values that minimize ![f(b0, b1)](img/formulas/f_b0_b1.gif).
+
+The fitted <b>regression line</b> or <b>least squares line</b> is then the line whose equation is ![y_eq_beta_hat](img/formulas/y_eq_beta_hat.gif).
+
+The minimizing values of ![b_0](img/formulas/b_0.gif) and ![b_1](img/formulas/b_1.gif) are found by taking partial derivatives of ![f(b0, b1)](img/formulas/f_b0_b1.gif) with respect to both ![b_0](img/formulas/b_0.gif) and ![b_1](img/formulas/b_1.gif), equating them both to zero [analogously to ![fʹ(b)=0](img/formulas/deriv_f_b_eq_0.gif) in univariate calculus], and solving the equations
+
+<p align="center">
+  <img width="50%" src="img/formulas/formula_4.png">
+</p>
