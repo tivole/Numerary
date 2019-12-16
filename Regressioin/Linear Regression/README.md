@@ -97,7 +97,7 @@ The least squares estimate of the slope coefficient ![beta_1](img/formulas/beta_
   <img width="45%" src="img/formulas/formula_5.png">
 </p>
 
-<b>Shortcut formulas<b> for the numerator and denominator of ![hat_beta_1](img/formulas/hat_beta_1.gif) are
+<b>Shortcut formulas</b> for the numerator and denominator of ![hat_beta_1](img/formulas/hat_beta_1.gif) are
 
 <p align="center">
   <img width="55%" src="img/formulas/formula_6.png">
@@ -107,4 +107,32 @@ The least squares estimate of the intercept ![b_0](img/formulas/b_0.gif) of the 
 
 <p align="center">
   <img width="50%" src="img/formulas/formula_7.png">
+</p>
+
+## Algorithm
+
+```cpp
+double *linear_regression(double *X, double *Y, int n) {
+    int i;
+    double E_X = 0, E_Y = 0, E_XY = 0, E_X2 = 0, *ab = new double[2];
+
+    for (i = 0; i < n; i++) {
+        E_X     += X[i]; // Mathematical Expectation of X
+        E_X2    += (X[i]*X[i]); // Mathematical Expectation of X^2
+        E_Y     += Y[i]; // Mathematical Expectation of Y
+        E_XY    += (X[i]*Y[i]); // Mathematical Expectation of X*Y
+    }
+
+    // Calculating coefficients of line (y = a*x + b)
+    ab[1] = (n*E_XY - E_X*E_Y) / (n*E_X2 - E_X*E_X);
+    ab[0] = (E_Y - ab[1]*E_X) / ((double) n);
+    
+    return ab;
+}
+```
+
+## Output
+
+<p align="center">
+  <img width="50%" src="img/visualisation.png">
 </p>
