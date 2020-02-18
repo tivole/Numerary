@@ -19,6 +19,9 @@
 ## Numerical Methods for Solving Linear System of Equations
 * [Gauss Elimination Method](Linear%20System%20of%20Equations/Gauss%20Elimination%20Method)
 
+## Ordinary Differential Equations
+* [Dormand-Prince Method](Ordinary_Differential_Equations/DORPI)
+
 
 ## Interpolation
 * [Lagrange's Interpolation](Interpolation/Lagrange's%20Interpolation)
