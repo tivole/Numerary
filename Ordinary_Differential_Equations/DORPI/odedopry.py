@@ -150,10 +150,10 @@ def odedopri(fxy,  x0,  y0,  x1,  tol,  hmax,  hmin,  maxiter):
  
 if __name__ == "__main__":
     def fxy(x, y):
-          return  x+ y
-    x0 = 0
-    y0 = 1.24
-    x1 = 1.0
+          return  3.0*y/x + x*x*x + x
+    x0 = 1
+    y0 = 3.0
+    x1 = 2.0
     tol = 1.0e-5
     hmax = 1.0
     hmin = 0.01

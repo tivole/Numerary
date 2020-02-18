@@ -50,8 +50,7 @@
 #define MIN_SCALE_FACTOR 0.125
 #define MAX_SCALE_FACTOR 4.0
 
-static double Runge_Kutta(double (*f)(double,double), double *y, double x,
-                                                                   double h);
+double Runge_Kutta(double (*f)(double,double), double *y, double x, double h);
 
 ////////////////////////////////////////////////////////////////////////////////
 // int Embedded_Prince_Dormand_v2_4_5( double (*f)(double, double),           //
@@ -152,7 +151,7 @@ int Embedded_Prince_Dormand_v2_4_5( double (*f)(double, double), double y[],
 
 
 ////////////////////////////////////////////////////////////////////////////////
-//  static double Runge_Kutta(double (*f)(double,double), double *y,          //
+//  double Runge_Kutta(double (*f)(double,double), double *y,          //
 //                                                       double x0, double h) //
 //                                                                            //
 //  Description:                                                              //
@@ -177,14 +176,13 @@ int Embedded_Prince_Dormand_v2_4_5( double (*f)(double, double), double y[],
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-static double Runge_Kutta(double (*f)(double,double), double *y, double x0,
-                                                                   double h) {
-   static const double r_45 = 1.0 / 45.0;
-   static const double r_8_9 = 8.0 / 9.0;
-   static const double r_6561 = 1.0 / 6561.0;
-   static const double r_167904 = 1.0 / 167904.0;
-   static const double r_142464 = 1.0 / 142464.0;
-   static const double r_21369600 = 1.0 / 21369600.0;
+double Runge_Kutta(double (*f)(double,double), double *y, double x0, double h) {
+   const double r_45 = 1.0 / 45.0;
+   const double r_8_9 = 8.0 / 9.0;
+   const double r_6561 = 1.0 / 6561.0;
+   const double r_167904 = 1.0 / 167904.0;
+   const double r_142464 = 1.0 / 142464.0;
+   const double r_21369600 = 1.0 / 21369600.0;
 
    double k1, k2, k3, k4, k5, k6, k7;
    double h5 = 0.2 * h;
@@ -207,26 +205,29 @@ static double Runge_Kutta(double (*f)(double,double), double *y, double x0,
 
 
 double fxy(double x, double y) {
-    return y; // x + y;
+    return 3.0*y/x + x*x*x + x;
 }
 
 
 int main(void) {
 
-    double y[5], x0, x1, tol, h, h_next;
+    double y[5], x0, x1, tol, h, h_next, R;
     int a;
 
-    x0 = 0;
-    y[0] = 1; // 1.24;
+    x0 = 1;
+    y[0] = 3;
     tol = 1.0e-5;
-    x1 = 1.0;
+    x1 = -2.0;
     h = 0.01;
 
 
     a = Embedded_Prince_Dormand_v2_4_5(fxy, y, x0, h, x1, &h_next,tol);
 
+    R = 2.0;
+
     printf("a = %d\n", a);
     printf("y[1] = %lf\n", y[1]);
+    printf("Real ans = %lf\n", R*R*R*R - R*R + 3.0*fabs(R)*fabs(R)*fabs(R));
 
 
     return 0;
