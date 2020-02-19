@@ -50,8 +50,8 @@ int Embedded_Prince_Dormand_v2_4_5(double (*f)(double, double), double y[], doub
             *(temp_y+1) = *temp_y +  r_21369600 * h * (1921409.0 * k1 + 9690880.0 * k3 + 13122270.0 * k4 - 5802111.0 * k5 + 1902912.0 * k6 + 534240.0 * k7);
             err = fabs(r_21369600 * (26341.0 * k1 - 90880.0 * k3 + 790230.0 * k4 - 1086939.0 * k5 + 895488.0 * k6 - 534240.0 * k7) );
 
-            if (err == 0.0) { scale = MAX_SCALE_FACTOR; break; }
-            yy = (temp_y[0] == 0.0) ? tolerance : fabs(temp_y[0]);
+            if (err < eps) { scale = MAX_SCALE_FACTOR; break; }
+            yy = (fabs(temp_y[0]) < eps) ? tolerance : fabs(temp_y[0]);
             scale = 0.8 * sqrt( sqrt ( tolerance * yy /  err ) );
             scale = min( max(scale,MIN_SCALE_FACTOR), MAX_SCALE_FACTOR);
             if (err < (tolerance * yy)) break;
