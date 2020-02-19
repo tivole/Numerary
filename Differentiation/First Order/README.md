@@ -9,9 +9,20 @@ The mathematical definition of the derivative of a function ![f(x)](img/f_x.gif)
   <img src="img/def_derivative.png">
 </p>
 
+where ![h](img/h.gif) is the step size. If we use a Taylor expansion for ![f(x)](img/f_x.gif) we can write
 
 
+<p align="center">
+  <img src="img/taylor_expns.png">
+</p>
 
+We can then obtain an expression for the first derivative as
+
+<p align="center">
+  <img src="img/expr_derivative.png">
+</p>
+
+Assume now that we will employ two points to represent the function ![f](img/f.gif) by way of a straight line between ![x](img/x.gif) and ![x+h](img/x_plus_h.gif).
 
 
 
