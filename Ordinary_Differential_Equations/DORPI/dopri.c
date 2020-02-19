@@ -10,6 +10,8 @@
 #define MIN_SCALE_FACTOR 0.125
 #define MAX_SCALE_FACTOR 4.0
 
+#define eps 1.0e-9
+
 int Embedded_Prince_Dormand_v2_4_5(double (*f)(double, double), double y[], double x, double h, double xmax, double *h_next, double tolerance ) {
 
     double scale, err, yy, temp_y[2], k1, k2, k3, k4, k5, k6, k7, h5;
