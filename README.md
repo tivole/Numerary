@@ -32,7 +32,7 @@
 
 ## Differentiation
 * [First Order](Differentiation/First%20Order)
-* [Second Order](Second%20Order/Method%201)
+* [Second Order](Differentiation/Second%20Order)
 
 ## Other
 * [Incgamma Function](Gamma_Function)

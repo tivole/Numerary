@@ -16,8 +16,8 @@ double *Ti_Integrate(double (*f)(double), double a, double b); // Template of in
 
 int main(void) {
 
-    double from = 0; // Lower bound of integral
-    double to = 3.1415926535897932384626; // Higher bound of integral
+    double from = -2; // Lower bound of integral
+    double to = 8; // Higher bound of integral
 
     double *I = Ti_Integrate(f, from, to);
 
@@ -29,7 +29,7 @@ int main(void) {
 
 
 double f(double x) {
-    return sin(x); // You can write your own function to integrate here
+    return sqrt(x*x*x + 1); // You can write your own function to integrate here
 }
 
 
