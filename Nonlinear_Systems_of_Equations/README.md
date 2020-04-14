@@ -38,14 +38,14 @@ methods.
 
 <b><i>Definition:</i></b> We say that a sequence <i>converges</i> if it has a limit.
 
-<b><i>Definition:</i></b> Let ![pn](img/p_n.gif) be a sequence that converges to ![p](img/p.gif), where pn 6= p. If constants
+<b><i>Definition:</i></b> Let ![pn](img/p_n.gif) be a sequence that converges to ![p](img/p.gif), where ![pn=/=p](img/pn_neq_p.gif). If constants
 λ, α > 0 exist such that
 
 <p align="center">
     <img src="img/limit_1.png">
 </p>
 
-Then it is said that pn converges to p of order α with a constant λ.
+Then it is said that ![pn](img/p_n.gif) converges to ![p](img/p.gif) of order α with a constant λ.
 
 <br />
 
@@ -70,3 +70,13 @@ There are three different orders of convergences.
 </p>
 
 <b><i>Remark:</i></b> The value of α measures how fast a sequence converges. Thus the higher the value of α is, the more rapid the convergence of the sequence is. In the case of numerical methods, the sequence of approximate solutions is converging to the root. If the convergence of an iterative method is more rapid, then a solution may be reached in less interations in comparison to another method with a slower convergence.
+
+# Jacobian Matrix
+
+The <i>Jacobian matrix</i>, is a key component of numerical methods in the next section.
+
+The <i>Jacobian matrix</i> is a matrix of first order partial derivatives
+
+<p align="center">
+    <img src="img/jacobian_matrix.png">
+</p>
