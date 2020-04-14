@@ -15,5 +15,3 @@ Now that we know what the term nonlinear refers to we can define a <i>system of 
 <p align="center">
     <img src="img/system_of_nonlinear_equations.png">
 </p>
-
-
