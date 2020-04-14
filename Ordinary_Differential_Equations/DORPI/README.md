@@ -19,3 +19,17 @@ Next, we will calculate the next step value ![zk+1](img/z_k_1.gif) by Runge-Kutt
 <p align="center">
     <img src="img/zk1_formula.png">
 </p>
+
+We calculate the difference of the two next values ![|zk+1 − yk+1|](img/z-y.gif).
+
+<p align="center">
+    <img src="img/z-y_formula.png">
+</p>
+
+This is considered as the error in ![yk+1](img/y_k_1.gif). We calculate the optimal time interval ![hopt](img/h_opt.gif) as,
+
+<p align="center">
+    <img src="img/h_opt_formula.png">
+</p>
+
+where ![h](img/h.gif) in the right side is the old time interval. In practical programming, this new ![hopt](img/h_opt.gif) will be used in the next step of the calculation, though the author thinks it should be also used in the present calculation when it is very small, half or smaller for example.
