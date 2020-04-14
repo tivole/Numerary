@@ -29,7 +29,7 @@ we use procedures called iterative methods.
 
 <b><i>Definition:</i></b> An <i>iterative method</i> is a procedure that is repeated over and over again, to find the root of an equation or find the solution of a system of equations.
 
-<b><i>Definition:</i></b> Let <b>F</b> be a real function from ![D⊂R](img/D_subset_Rn.gif) n to ![R^n](img/Rn.gif). If <b>F</b>(<b>p</b>) = <b>p</b>, for some ![p∈D](img/p_in_D.gif), then p is said to be a fixed point of <b>F</b>.
+<b><i>Definition:</i></b> Let <b>F</b> be a real function from ![D⊂R](img/D_subset_Rn.gif) n to ![R^n](img/Rn.gif). If <b>F</b>(<b>p</b>) = <b>p</b>, for some ![p∈D](img/p_in_D.gif), then ![p](img/p.gif) is said to be a fixed point of <b>F</b>.
 
 # Convergence
 
@@ -79,4 +79,32 @@ The <i>Jacobian matrix</i> is a matrix of first order partial derivatives
 
 <p align="center">
     <img src="img/jacobian_matrix.png">
+</p>
+
+
+# Norms of Vectors
+
+Let ![x∈R^n](img/bold_x_in_Rn.gif) where
+
+<p align="center">
+    <img src="img/vector_x.png">
+</p>
+
+<b><i>Definition:</i></b> A <i>vector norm</i> on ![R^n](img/Rn.gif) is a function, ||·||, from ![R^n](img/Rn.gif) into ![R](img/R.gif) that  as the following properties:
+
+<img src="img/norm_props.png">
+
+There are two types of vector norms we will discuss, the ![l2](img/l_2.gif) and ![l∞](img/l_infty.gif) norms.
+
+
+<b><i>Definition:</i></b> The ![l2](img/l_2.gif) norm for the vector <b>x</b> is called the Euclidean norm because it represents the length of the vector denoted by
+
+<p align="center">
+    <img src="img/normdef_1.png">
+</p>
+
+<b><i>Definition:</i></b> The ![l∞](img/l_infty.gif) norm represents the absolute value of the largest component in the vector <b>x</b>. It is denoted by
+
+<p align="center">
+    <img src="img/normdef_2.png">
 </p>
