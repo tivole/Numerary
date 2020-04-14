@@ -33,3 +33,9 @@ This is considered as the error in ![yk+1](img/y_k_1.gif). We calculate the opti
 </p>
 
 where ![h](img/h.gif) in the right side is the old time interval. In practical programming, this new ![hopt](img/h_opt.gif) will be used in the next step of the calculation, though the author thinks it should be also used in the present calculation when it is very small, half or smaller for example.
+
+# References
+
+* ["ExplicitRungeKutta" Method for NDSolve](http://reference.wolfram.com/mathematica/tutorial/NDSolveExplicitRungeKutta.html)
+
+* [Dormand–Prince method - Wikipedia](https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method)
