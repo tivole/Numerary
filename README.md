@@ -3,7 +3,7 @@
 
 ## Numerical Methods for the Root Finding Problem
 * [Bisection Method](Root_Of_Function/Bisection%20Method)
-* [Newton Method](Root_Of_Function/Newton%20Method)
+* [Newton's Method](Root_Of_Function/Newton%20Method)
 * [Secant Method](Root_Of_Function/Secant%20Method)
 
 
@@ -21,6 +21,9 @@
 
 ## Ordinary Differential Equations
 * [Dormand-Prince Method](Ordinary_Differential_Equations/DORPI)
+
+## Nonlinear Systems of Equations
+* [Newton's Method](Nonlinear_Systems_of_Equations/Newton_Method)
 
 
 ## Interpolation
