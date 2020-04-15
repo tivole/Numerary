@@ -212,7 +212,9 @@ int main() {
 ---
 
 ### Problem:
-
+<p align="center">
+    <img src="img/problem_1.png">
+</p>
 
 
 ### Code:
@@ -232,10 +234,19 @@ void f(double *x, double *fv, int n) {
 ```
 
 ### Output:
+```
+X:
+x[0] = -0.0019944
+x[1] = -1
+x[2] = 1
 
-<p align="center">
-    <img src="img/problem_1_output.png">
-</p>
+Fv:
+Fv[0] = -3.44946e-12
+Fv[1] = -3.97763e-06
+Fv[2] = 0
+
+Number of iterations = 14
+```
 
 ### Solution from [WolframAlpha](https://www.wolframalpha.com/input/?i=solve+%28x%5E5+%2B+y%5E3+*+z%5E4+%2B+1%29%2C+%28x%5E2*y*z%29%2C+%28z%5E4+-+1%29):
 
