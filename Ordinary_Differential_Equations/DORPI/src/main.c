@@ -1,33 +1,34 @@
 // (c) Tivole
+
+// main.c
+
 #include <stdio.h>
 #include <math.h>
 #include "dorpi.c"
 
-double fxy(double x, double y);
-
-int main(void) {
-
-    double y[5], x0, x1, tol, h, h_next, R;
-    int a;
-
-    x0 = 1;
-    y[0] = 3;
-    tol = 1.0e-5;
-    x1 = 2.0;
-    h = 0.01;
-
-
-    a = dorpi_4_5(fxy, y, x0, h, x1, &h_next,tol);
-
-    R = 2.0;
-
-    printf("a = %d\n", a);
-    printf("y[1] = %lf\n", y[1]);
-    printf("Real ans = %lf\n", R*R*R*R - R*R + 3.0*fabs(R)*fabs(R)*fabs(R));
-
-    return 0;
+// Function (ordinary differential equation)
+double fxy(double x, double y) {
+    return (-1)*(2*y);
 }
 
-double fxy(double x, double y) {
-    return 3.0*y/x + x*x*x + x;
+int main(void) {
+    // Variable initialization
+    double y[5], x0, x1, h, h_next;
+    int a;
+
+    // Initial point
+    x0 = 1; y[0] = 3;
+    
+    // Point where we want calculate y(x1)
+    x1 = 2.0;
+
+    // Step size
+    h = 0.01;
+
+    // Dormand-Prince Method
+    a = dorpi_4_5(fxy, y, x0, h, x1, &h_next, 1e-5);
+
+    printf("a = %d\n\nResult = %lf\n", a, y[1]);
+
+    return 0;
 }
