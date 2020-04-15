@@ -172,11 +172,11 @@ double fxy(double x, double y) {
 
 int main(void) {
     // Variable initialization
-    double y[5], x0, x1, h, h_next;
+    double y[2], x0, x1, h, h_next;
 
     // Initial point
     x0 = 1; y[0] = 3;
-    
+
     // Point where we want calculate y(x1)
     x1 = 2.0;
 
@@ -193,9 +193,55 @@ int main(void) {
 ```
 
 Output will be:
+
 ```
 Result = 36.000068
 ```
+
+# Tests
+
+#### Problem
+
+<p align="center">
+    <img src="img/problem_1.png">
+</p>
+
+#### Code:
+
+```cpp
+// main.c
+
+// ...
+
+// Function (ordinary differential equation)
+double fxy(double x, double y) {
+    return (-1)*(2*y);
+}
+
+int main(void) {
+    // ...
+
+    // Initial point
+    x0 = 1; y[0] = 3;
+
+    // Point where we want calculate y(x1)
+    x1 = 2.0;
+
+    // ...
+}
+```
+
+#### Output
+
+```
+Result = 0.036631
+```
+
+#### Solution from [WolframAlpha](https://www.wolframalpha.com/input/?i=dy%2Fdx+%3D+-2y%2C+y%280%29+%3D+2)
+
+<p align="center">
+    <img src="img/problem_1_solution.png">
+</p>
 
 # References
 
