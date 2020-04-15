@@ -81,3 +81,78 @@ Once we have calculated ![x^(1)](img/x1.gif), we repeat the process again, until
 <p align="center">
     <img src="img/formula_8.png">
 </p>
+
+## Code representation of algorithm
+
+```cpp
+// Newton's Method for Nonlinear Systems of Equations
+void NSE(void (*f)(double *x, double *fv, int n), double *x,
+             double *fv, int n, double eps, int *maxiter)
+{
+    double tmp, delta, **jac, *p, *x0;
+    int i, j, k;
+
+    jac = new double *[n];
+    for (i = 0; i < n; i++)
+        jac[i] = new double[n];
+
+    p = new double[n];
+    x0 = new double[n];
+
+    for (k = 0; k < *maxiter; k++)
+    {
+        f(x, fv, n); // get residuals for current value of 'x'
+
+        // Compute Jacobian matrix
+        for (i = 0; i < n; i++)
+        {
+            tmp = x[i];
+            delta = (tmp > 1.0) ? eps * tmp : eps;
+            x[i] = tmp + delta; // bump this element
+            delta = x[i] - tmp; // try this to reduce error (from Schnabel)
+            f(x, p, n);
+            x[i] = tmp; // restore original value
+
+            for (j = 0; j < n; j++)
+                jac[j][i] = (p[j] - fv[j]) / delta;
+        }
+
+        // Update residuals
+        for (i = 0; i < n; i++)
+        {
+            tmp = 0.0;
+            for (j = 0; j < n; j++)
+            {
+                tmp += jac[i][j] * x[j];
+            }
+            p[i] = tmp - fv[i];
+        }
+
+        // Update solution vector
+        GEM(jac, p, x0, n); // Gauss Elimination Method
+
+        // Test for convergence
+        tmp = 0.0;
+        for (i = 0; i < n; i++)
+        {
+            tmp += fabs(x[i] - x0[i]);
+            x[i] = x0[i];
+        }
+
+        if (tmp < 1e-4)
+            break;
+    }
+
+    *maxiter = k;
+    
+    // Delete temporary storage
+    delete[] x0;
+    delete[] p;
+
+    for (i = 0; i < n; i++)
+        delete[] jac[i];
+    
+    delete[] jac;
+}
+
+```

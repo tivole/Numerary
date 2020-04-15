@@ -19,7 +19,7 @@ int GEM(double **a, double *b, double *x, int n)
         {
             for (j = i + 1; j < n; j++)
             {
-                if ((pvt = a[j][i]) != 0.0)
+                if ((pvt = a[j][i]) < 1e-9)
                     break;
             }
 
@@ -103,7 +103,7 @@ void NSE(void (*f)(double *x, double *fv, int n), double *x,
         }
 
         // Update solution vector
-        GEM(jac, p, x0, n);
+        GEM(jac, p, x0, n); // Gauss Elimination Method
 
         // Test for convergence
         tmp = 0.0;
