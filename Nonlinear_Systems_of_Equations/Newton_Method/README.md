@@ -85,6 +85,8 @@ Once we have calculated ![x^(1)](img/x1.gif), we repeat the process again, until
 ## Code representation of algorithm
 
 ```cpp
+// NSE.cpp
+
 // Newton's Method for Nonlinear Systems of Equations
 void NSE(void (*f)(double *x, double *fv, int n), double *x,
              double *fv, int n, double eps, int *maxiter)
@@ -156,3 +158,87 @@ void NSE(void (*f)(double *x, double *fv, int n), double *x,
 }
 
 ```
+
+## Usage
+
+```cpp
+// main.cpp
+
+#include <math.h>
+#include <iostream>
+#include "NSE.cpp"
+using namespace std;
+
+#define N 3
+#define eps 1e-7
+
+// Function with Nonlinear Systems of Equations
+void f(double *x, double *fv, int n) {
+    fv[0] = pow(x[0], 5) + pow(x[1], 3) * pow(x[2], 4) + 1;
+    fv[1] = x[0]*x[0]*x[1]*x[2];
+    fv[2] = pow(x[2], 4) - 1;
+}
+
+int main() {
+
+    // Variable initialization
+    double *x = new double[N], *fv = new double[N];
+    int maxiter = 100;
+
+    // Initial point
+    x[0] = 1;
+    x[1] = 2;
+    x[2] = 3;
+
+    // Newton's Method for Nonlinear Systems of Equations
+    NSE(f, x, fv, N, eps, &maxiter);
+
+
+    // Results:
+    cout << "X:\n";
+    for (int i = 0; i < N; i++) cout << "x[" << i << "] = " << x[i] << endl;
+    
+    cout << "\nFv:\n";
+    for (int i = 0; i < N; i++) cout << "Fv[" << i << "] = " << fv[i] << endl;
+
+    cout << "\nNumber of iterations = " << maxiter << "\n";
+
+    return 0;
+}
+```
+
+## Tests
+
+---
+
+### Problem:
+
+
+
+### Code:
+```cpp
+// main.cpp
+
+// ...
+
+// Function with Nonlinear Systems of Equations
+void f(double *x, double *fv, int n) {
+    fv[0] = pow(x[0], 5) + pow(x[1], 3) * pow(x[2], 4) + 1;
+    fv[1] = x[0]*x[0]*x[1]*x[2];
+    fv[2] = pow(x[2], 4) - 1;
+}
+
+// ...
+```
+
+### Output:
+
+<p align="center">
+    <img src="img/problem_1_output.png">
+</p>
+
+### Solution from [WolframAlpha](https://www.wolframalpha.com/input/?i=solve+%28x%5E5+%2B+y%5E3+*+z%5E4+%2B+1%29%2C+%28x%5E2*y*z%29%2C+%28z%5E4+-+1%29):
+
+<p align="center">
+    <img src="img/problem_1_solution.png">
+</p>

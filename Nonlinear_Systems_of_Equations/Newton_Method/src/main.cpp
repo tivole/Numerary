@@ -28,7 +28,7 @@ int main() {
     
     cout << "Fv:\nfv[0] = " << fv[0] << "\nx[1] = " << fv[1] << "\n\n";
 
-    cout << "Maxiter = " << maxiter << "\n";
+    cout << "Number of iterations = " << maxiter << "\n";
 
     return 0;
 }
