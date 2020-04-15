@@ -150,7 +150,7 @@ int dorpi_4_5(double (*f)(double, double), double y[], double x, double h, doubl
 
 # Usage
 
-Imagine that we want to integrate the following expression:
+Imagine that we want to solve the following expression:
 
 <p align="center">
     <img src="img/example.png">

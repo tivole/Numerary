@@ -161,7 +161,7 @@ void NSE(void (*f)(double *x, double *fv, int n), double *x,
 
 # Usage
 
-Imagine that we want to integrate the following expression:
+Imagine that we want to solve the following expression:
 
 <p align="center">
     <img src="img/example.png">
