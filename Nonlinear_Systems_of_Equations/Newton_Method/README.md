@@ -211,13 +211,13 @@ int main() {
 
 ---
 
-### Problem:
+#### Problem:
 <p align="center">
     <img src="img/problem_1.png">
 </p>
 
 
-### Code:
+#### Code:
 ```cpp
 // main.cpp
 
@@ -233,7 +233,7 @@ void f(double *x, double *fv, int n) {
 // ...
 ```
 
-### Output:
+#### Output:
 ```
 X:
 x[0] = -0.0019944
@@ -248,8 +248,50 @@ Fv[2] = 0
 Number of iterations = 14
 ```
 
-### Solution from [WolframAlpha](https://www.wolframalpha.com/input/?i=solve+%28x%5E5+%2B+y%5E3+*+z%5E4+%2B+1%29%2C+%28x%5E2*y*z%29%2C+%28z%5E4+-+1%29):
+#### Solution from [WolframAlpha](https://www.wolframalpha.com/input/?i=solve+%28x%5E5+%2B+y%5E3+*+z%5E4+%2B+1%29%2C+%28x%5E2*y*z%29%2C+%28z%5E4+-+1%29):
 
 <p align="center">
     <img src="img/problem_1_solution.png">
+</p>
+
+---
+
+#### Problem:
+<p align="center">
+    <img src="img/problem_2.png">
+</p>
+
+
+#### Code:
+```cpp
+// main.cpp
+
+// ...
+
+// Function with Nonlinear Systems of Equations
+void f(double *x, double *fv, int n) {
+    fv[0] = x[0]*x[0] + x[1]*x[1] - 4;
+    fv[1] = exp(x[0]) + x[1] - 1;
+}
+
+// ...
+```
+
+#### Output:
+```
+X:
+x[0] = -1.81626
+x[1] = 0.837368
+
+Fv:
+Fv[0] = 5.90633e-05
+Fv[1] = 3.92637e-06
+
+Number of iterations = 5
+```
+
+#### Solution from [WolframAlpha](https://www.wolframalpha.com/input/?i=solve+x%5E2+%2B+y%5E2+%3D+4%2C+exp%28x%29+%2B+y+%3D+1):
+
+<p align="center">
+    <img src="img/problem_2_solution.png">
 </p>
