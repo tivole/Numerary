@@ -1,34 +1,36 @@
-// (c) Tivole
+// main.cpp
 
 #include <math.h>
 #include <iostream>
 #include "NSE.cpp"
-
 using namespace std;
 
-void f(double *x, double *fv, int n)
-{
-    fv[0] = 2*x[0]*x[0] + 3*x[1]*x[1] - 30;
-    fv[1] = 3*x[0]*x[0] - 2*x[1]*x[1] - 19;
+#define N 2
+#define eps 1e-7
+
+// Function with Nonlinear Systems of Equations
+void f(double *x, double *fv, int n) {
+    fv[0] = x[0]*x[0] + x[1]*x[1] - 5;
+    fv[1] = x[1] - 3*x[0] + 5;
 }
 
 int main() {
-
-    double *x = new double[2];
-    double *fv = new double[2];
-    double eps = 1e-7;
+    // Variable initialization
+    double *x = new double[N], *fv = new double[N];
     int maxiter = 100;
 
-    x[0] = 0;
-    x[1] = 0;
+    // Initial point
+    x[0] = 1; x[1] = 2;
 
-    NSE(f, x, fv, 2, eps, &maxiter);
+    // Newton's Method for Nonlinear Systems of Equations
+    NSE(f, x, fv, N, eps, &maxiter);
 
-    cout << "X:\nx[0] = " << x[0] << "\nx[1] = " << x[1] << "\n\n";
-    
-    cout << "Fv:\nfv[0] = " << fv[0] << "\nx[1] = " << fv[1] << "\n\n";
-
-    cout << "Number of iterations = " << maxiter << "\n";
+    // Results:
+    cout << "X:\n";
+    for (int i = 0; i < N; i++) cout << "x[" << i << "] = " << x[i] << endl;
+    cout << "\nFv:\n";
+    for (int i = 0; i < N; i++) cout << "Fv[" << i << "] = " << fv[i] << endl;
+    cout << "\nNumber of iterations = " << maxiter << "\n";
 
     return 0;
 }
