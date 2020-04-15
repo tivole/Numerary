@@ -30,7 +30,7 @@
 * [Lagrange's Interpolation](Interpolation/Lagrange's%20Interpolation)
 
 
-## Intergral Calculation Problem
+## Integral Calculation Problem
 * [Simpson's Method](Integral%20Calculator)
 
 ## Differentiation

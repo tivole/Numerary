@@ -37,6 +37,8 @@ where ![h](img/h.gif) in the right side is the old time interval. In practical p
 ## Code representation of algorithm
 
 ```cpp
+// dorpi.c
+
 int dorpi_4_5(double (*f)(double, double), double y[], double x, double h, double xmax, double *h_next, double tolerance ) {
     ////////////////////////////////////////////////////////////////////////////////
     // int dorpi_4_5( double (*f)(double, double),           //
@@ -144,6 +146,55 @@ int dorpi_4_5(double (*f)(double, double), double y[], double x, double h, doubl
     y[1] = temp_y[1];
     return 0;
 }
+```
+
+# Usage
+
+Imagine that we want to integrate the following expression:
+
+<p align="center">
+    <img src="img/example.png">
+</p>
+
+Then the code will look like this:
+
+```cpp
+// main.c
+
+#include <stdio.h>
+#include <math.h>
+#include "dorpi.c"
+
+// Function (ordinary differential equation)
+double fxy(double x, double y) {
+    return 3.0*y/x + x*x*x + x;
+}
+
+int main(void) {
+    // Variable initialization
+    double y[5], x0, x1, h, h_next;
+
+    // Initial point
+    x0 = 1; y[0] = 3;
+    
+    // Point where we want calculate y(x1)
+    x1 = 2.0;
+
+    // Step size
+    h = 0.01;
+
+    // Dormand-Prince Method
+    dorpi_4_5(fxy, y, x0, h, x1, &h_next, 1e-5);
+
+    printf("Result = %lf\n", y[1]);
+
+    return 0;
+}
+```
+
+Output will be:
+```
+Result = 36.000068
 ```
 
 # References
