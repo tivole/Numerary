@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 // Gauss Elimination Method
 int GEM(double **a, double *b, double *x, int n)
 {
