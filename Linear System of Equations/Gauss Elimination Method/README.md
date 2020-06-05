@@ -33,3 +33,33 @@ Gauss exceptions are based on the idea of ​​successive exceptions variables 
 </p>
 
 Then the first line obtained after the permutation is subtracted from the remaining lines:
+
+<p align="center">
+    <img src="img/system_4.png">
+</p>
+
+Получают новую систему уравнений, в которой заменены соответствующие коэффициенты.
+
+<p align="center">
+    <img src="img/system_5.png">
+</p>
+
+After the indicated transformations have been completed, the first row and the first column are mentally deleted and continue the specified process for all subsequent equations until an equation with one unknown:
+
+<p align="center">
+    <img src="img/system_6.png">
+</p>
+
+## Reverse substitution
+
+Reverse substitution involves the substitution of the value of ![x_n](img/x_n.gif) obtained in the previous step into the previous equations:
+
+<p align="center">
+    <img src="img/system_7.png">
+</p>
+
+This procedure is repeated for all remaining solutions:
+
+<p align="center">
+    <img src="img/system_8.png">
+</p>
