@@ -44,9 +44,9 @@ int find_min(double a, double b, double (*f)(double), double *min_x){
 		
 		if ((fd1 <= fc) && (fd1 <= fd2)) {
 			b = c;
+			fb = fc;
 			c = d1;
 			fc = fd1;
-			fb = fc;
 		} else if ((fc <= fd1) && (fc <= fd2)) {
 			a = d1;
 			b = d2;
