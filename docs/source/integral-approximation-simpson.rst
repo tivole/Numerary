@@ -41,3 +41,47 @@ and so on. Adding these up gives
     \begin{equation}
         \int_{a}^{b} f(x) d x \approx \frac{b-a}{3 N}\left(f(a)+4 f\left(x_{1}\right)+2 f\left(x_{2}\right)+4 f\left(x_{3}\right)+2 f\left(x_{4}\right)+\cdots+4 f\left(x_{N-1}\right)+f(b)\right).
     \end{equation}
+
+
+Usage
+-----
+
+Imagine that we want to integrate the following expression:
+
+.. math::
+    :nowrap:
+
+    \begin{equation}
+        \int_{0}^{1} (5x^3 + 2\cos{x}) dx.
+    \end{equation}
+
+Then the code will look like this:
+
+.. code:: cpp
+    
+    #include <iostream>
+    #include "numerary.hpp"
+
+    using namespace std;
+    using namespace numerary;
+
+    /* Function to be integrated */
+    double f(double x) {
+        return 5*pow(x, 3) + 2*cos(x);
+    }
+
+    /* The main function */
+    int main() {
+        
+        const double from = 0; // Lower bound of integral
+        const double to = 1; // Upper bound of integral
+        const string method = "simpson"; // Numerical method we will use for integration ("simpson" by default)
+        const double eps = 1.e-9; // eps value for integration (1.e-9 by default)
+
+        double *I = Numerary::integrate(f, from, to, method, eps);
+
+        cout << "ans = " << I[0] << endl; // Value of calculated integral
+        cout << "err = " << I[1] << endl; // Error of calculated integral value
+
+        return 0;
+    }
