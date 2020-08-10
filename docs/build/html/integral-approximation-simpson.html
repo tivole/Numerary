@@ -161,6 +161,19 @@
 <div class="math notranslate nohighlight">
 \begin{equation}
     \int_{a}^{b} f(x) d x \approx \frac{b-a}{6}\left(f(a)+4 f\left(\frac{a+b}{2}\right)+f(b)\right)
+\end{equation}</div><p>The idea is that if <span class="math notranslate nohighlight">\(f(x) = 1, x, x^2\)</span>, this formula is an exact equality. So Simpson’s rule gives the correct integral of any quadratic function. In general, Simpson’s rule approximates <span class="math notranslate nohighlight">\(f(x)\)</span> by a parabola through the points on the graph of <span class="math notranslate nohighlight">\(f(x)\)</span> with <span class="math notranslate nohighlight">\(x\)</span>-coordinates <span class="math notranslate nohighlight">\(a, \frac{a+b}{2}, b\)</span>.</p>
+<p>Simpson’s rule is usually applied by breaking the interval into <span class="math notranslate nohighlight">\(N\)</span> equal-sized subintervals, where <span class="math notranslate nohighlight">\(N\)</span> is an even number, and approximating the integral over each pair of adjacent subintervals using the above estimate.</p>
+<p>That is, let <span class="math notranslate nohighlight">\(x_0=a, x_1=a+\frac{b-a}{N}, x_2=a+2\frac{b-x}{N}, \dots, x_{N-1}=a+(N-1)\frac{b-a}{N}, x_N=b\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{a}^{x_{2}} f(x) d x \approx \frac{b-a}{3 N}\left(f(a)+4 f\left(x_{1}\right)+f\left(x_{2}\right)\right)
+\end{equation}</div><div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{x_2}^{x_{4}} f(x) d x \approx \frac{b-a}{3 N}\left(f(x_2)+4 f\left(x_{3}\right)+f\left(x_{4}\right)\right)
+\end{equation}</div><p>and so on. Adding these up gives</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{a}^{b} f(x) d x \approx \frac{b-a}{3 N}\left(f(a)+4 f\left(x_{1}\right)+2 f\left(x_{2}\right)+4 f\left(x_{3}\right)+2 f\left(x_{4}\right)+\cdots+4 f\left(x_{N-1}\right)+f(b)\right).
 \end{equation}</div></div>
 </div>
 

@@ -3,11 +3,6 @@ Welcome to Numerary's documentation!
 
 Numerary is Scientific Library that contains many numerical methods.
 
-Something
-
-If :math:`\sigma_{1}` equals :math:`\sigma_{2}` then etc, etc.
-
-
 
 Contents
 ========
