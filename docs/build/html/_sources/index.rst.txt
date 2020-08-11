@@ -13,3 +13,11 @@ Contents
    :name: integral
 
    integral-approximation-simpson.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Linear System of Equations
+   :name: linear-system-of-equations
+
+   gauss-elimination-method.rst
