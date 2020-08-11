@@ -8,6 +8,15 @@ Contents
 ========
 
 .. toctree::
+    :maxdepth: 2
+    :caption: Root finding
+    :name: root-finding
+
+    root-bisection-method.rst
+    root-secant-method.rst
+
+
+.. toctree::
    :maxdepth: 2
    :caption: Integral
    :name: integral
@@ -21,3 +30,4 @@ Contents
    :name: linear-system-of-equations
 
    gauss-elimination-method.rst
+
