@@ -115,3 +115,53 @@ A new system of equations is obtained, in which the corresponding coefficients a
                 \end{array}
             \right.
     \end{align*}
+
+After the indicated transformations have been completed, the first row and the first column are mentally deleted and continue the specified process for all subsequent equations until an equation with one unknown:
+
+.. math::
+    :nowrap:
+
+    \begin{align*}
+            \left\{
+                \begin{array}{r c r c r c r c r}
+                    x_{1} & + & a_{12}^{\prime} \cdot x_{2} & + & a_{13}^{\prime} \cdot x_{3}        & + \cdots + & a_{1 n}^{\prime} \cdot x_{n}               & = & y_{1}^{\prime} \\
+                    0     & + & x_{2}                       & + & a_{23}^{\prime \prime} \cdot x_{3} & + \cdots + & a_{2 n}^{\prime \prime} \cdot x_{n}        & = & y_{2}^{\prime \prime} \\
+                    0     & + & 0                           & + & x_{3}                              & + \cdots + & a_{3 n}^{\prime \prime \prime} \cdot x_{n} & = & y_{3}^{\prime \prime \prime} \\
+                          &&                                &&                                       &   \cdots   & \\
+                    0     & + & 0                           & + & 0                                  & + \cdots + & x_{n}                                      & = & y_{n}^{n \prime}
+                \end{array}
+            \right.
+    \end{align*}
+
+
+Reverse substitution
+^^^^^^^^^^^^^^^^^^^^
+
+Reverse substitution involves the substitution of the value of x_n obtained in the previous step into the previous equations:
+
+.. math::
+    :nowrap:
+
+    \begin{align*}
+            \begin{array}{rcl}
+                x_{n-1}                                                                                                 & = & y_{n-1}^{(n-1)^{\prime}}-a_{(n-1) n}^{(n-1) \prime} \cdot x_{n} \\
+                x_{n-2}+a_{(n-2)(n-1)}^{(n-2) \prime} \cdot x_{n-1}                                                     & = & y_{n-2}^{(n-2)^{\prime}}-a_{(n-2) n}^{(n-2) \prime} \cdot x_{n} \\
+                \cdots \\
+                x_{2}+a_{23}^{\prime \prime} \cdot x_{3}+\cdots+a_{2(n-1)}^{\prime \prime} \cdot x_{n-1}                & = & y_{2}^{\prime \prime}-a_{2 n}^{\prime \prime} \cdot x_{n} \\
+                x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots+a_{1(n-1)}^{\prime} \cdot x_{n-1}  & = & y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}
+            \end{array}
+    \end{align*}
+
+This procedure is repeated for all remaining solutions:
+
+.. math::
+    :nowrap:
+
+    \begin{align*}
+        \begin{array}{rcl}
+            x_{n-2}                                                              & = & \left(y_{n-2}^{(n-2)^{\prime}}-a_{(n-2) n}^{(n-2)^{\prime}} \cdot x_{n}\right)-a_{(n-2)(n-1)}^{(n-2) \prime} \cdot x_{n-1} \\
+            & \cdots & \\
+            x_{2}+a_{23}^{\prime \prime} \cdot x_{3}+\cdots                      & = & \left(y_{2}^{\prime \prime}-a_{2 n}^{\prime \prime} \cdot x_{n}\right)-a_{2(n-1)}^{\prime \prime} \cdot x_{n-1} \\
+            x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots & = & \left(y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}\right)-a_{1(n-1)}^{\prime} \cdot x_{n-1}
+        \end{array}
+    \end{align*}

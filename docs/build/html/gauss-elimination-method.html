@@ -91,6 +91,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gauss Elimination Method</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#algorithm">Algorithm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sequential-exception">Sequential exception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-substitution">Reverse substitution</a></li>
 </ul>
 </li>
 </ul>
@@ -243,6 +244,40 @@
                 0     &amp; + &amp; a_{n 2}^{\prime} \cdot x_{2} &amp; + \cdots + &amp; a_{n n}^{\prime} \cdot x_{n} &amp; = &amp; y_{n}^{\prime}
             \end{array}
         \right.
+\end{align*}</div><p>After the indicated transformations have been completed, the first row and the first column are mentally deleted and continue the specified process for all subsequent equations until an equation with one unknown:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+        \left\{
+            \begin{array}{r c r c r c r c r}
+                x_{1} &amp; + &amp; a_{12}^{\prime} \cdot x_{2} &amp; + &amp; a_{13}^{\prime} \cdot x_{3}        &amp; + \cdots + &amp; a_{1 n}^{\prime} \cdot x_{n}               &amp; = &amp; y_{1}^{\prime} \\
+                0     &amp; + &amp; x_{2}                       &amp; + &amp; a_{23}^{\prime \prime} \cdot x_{3} &amp; + \cdots + &amp; a_{2 n}^{\prime \prime} \cdot x_{n}        &amp; = &amp; y_{2}^{\prime \prime} \\
+                0     &amp; + &amp; 0                           &amp; + &amp; x_{3}                              &amp; + \cdots + &amp; a_{3 n}^{\prime \prime \prime} \cdot x_{n} &amp; = &amp; y_{3}^{\prime \prime \prime} \\
+                      &amp;&amp;                                &amp;&amp;                                       &amp;   \cdots   &amp; \\
+                0     &amp; + &amp; 0                           &amp; + &amp; 0                                  &amp; + \cdots + &amp; x_{n}                                      &amp; = &amp; y_{n}^{n \prime}
+            \end{array}
+        \right.
+\end{align*}</div></div>
+<div class="section" id="reverse-substitution">
+<h3>Reverse substitution<a class="headerlink" href="#reverse-substitution" title="Permalink to this headline">¶</a></h3>
+<p>Reverse substitution involves the substitution of the value of x_n obtained in the previous step into the previous equations:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+        \begin{array}{rcl}
+            x_{n-1}                                                                                                 &amp; = &amp; y_{n-1}^{(n-1)^{\prime}}-a_{(n-1) n}^{(n-1) \prime} \cdot x_{n} \\
+            x_{n-2}+a_{(n-2)(n-1)}^{(n-2) \prime} \cdot x_{n-1}                                                     &amp; = &amp; y_{n-2}^{(n-2)^{\prime}}-a_{(n-2) n}^{(n-2) \prime} \cdot x_{n} \\
+            \cdots \\
+            x_{2}+a_{23}^{\prime \prime} \cdot x_{3}+\cdots+a_{2(n-1)}^{\prime \prime} \cdot x_{n-1}                &amp; = &amp; y_{2}^{\prime \prime}-a_{2 n}^{\prime \prime} \cdot x_{n} \\
+            x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots+a_{1(n-1)}^{\prime} \cdot x_{n-1}  &amp; = &amp; y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}
+        \end{array}
+\end{align*}</div><p>This procedure is repeated for all remaining solutions:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+    \begin{array}{rcl}
+        x_{n-2}                                                              &amp; = &amp; \left(y_{n-2}^{(n-2)^{\prime}}-a_{(n-2) n}^{(n-2)^{\prime}} \cdot x_{n}\right)-a_{(n-2)(n-1)}^{(n-2) \prime} \cdot x_{n-1} \\
+        &amp; \cdots &amp; \\
+        x_{2}+a_{23}^{\prime \prime} \cdot x_{3}+\cdots                      &amp; = &amp; \left(y_{2}^{\prime \prime}-a_{2 n}^{\prime \prime} \cdot x_{n}\right)-a_{2(n-1)}^{\prime \prime} \cdot x_{n-1} \\
+        x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots &amp; = &amp; \left(y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}\right)-a_{1(n-1)}^{\prime} \cdot x_{n-1}
+    \end{array}
 \end{align*}</div></div>
 </div>
 </div>
