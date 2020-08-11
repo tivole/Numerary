@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="root-secant-method.html" />
+    <link rel="next" title="Secant Method" href="root-secant-method.html" />
     <link rel="prev" title="Welcome to Numerary’s documentation!" href="index.html" /> 
 </head>
 
@@ -87,8 +87,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bisection Method</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-method">The Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iteration-tasks">Iteration Tasks</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Secant Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integral</span></p>
 <ul>
@@ -167,6 +172,22 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In mathematics, the <strong>bisection method</strong> is a root-finding method that applies to any continuous functions for which one knows two values with opposite signs. The method consists of repeatedly bisecting the interval defined by these values and then selecting the subinterval in which the function changes sign, and therefore must contain a root. It is a very simple and robust method, but it is also relatively slow. Because of this, it is often used to obtain a rough approximation to a solution which is then used as a starting point for more rapidly converging methods. The method is also called the <strong>interval halving method</strong>, the <strong>binary search method</strong>, or the <strong>dichotomy method</strong>.</p>
+<img alt="_images/Bisection_Method.png" class="align-center" src="_images/Bisection_Method.png" />
+</div>
+<div class="section" id="the-method">
+<h2>The Method<a class="headerlink" href="#the-method" title="Permalink to this headline">¶</a></h2>
+<p>The method is applicable for numerically solving the equation <span class="math notranslate nohighlight">\(f(x) = 0\)</span> for the real variable <span class="math notranslate nohighlight">\(x\)</span>, where <span class="math notranslate nohighlight">\(f\)</span> is a continuous function defined on an interval <span class="math notranslate nohighlight">\([a, b]\)</span> and where <span class="math notranslate nohighlight">\(f(a)\)</span> and <span class="math notranslate nohighlight">\(f(b)\)</span> have opposite signs. In this case <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are said to bracket a root since, by the intermediate value theorem, the continuous function <span class="math notranslate nohighlight">\(f\)</span> must have at least one root in the interval <span class="math notranslate nohighlight">\((a, b)\)</span>.</p>
+<p>At each step the method divides the interval in two by computing the midpoint <span class="math notranslate nohighlight">\(c = \frac{a+b}{2}\)</span> of the interval and the value of the function <span class="math notranslate nohighlight">\(f(c)\)</span> at that point. Unless <span class="math notranslate nohighlight">\(c\)</span> is itself a root (which is very unlikely, but possible) there are now only two possibilities: either <span class="math notranslate nohighlight">\(f(a)\)</span> and <span class="math notranslate nohighlight">\(f(c)\)</span> have opposite signs and bracket a root, or <span class="math notranslate nohighlight">\(f(c)\)</span> and <span class="math notranslate nohighlight">\(f(b)\)</span> have opposite signs and bracket a root. The method selects the subinterval that is guaranteed to be a bracket as the new interval to be used in the next step. In this way an interval that contains a zero of <span class="math notranslate nohighlight">\(f\)</span> is reduced in width by <em>50%</em> at each step. The process is continued until the interval is sufficiently small.</p>
+<p>Explicitly, if <span class="math notranslate nohighlight">\(f(a)\)</span> and <span class="math notranslate nohighlight">\(f(c)\)</span> have opposite signs, then the method sets <span class="math notranslate nohighlight">\(c\)</span> as the new value for <span class="math notranslate nohighlight">\(b\)</span>, and if <span class="math notranslate nohighlight">\(f(b)\)</span> and <span class="math notranslate nohighlight">\(f(c)\)</span> have opposite signs then the method sets <span class="math notranslate nohighlight">\(c\)</span> as the new <span class="math notranslate nohighlight">\(a\)</span>. (If <span class="math notranslate nohighlight">\(f(c)=0\)</span> then <span class="math notranslate nohighlight">\(c\)</span> may be taken as the solution and the process stops.) In both cases, the new <span class="math notranslate nohighlight">\(f(a)\)</span> and <span class="math notranslate nohighlight">\(f(b)\)</span> have opposite signs, so the method is applicable to this smaller interval.</p>
+<div class="section" id="iteration-tasks">
+<h3>Iteration Tasks<a class="headerlink" href="#iteration-tasks" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\(c\)</span>, the midpoint of the interval, <span class="math notranslate nohighlight">\(c=\frac{a+b}{2}\)</span>.</p></li>
+<li><p>Calculate the function value at the midpoint, <span class="math notranslate nohighlight">\(f(c)\)</span>.</p></li>
+<li><p>If convergence is satisfactory (that is, <span class="math notranslate nohighlight">\(c-a\)</span> is sufficiently small, or <span class="math notranslate nohighlight">\(|f(c)|\)</span> is sufficiently small), return <span class="math notranslate nohighlight">\(c\)</span> and stop iterating.</p></li>
+<li><p>Examine the sign of <span class="math notranslate nohighlight">\(f(c)\)</span> and replace either <span class="math notranslate nohighlight">\((a, f(a))\)</span> or <span class="math notranslate nohighlight">\((b, f(b))\)</span> with <span class="math notranslate nohighlight">\((c, f(c))\)</span> so that there is a zero crossing within the new interval.</p></li>
+</ol>
+</div>
 </div>
 </div>
 
@@ -178,7 +199,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="root-secant-method.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="root-secant-method.html" class="btn btn-neutral float-right" title="Secant Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Numerary’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
