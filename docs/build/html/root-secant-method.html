@@ -88,6 +88,8 @@
 <li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Bisection Method</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Secant Method</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-method">The Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#derivation-of-the-method">Derivation Of The Method</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +169,35 @@
 <h1>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In numerical analysis, the <strong>secant method</strong> is a root-finding algorithm that uses a succession of roots of secant lines to better approximate a root of a function <span class="math notranslate nohighlight">\(f\)</span>. The secant method can be thought of as a finite-difference approximation of Newton’s method. However, the method was developed independently of Newton’s method and predates it by over 3000 years.</p>
+<a class="reference internal image-reference" href="_images/secant-method.png"><img alt="_images/secant-method.png" class="align-center" src="_images/secant-method.png" style="width: 240.0px; height: 215.4px;" /></a>
 </div>
+<div class="section" id="the-method">
+<h2>The Method<a class="headerlink" href="#the-method" title="Permalink to this headline">¶</a></h2>
+<p>The secant method is defined by the recurrence relation</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    x_{n}=x_{n-1}-f\left(x_{n-1}\right) \frac{x_{n-1}-x_{n-2}}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}=\frac{x_{n-2} f\left(x_{n-1}\right)-x_{n-1} f\left(x_{n-2}\right)}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}.
+\end{equation}</div><p>As can be seen from the recurrence relation, the secant method requires two initial values, <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span>, which should ideally be chosen to lie close to the root.</p>
+</div>
+<div class="section" id="derivation-of-the-method">
+<h2>Derivation Of The Method<a class="headerlink" href="#derivation-of-the-method" title="Permalink to this headline">¶</a></h2>
+<p>Starting with initial values <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span>, we construct a line through the points <span class="math notranslate nohighlight">\((x0, f(x0))\)</span> and <span class="math notranslate nohighlight">\((x1, f(x1))\)</span>, as shown in the picture above. In slope–intercept form, the equation of this line is</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    y=\frac{f\left(x_{1}\right)-f\left(x_{0}\right)}{x_{1}-x_{0}}\left(x-x_{1}\right)+f\left(x_{1}\right).
+\end{equation}</div><p>The root of this linear function, that is the value of <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(y=0\)</span> is</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    x=x_{1}-f\left(x_{1}\right) \frac{x_{1}-x_{0}}{f\left(x_{1}\right)-f\left(x_{0}\right)}.
+\end{equation}</div><p>We then use this new value of <span class="math notranslate nohighlight">\(x\)</span> as <span class="math notranslate nohighlight">\(x_2\)</span> and repeat the process, using <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> instead of <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span>. We continue this process, solving for <span class="math notranslate nohighlight">\(x_3\)</span>, <span class="math notranslate nohighlight">\(x_4\)</span>, etc., until we reach a sufficiently high level of precision (a sufficiently small difference between <span class="math notranslate nohighlight">\(x_n\)</span> and <span class="math notranslate nohighlight">\(x_n-1\)</span>):</p>
+<div class="math notranslate nohighlight">
+\begin{equation}\begin{aligned}
+    x_{2} &amp;=x_{1}-f\left(x_{1}\right) \frac{x_{1}-x_{0}}{f\left(x_{1}\right)-f\left(x_{0}\right)} \\
+    x_{3} &amp;=x_{2}-f\left(x_{2}\right) \frac{x_{2}-x_{1}}{f\left(x_{2}\right)-f\left(x_{1}\right)} \\
+    &amp; \vdots \\
+    x_{n} &amp;=x_{n-1}-f\left(x_{n-1}\right) \frac{x_{n-1}-x_{n-2}}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}.
+\end{aligned}\end{equation}</div></div>
 </div>
 
 
