@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linear Regression &mdash; Numerary 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Dormand-Prince Method" href="dormand-prince-method.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Root finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Secant Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integral</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Linear System of Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nonlinear System of Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Newton’s Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Ordinary Differential Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Dormand-Prince Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Regression</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linear Regression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-simple-linear-regression-model">The Simple Linear Regression Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-linear-probabilistic-model">A Linear Probabilistic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estimating-model-parameters">Estimating Model Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Linear Regression</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/linear-regression.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linear-regression">
+<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In statistics, linear regression is a linear approach to modeling the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). The case of one explanatory variable is called simple linear regression. For more than one explanatory variable, the process is called multiple linear regression. This term is distinct from multivariate linear regression, where multiple correlated dependent variables are predicted, rather than a single scalar variable.</p>
+<a class="reference internal image-reference" href="_images/linear-regression-1.png"><img alt="_images/linear-regression-1.png" class="align-center" src="_images/linear-regression-1.png" style="width: 366.0px; height: 227.60000000000002px;" /></a>
+</div>
+<div class="section" id="the-simple-linear-regression-model">
+<h2>The Simple Linear Regression Model<a class="headerlink" href="#the-simple-linear-regression-model" title="Permalink to this headline">¶</a></h2>
+<p>The simplest deterministic mathematical relationship between two variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is a linear relationship: <span class="math notranslate nohighlight">\(y = \beta_0 + \beta_1 x\)</span>.</p>
+<p>The objective of this section is to develop an equivalent <em>linear probabilistic model</em>.</p>
+<p>If the two (random) variables are probabilistically related, then for a fixed value of x, there is uncertainty in the value of the second variable.</p>
+<p>So we assume <span class="math notranslate nohighlight">\(Y = \beta_0 + \beta_1 x + \varepsilon\)</span>, where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a random variable.</p>
+<p>Two variables are related linearly “on average” if for fixed x the actual value of Y differs from its expected value by a random amount (i.e. there is random error).</p>
+</div>
+<div class="section" id="a-linear-probabilistic-model">
+<h2>A Linear Probabilistic Model<a class="headerlink" href="#a-linear-probabilistic-model" title="Permalink to this headline">¶</a></h2>
+<p><strong>Definition:</strong> (The Simple Linear Regression Model)</p>
+<p>There are parameters <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span>, and <span class="math notranslate nohighlight">\(\sigma^2\)</span>, such that for any fixed value of the independent variable <span class="math notranslate nohighlight">\(x\)</span>, the dependent variable is a random variable related to <span class="math notranslate nohighlight">\(x\)</span> through the model equation</p>
+<a class="reference internal image-reference" href="_images/linear-regression-2.png"><img alt="_images/linear-regression-2.png" class="align-center" src="_images/linear-regression-2.png" style="width: 359.0px; height: 177.0px;" /></a>
+<p>The quantity <span class="math notranslate nohighlight">\(\varepsilon\)</span> in the model equation is the “error” - a random variable, assumed to be symmetrically distributed with</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    E(\varepsilon)=0 \text { and } V(\varepsilon)=\sigma_{\varepsilon}^{2}=\sigma^{2}
+\end{equation}</div><p>(no assumption made about the distribution of <span class="math notranslate nohighlight">\(\varepsilon\)</span>, yet)</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>: the independent, predictor, or explanatory variable (usually known).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{Y}\)</span>: the dependent or response variable. For fixed <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> will be random variable.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span>: the random deviation or random error term. For fixed <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\varepsilon\)</span> will be random variable.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\beta_0}\)</span>: the average value of <span class="math notranslate nohighlight">\(Y\)</span> when <span class="math notranslate nohighlight">\(x\)</span> is zero (the intercept of the true regression line)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\beta_1}\)</span>: the expected (average) change in <span class="math notranslate nohighlight">\(Y\)</span> associated with a 1-unit increase in the value of <span class="math notranslate nohighlight">\(x\)</span>. (the slope of the true regression line)</p></li>
+</ul>
+<p>The points <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span> resulting from <span class="math notranslate nohighlight">\(n\)</span> independent observations will then be scattered about the true regression line:</p>
+<a class="reference internal image-reference" href="_images/linear-regression-3.png"><img alt="_images/linear-regression-3.png" class="align-center" src="_images/linear-regression-3.png" style="width: 441.1px; height: 231.55px;" /></a>
+</div>
+<div class="section" id="estimating-model-parameters">
+<h2>Estimating Model Parameters<a class="headerlink" href="#estimating-model-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The values of <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(beta_1\)</span>, and <span class="math notranslate nohighlight">\(sigma\)</span> will almost never be known to an investigator.</p>
+<p>Instead, sample data consists of n observed pairs <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span> from which the model parameters and the true regression line itself can be estimated.</p>
+<p>The data (pairs) are assumed to have been obtained independently of one another.</p>
+<p>The “best fit” line is motivated by the principle of <strong>least squares</strong>, which can be traced back to the German mathematician <strong>Gauss</strong> (1777–1855):</p>
+<p>A line provides the best fit to the data if the sum of the squared vertical distances (deviations) from the observed points to that line is as small as it can be.</p>
+<a class="reference internal image-reference" href="_images/linear-regression-4.png"><img alt="_images/linear-regression-4.png" class="align-center" src="_images/linear-regression-4.png" style="width: 317.90000000000003px; height: 253.00000000000003px;" /></a>
+<p>The sum of <em>squared vertical deviations</em> from the points <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span></p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f\left(b_{0}, b_{1}\right)=\sum_{i=1}^{n}\left[y_{i}-\left(b_{0}+b_{1} x_{i}\right)\right]^{2}
+\end{equation}</div><p>The point estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, denoted by and, are called the least squares estimates – they are those values that minimize <span class="math notranslate nohighlight">\(f(b_0, b_1)\)</span>.</p>
+<p>The fitted <strong>regression line</strong> or <strong>least squares</strong> line is then the line whose equation is <span class="math notranslate nohighlight">\(y=\hat{\beta}_{0}+\hat{\beta}_{1} x\)</span>.</p>
+<p>The minimizing values of <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span> are found by taking partial derivatives of <span class="math notranslate nohighlight">\(f(b_0, b_1)\)</span> with respect to both <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span>, equating them both to zero [analogously to <span class="math notranslate nohighlight">\(f'(b)=0\)</span> in univariate calculus], and solving the equations</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \begin{array}{l}
+        \frac{\partial f\left(b_{0}, b_{1}\right)}{\partial b_{0}}=\sum 2\left(y_{i}-b_{0}-b_{1} x_{i}\right)(-1)=0 \\
+
+        \frac{\partial f\left(b_{0}, b_{1}\right)}{\partial b_{1}}=\sum 2\left(y_{i}-b_{0}-b_{1} x_{i}\right)\left(-x_{i}\right)=0
+    \end{array}
+\end{equation}</div><p>The least squares estimate of the slope coefficient <span class="math notranslate nohighlight">\(\beta_1\)</span> of the true regression line is</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    b_{1}=\hat{\beta}_{1}=\frac{\sum\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)}{\sum\left(x_{i}-\bar{x}\right)^{2}}=\frac{S_{x y}}{S_{x x}}
+\end{equation}</div><p><em>Shortcut formulas</em> for the numerator and denominator of <span class="math notranslate nohighlight">\(\hat{\beta_1}\)</span> are</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    S_{x y}=\sum{x_{i} y_{i}}-\frac{\left(\sum{x_{i}}\right)\left(\sum{y_{i}}\right)}{n} \quad \text { and } \quad S_{x x}=\sum{x_{i}^{2}}-\frac{\left(\sum{x_{i}}\right)^2}{n}
+\end{equation}</div><p>The least squares estimate of the intercept <span class="math notranslate nohighlight">\(b_0\)</span> of the true regression line is</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    b_{0}=\hat{\beta}_{0}=\frac{\sum y_{i}-\hat{\beta}_{1} \sum x_{i}}{n}=\bar{y}-\hat{\beta}_{1} \bar{x}
+\end{equation}</div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="dormand-prince-method.html" class="btn btn-neutral float-left" title="Dormand-Prince Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

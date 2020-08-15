@@ -46,3 +46,11 @@ Contents
    :name: ordinary-differential-equations
 
    dormand-prince-method.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Regression
+   :name: regression
+
+   linear-regression.rst
