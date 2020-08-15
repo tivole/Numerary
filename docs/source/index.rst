@@ -31,3 +31,10 @@ Contents
 
    gauss-elimination-method.rst
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Nonlinear System of Equations
+   :name: nonlinear-system-of-equations
+
+   newton-method.rst

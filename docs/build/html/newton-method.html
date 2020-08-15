@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -8,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Numerary 0.0.1 documentation</title>
+  <title>Newton’s Method &mdash; Numerary 0.0.1 documentation</title>
   
 
   
@@ -36,8 +35,9 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Gauss Elimination Method" href="gauss-elimination-method.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,8 +96,11 @@
 <li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Nonlinear System of Equations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Newton’s Method</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Newton’s Method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -144,12 +147,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Newton’s Method</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/newton-method.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -161,11 +166,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="newton-s-method">
+<h1>Newton’s Method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><strong>Newton’s method</strong> is one of the most popular numerical methods, and is even referred by <em>Burden</em> and <em>Faires</em> as the most powerful method that is used to solve for the equation <span class="math notranslate nohighlight">\(f(x) = 0\)</span>. This method originates from the <em>Taylor’s series</em> expansion of the function <span class="math notranslate nohighlight">\(f(x)\)</span> about the point <span class="math notranslate nohighlight">\(x1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x)=f\left(x_{1}\right)+\left(x-x_{1}\right) f^{\prime}\left(x_{1}\right)+\frac{1}{2 !}\left(x-x_{1}\right)^{2} f^{\prime \prime}\left(x_{1}\right)+\cdots
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(f\)</span>, and its first and second order derivatives, <span class="math notranslate nohighlight">\(f'\)</span> and <span class="math notranslate nohighlight">\(f''\)</span> are calculated at <span class="math notranslate nohighlight">\(x_1\)</span>. If we take the first two terms of the Taylor’s series expansion we have:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x) \approx f\left(x_{1}\right)+\left(x-x_{1}\right) f^{\prime}\left(x_{1}\right).
+\end{equation}</div><p>We then set previous expression to zero (i.e <span class="math notranslate nohighlight">\(f(x) = 0\)</span> ) to find the root of the equation which gives us:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f\left(x_{1}\right)+\left(x-x_{1}\right) f^{\prime}\left(x_{1}\right)=0.
+\end{equation}</div><p>Rearranging the previous expression we obtain the next approximation to the root, giving us:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    x=x_{2}=x_{1}-\frac{f\left(x_{1}\right)}{f^{\prime}\left(x_{1}\right)}
+\end{equation}</div><p>Thus generalizing previous expression we obtain Newton’s iterative method:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    x_{i}=x_{i-1}-\frac{f\left(x_{i-1}\right)}{f^{\prime}\left(x_{i-1}\right)}, i \in \mathbb{N}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(x_{i} \rightarrow \bar{x}\)</span> (as <span class="math notranslate nohighlight">\(i \rightarrow \infty\)</span>), and <span class="math notranslate nohighlight">\(x\)</span> is the approximation to a root of the function <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+<p><strong>Note:</strong> As the iterations begin to have the same repeated values i.e. as <span class="math notranslate nohighlight">\(x_i = x_{i+1} = \bar{x}\)</span> this is an indication that <span class="math notranslate nohighlight">\(f(x)\)</span> converges to <span class="math notranslate nohighlight">\(\bar{x}\)</span>. Thus <span class="math notranslate nohighlight">\(x_i\)</span> is the root of the function <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+</div>
 </div>
 
 
@@ -173,6 +200,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="gauss-elimination-method.html" class="btn btn-neutral float-left" title="Gauss Elimination Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
