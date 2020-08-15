@@ -185,7 +185,22 @@
 <div class="math notranslate nohighlight">
 \begin{equation}
     y_{k+1}=y_{k}+\frac{35}{384} k_{1}+\frac{500}{1113} k_{3}+\frac{125}{192} k_{4}-\frac{2187}{6784} k_{5}+\frac{11}{84} k_{6}.
-\end{equation}</div></div>
+\end{equation}</div><p>This is a calculation by Runge-Kutta method of order 4. We have to be aware that we do not use <span class="math notranslate nohighlight">\(k_2\)</span>, though it is used to calculate <span class="math notranslate nohighlight">\(k_3\)</span> and so on.</p>
+<p>Next, we will calculate the next step value <span class="math notranslate nohighlight">\(z_{k+1}\)</span> by Runge-Kutta method of order 5 as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    z_{k+1}=y_{k}+\frac{5179}{57600} k_{1}+\frac{7571}{16695} k_{3}+\frac{393}{640} k_{4}-\frac{92097}{339200} k_{5}+\frac{187}{2100} k_{6}+\frac{1}{40} k_{7}
+\end{equation}</div><p>We calculate the difference of the two next values <span class="math notranslate nohighlight">\(\left|z_{k+1}-y_{k+1}\right|\)</span>.</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \left|z_{k+1}-y_{k+1}\right|=\left|\frac{71}{57600} k_{1}-\frac{71}{16695} k_{3}+\frac{71}{1920} k_{4}-\frac{17253}{339200} k_{5}+\frac{22}{525} k_{6}-\frac{1}{40} k_{7}\right|
+\end{equation}</div><p>This is considered as the error in <span class="math notranslate nohighlight">\(y_{k+1}\)</span>. We calculate the optimal time interval <span class="math notranslate nohighlight">\(h_{opt}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    s =\left(\frac{\varepsilon h}{2\left|z_{k+1}-y_{k+1}\right|}\right)^{\frac{1}{5}}, \\
+    h_{o p t} =s h,
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(h\)</span> in the right side is the old time interval. In practical programming, this new <span class="math notranslate nohighlight">\(h_{opt}\)</span> will be used in the next step of the calculation, though the author thinks it should be also used in the present calculation when it is very small, half or smaller for example.</p>
+</div>
 
 
            </div>
