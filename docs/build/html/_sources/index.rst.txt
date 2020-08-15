@@ -38,3 +38,11 @@ Contents
    :name: nonlinear-system-of-equations
 
    newton-method.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Ordinary Differential Equations
+   :name: ordinary-differential-equations
+
+   dormand-prince-method.rst

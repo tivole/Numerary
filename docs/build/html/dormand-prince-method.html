@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Numerary 0.0.1 documentation</title>
+  <title>Dormand-Prince Method &mdash; Numerary 0.0.1 documentation</title>
   
 
   
@@ -20,7 +20,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -36,9 +35,9 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="_static/searchtools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Newton’s Method" href="newton-method.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +64,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -101,8 +100,8 @@
 <li class="toctree-l1"><a class="reference internal" href="newton-method.html">Newton’s Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Ordinary Differential Equations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Dormand-Prince Method</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dormand-Prince Method</a></li>
 </ul>
 
             
@@ -149,12 +148,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Dormand-Prince Method</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/dormand-prince-method.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -166,23 +167,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="dormand-prince-method">
+<h1>Dormand-Prince Method<a class="headerlink" href="#dormand-prince-method" title="Permalink to this headline">¶</a></h1>
+<p>The one step calculation in the Dormand-Prince method is done as the following.</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \begin{aligned}
+        k_{1} &amp;=h f\left(t_{k}, y_{k}\right), \\
+        k_{2} &amp;=h f\left(t_{k}+\frac{1}{5} h, y_{k}+\frac{1}{5} k_{1}\right), \\
+        k_{3} &amp;=h f\left(t_{k}+\frac{3}{10} h, y_{k}+\frac{3}{40} k_{1}+\frac{9}{40} k_{2}\right), \\
+        k_{4} &amp;=h f\left(t_{k}+\frac{4}{5} h, y_{k}+\frac{44}{45} k_{1}-\frac{56}{15} k_{2}+\frac{32}{9} k_{3}\right), \\
+        k_{5} &amp;=h f\left(t_{k}+\frac{8}{9} h, y_{k}+\frac{19372}{6561} k_{1}-\frac{25360}{2187} k_{2}+\frac{64448}{6561} k_{3}-\frac{212}{729} k_{4}\right), \\
+        k_{6} &amp;=h f\left(t_{k}+h, y_{k}+\frac{9017}{3168} k_{1}-\frac{355}{33} k_{2}-\frac{46732}{5247} k_{3}+\frac{49}{176} k_{4}-\frac{5103}{18656} k_{5}\right), \\
+        k_{7} &amp;=h f\left(t_{k}+h, y_{k}+\frac{35}{384} k_{1}+\frac{500}{1113} k_{3}+\frac{125}{192} k_{4}-\frac{2187}{6784} k_{5}+\frac{11}{84} k_{6}\right).
+    \end{aligned}
+\end{equation}</div><p>Then the next step value <span class="math notranslate nohighlight">\(y_{k+1}\)</span> is calculated as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    y_{k+1}=y_{k}+\frac{35}{384} k_{1}+\frac{500}{1113} k_{3}+\frac{125}{192} k_{4}-\frac{2187}{6784} k_{5}+\frac{11}{84} k_{6}.
+\end{equation}</div></div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="newton-method.html" class="btn btn-neutral float-left" title="Newton’s Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -222,14 +238,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
