@@ -54,3 +54,11 @@ Contents
    :name: regression
 
    linear-regression.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Interpolation
+   :name: interpolation
+
+   lagrange-interpolation.rst

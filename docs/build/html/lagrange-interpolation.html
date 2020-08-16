@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lagrange’s Interpolation &mdash; Numerary 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Linear Regression" href="linear-regression.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Root finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Secant Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integral</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Linear System of Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nonlinear System of Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Newton’s Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Ordinary Differential Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Dormand-Prince Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Regression</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Linear Regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Interpolation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lagrange’s Interpolation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lagrange-polynomial">Lagrange polynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Lagrange’s Interpolation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/lagrange-interpolation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lagrange-s-interpolation">
+<h1>Lagrange’s Interpolation<a class="headerlink" href="#lagrange-s-interpolation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lagrange-polynomial">
+<h2>Lagrange polynomial<a class="headerlink" href="#lagrange-polynomial" title="Permalink to this headline">¶</a></h2>
+<p>In numerical analysis, Lagrange polynomials are used for polynomial interpolation. For a given set of points <span class="math notranslate nohighlight">\((x_j, y_j)\)</span> with no two <span class="math notranslate nohighlight">\(x_j\)</span> values equal, the Lagrange polynomial is the polynomial of lowest degree that assumes at each value <span class="math notranslate nohighlight">\(x_j\)</span> the corresponding value <span class="math notranslate nohighlight">\(x_j\)</span>, so that the functions coincide at each point.</p>
+</div>
+<div class="section" id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>Given a set of <span class="math notranslate nohighlight">\(k+1\)</span> data points <span class="math notranslate nohighlight">\((x_0, y_0),\dots,(x_j, y_j),\dots,(x_k, y_k)\)</span> where no two <span class="math notranslate nohighlight">\(x_j\)</span> are the same, the <strong>interpolation polynomial in the Lagrange form</strong> is a linear combination <span class="math notranslate nohighlight">\(L(x):=\sum_{j=0}^{k} y_{j} \ell_{j}(x)\)</span>, of Lagrange basis polynomials</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \ell_{j}(x):=\prod_{0 \leq m \leq k \atop m \neq j} \frac{x-x_{m}}{x_{j}-x_{m}}=\frac{\left(x-x_{0}\right)}{\left(x_{j}-x_{0}\right)} \cdots \frac{\left(x-x_{j-1}\right)}{\left(x_{j}-x_{j-1}\right)} \frac{\left(x-x_{j+1}\right)}{\left(x_{j}-x_{j+1}\right)} \cdots \frac{\left(x-x_{k}\right)}{\left(x_{j}-x_{k}\right)}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(0 \leq j \leq k\)</span>. Note how, given the initial assumption that no two <span class="math notranslate nohighlight">\(x_j\)</span> are the same, <span class="math notranslate nohighlight">\(x_j - x_m \neq 0\)</span>, so this expression is always well-defined. The reason pairs <span class="math notranslate nohighlight">\(x_i = x_j\)</span> with <span class="math notranslate nohighlight">\(y_i \neq y_j\)</span> are not allowed is that no interpolation function <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(y_i=L(x_i)\)</span> would exist; a function can only get one value for each argumetn <span class="math notranslate nohighlight">\(x_i\)</span>. On the other hand, if also <span class="math notranslate nohighlight">\(y_i = y_j\)</span>, then those two points would actually be one single point.</p>
+<p>For all <span class="math notranslate nohighlight">\(i \neq j\)</span>, <span class="math notranslate nohighlight">\(\ell(x)\)</span> includes the term <span class="math notranslate nohighlight">\((x-x_i)\)</span> in the numerator, so the whole pruduct will be zero at <span class="math notranslate nohighlight">\(x = x_i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \ell_{j \neq i}\left(x_{i}\right)=\prod_{m \neq j} \frac{x_{i}-x_{m}}{x_{j}-x_{m}}=\frac{\left(x_{i}-x_{0}\right)}{\left(x_{j}-x_{0}\right)} \cdots \frac{\left(x_{i}-x_{i}\right)}{\left(x_{j}-x_{i}\right)} \cdots \frac{\left(x_{i}-x_{k}\right)}{\left(x_{j}-x_{k}\right)}=0
+\end{equation}</div><p>On the other hand,</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \ell_{i}\left(x_{i}\right):=\prod_{m \neq i} \frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1
+\end{equation}</div><p>In other words, all basis polynomials are zero at <span class="math notranslate nohighlight">\(x = x_i\)</span>, except <span class="math notranslate nohighlight">\(\ell_i(x)\)</span>, for which it holds that <span class="math notranslate nohighlight">\(\ell_i(x_i) = 1\)</span>, because it lacks the <span class="math notranslate nohighlight">\((x - x_i)\)</span> term.</p>
+<p>It follows that <span class="math notranslate nohighlight">\(\ell_i(x_i) = y_i\)</span>, so at each point <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(L(x_i) = y_i + 0 + 0 + \dots + 0 = y_i\)</span>, showing that <span class="math notranslate nohighlight">\(L\)</span> interpolates the function exactly.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="linear-regression.html" class="btn btn-neutral float-left" title="Linear Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
