@@ -62,3 +62,11 @@ Contents
    :name: interpolation
 
    lagrange-interpolation.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Differentiation
+   :name: differentiation
+
+   differentiation-first-order.rst
