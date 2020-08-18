@@ -25,6 +25,22 @@ Contents
 
 
 .. toctree::
+    :maxdepth: 2
+    :caption: Minimum finding
+    :name: minimum-finding
+
+    minimum-bisection-method.rst
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Maximum finding
+    :name: maximum-finding
+
+    maximum-golden-ratio-method.rst
+
+
+.. toctree::
    :maxdepth: 2
    :caption: Linear System of Equations
    :name: linear-system-of-equations
