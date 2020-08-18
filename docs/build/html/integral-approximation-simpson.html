@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Gauss Elimination Method" href="gauss-elimination-method.html" />
-    <link rel="prev" title="Welcome to Numerary’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Secant Method" href="root-secant-method.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,7 +83,12 @@
               
             
             
-              <p class="caption"><span class="caption-text">Integral</span></p>
+              <p class="caption"><span class="caption-text">Root finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Secant Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integral</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Integral Approximation - Simpson’s Rule</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
@@ -94,6 +99,26 @@
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nonlinear System of Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Newton’s Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Ordinary Differential Equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Dormand-Prince Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Regression</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Linear Regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Interpolation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lagrange-interpolation.html">Lagrange’s Interpolation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Differentiation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Numerical differentiation. Calculation of the first derivative.</a></li>
 </ul>
 
             
@@ -188,7 +213,7 @@
 \begin{equation}
     \int_{0}^{1} (5x^3 + 2\cos{x}) dx.
 \end{equation}</div><p>Then the code will look like this:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;numerary.hpp&quot;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -230,7 +255,7 @@
         <a href="gauss-elimination-method.html" class="btn btn-neutral float-right" title="Gauss Elimination Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Numerary’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="root-secant-method.html" class="btn btn-neutral float-left" title="Secant Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

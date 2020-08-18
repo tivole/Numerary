@@ -57,8 +57,8 @@ Imagine that we want to integrate the following expression:
 
 Then the code will look like this:
 
-.. code:: c++
-    
+.. code-block:: cpp
+
     #include <iostream>
     #include "numerary.hpp"
 
