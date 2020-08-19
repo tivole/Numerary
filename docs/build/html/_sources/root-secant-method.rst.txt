@@ -58,3 +58,53 @@ We then use this new value of :math:`x` as :math:`x_2` and repeat the process, u
         & \vdots \\
         x_{n} &=x_{n-1}-f\left(x_{n-1}\right) \frac{x_{n-1}-x_{n-2}}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}.
     \end{aligned}\end{equation}
+
+
+Usage
+-----
+
+Imagine that we want to minimize the following function:
+
+.. math::
+    :nowrap:
+
+    \begin{equation}
+        f(x) = \sin{x}, x \in [-1, 1]
+    \end{equation}
+
+Then the code will look like this:
+
+.. code-block:: cpp
+
+    // example_root_secant.cpp
+
+    #include <iostream>
+    #include "../src/numerary.hpp" // Numerary library
+
+    using namespace std;
+    using namespace numerary;
+
+    /* Function to found the root */
+    double f(double x) {
+        return sin(x);
+    }
+
+    /* The main function */
+    int main() {
+
+        const double eps = 1.e-9; // eps value for method (1.e-9 by default)
+        double a = -1; // "a" value of segment [a, b]
+        double b = 1; // "b" value of segment [a, b]
+        double root;
+        short int is_found;
+
+        is_found = Numerary::root(f, a, b, &root, "secant", eps);
+
+        if (is_found == 1) {
+            cout << "Root is in x = " << root << endl;
+        } else {
+            cout << "Method not allowed!" << endl;
+        }
+        
+        return 0;
+    }

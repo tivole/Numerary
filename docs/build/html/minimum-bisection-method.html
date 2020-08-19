@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Golden Ratio Method" href="maximum-golden-ratio-method.html" />
+    <link rel="next" title="Golden Ratio Method" href="minimum-golden-ratio-method.html" />
     <link rel="prev" title="Integral Approximation - Simpson’s Rule" href="integral-approximation-simpson.html" /> 
 </head>
 
@@ -98,9 +98,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Maximum finding</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
@@ -200,8 +202,10 @@
 \begin{equation}
     f(x) = 2x^2 - 5x +3, x \in [0, 2]
 \end{equation}</div><p>Then the code will look like this:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_minimum_bisection.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
@@ -243,7 +247,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maximum-golden-ratio-method.html" class="btn btn-neutral float-right" title="Golden Ratio Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="minimum-golden-ratio-method.html" class="btn btn-neutral float-right" title="Golden Ratio Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="integral-approximation-simpson.html" class="btn btn-neutral float-left" title="Integral Approximation - Simpson’s Rule" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

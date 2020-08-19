@@ -17,8 +17,10 @@ Then the code will look like this:
 
 .. code-block:: cpp
 
+    // example_maximum_bisection.cpp
+
     #include <iostream>
-    #include "numerary.hpp" // Numerary library
+    #include "../src/numerary.hpp" // Numerary library
 
     using namespace std;
     using namespace numerary;

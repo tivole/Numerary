@@ -90,12 +90,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-method">The Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#derivation-of-the-method">Derivation Of The Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Integral</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Minimum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maximum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
 <ul>
@@ -218,6 +229,48 @@
     &amp; \vdots \\
     x_{n} &amp;=x_{n-1}-f\left(x_{n-1}\right) \frac{x_{n-1}-x_{n-2}}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}.
 \end{aligned}\end{equation}</div></div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that we want to minimize the following function:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x) = \sin{x}, x \in [-1, 1]
+\end{equation}</div><p>Then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_root_secant.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* Function to found the root */</span>
+<span class="kt">double</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-9</span><span class="p">;</span> <span class="c1">// eps value for method (1.e-9 by default)</span>
+    <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// &quot;a&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// &quot;b&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">root</span><span class="p">;</span>
+    <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_found</span><span class="p">;</span>
+
+    <span class="n">is_found</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">,</span> <span class="s">&quot;secant&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_found</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Root is in x = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">root</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Method not allowed!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
