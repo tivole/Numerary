@@ -92,6 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Minimum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maximum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
@@ -111,6 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-simple-linear-regression-model">The Simple Linear Regression Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-linear-probabilistic-model">A Linear Probabilistic Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#estimating-model-parameters">Estimating Model Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -256,6 +267,75 @@
 \begin{equation}
     b_{0}=\hat{\beta}_{0}=\frac{\sum y_{i}-\hat{\beta}_{1} \sum x_{i}}{n}=\bar{y}-\hat{\beta}_{1} \bar{x}
 \end{equation}</div></div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that we have following points and we want to build a linear regression model:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.0</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-even"><td><p>3.0</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.0</p></td>
+<td><p>3.75</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>2.25</p></td>
+</tr>
+</tbody>
+</table>
+<p>Then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_linear_regression.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// Number of points</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">X</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="o">*</span><span class="n">Y</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="o">*</span><span class="n">predicted_kc</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.3</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.75</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.25</span><span class="p">;</span>
+
+
+    <span class="c1">// Get predicted linear regression line</span>
+    <span class="n">predicted_kc</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+
+    <span class="c1">// Equation of regression line</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;y = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">predicted_kc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;*x + &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">predicted_kc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">// Reallocate memory</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">X</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">Y</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">predicted_kc</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
