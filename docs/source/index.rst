@@ -30,6 +30,7 @@ Contents
     :name: minimum-finding
 
     minimum-bisection-method.rst
+    minimum-golden-ratio-method.rst
 
 
 .. toctree::
