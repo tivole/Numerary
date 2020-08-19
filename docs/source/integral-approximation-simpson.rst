@@ -59,8 +59,10 @@ Then the code will look like this:
 
 .. code-block:: cpp
 
+    // example_integral_simpson.cpp
+
     #include <iostream>
-    #include "numerary.hpp"
+    #include "../src/numerary.hpp"
 
     using namespace std;
     using namespace numerary;
