@@ -49,7 +49,7 @@ where
                 x_{n}
             \end{array}
         \right),
-        \quad b=\left(
+        \quad y=\left(
             \begin{array}{c}
                 y_{1} \\
                 \vdots \\
@@ -165,3 +165,87 @@ This procedure is repeated for all remaining solutions:
             x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots & = & \left(y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}\right)-a_{1(n-1)}^{\prime} \cdot x_{n-1}
         \end{array}
     \end{align*}
+
+
+Usage
+-----
+
+Imagine that we want to solve following linear system of equations:
+
+.. math::
+    :nowrap:
+
+    \begin{align*}
+        \left(
+            \begin{array}{cc}
+                2  & 1 \\
+                -1 & 1
+            \end{array}
+        \right)
+        \left(
+            \begin{array}{c}
+                x_{1} \\
+                x_{2}
+            \end{array}
+        \right)
+        =
+        \left(
+            \begin{array}{c}
+                5 \\
+                2
+            \end{array}
+        \right).
+    \end{align*}
+
+Then the code will look like this:
+
+.. code-block:: cpp
+
+    // example_gauss_elimination.cpp
+
+    #include <iostream>
+    #include "../src/numerary.hpp" // Numerary library
+
+    using namespace std;
+    using namespace numerary;
+
+    /* The main function */
+    int main() {
+
+        double **a = new double*[2];
+        double *y = new double[2];
+        double *x = new double[2];
+        short int is_solved;
+
+        for (int i = 0; i < 2; i ++)
+            a[i] = new double[2];
+
+
+        // Initialize matrix A
+        a[0][0] = 2;
+        a[0][1] = 1;
+
+        a[1][0] = -1;
+        a[1][1] = 1;
+
+        // Initialize vector y
+        y[0] = 5;
+        y[1] = 2;
+
+        is_solved = Numerary::linear_systems_of_equations(a, y, x, 2, "gauss");
+
+        if (is_solved == 1) {
+            cout << "System solved!" << endl;
+            cout << "x = (" << x[0] << ", " << x[1] << ")" << endl;
+        } else {
+            cout << "Method is not allowed!";
+        }
+
+        for (int i = 0; i < 2; i++) delete[] a[i];
+
+        delete[] a;
+        delete[] x;
+        delete[] y;
+        
+        return 0;
+    }
