@@ -143,7 +143,7 @@ Once we have calculated :math:`\mathbf{x}^{(1)}`, we repeat the process again, u
     \end{equation}
 
 
-usage
+Usage
 -----
 
 imagine that we want to solve the following nonlinear system of equations:
@@ -181,6 +181,8 @@ then the code will look like this:
         const double eps = 1.e-7; // eps value for method (1.e-7 by default)
         double *x = new double[2], *fv = new double[2];
         short int is_solved;
+        
+        // Initial point
         x[0] = 1; x[1] = 2;
 
         is_solved = Numerary::nonlinear_systems_of_equations(system, x, fv, 2, "newton", eps, maxiter);

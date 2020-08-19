@@ -118,7 +118,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#step-5">Step 5:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -289,7 +289,7 @@
 \end{equation}</div></div>
 </div>
 <div class="section" id="usage">
-<h2>usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>imagine that we want to solve the following nonlinear system of equations:</p>
 <div class="math notranslate nohighlight">
 \begin{equation}\left\{\begin{array}{l}
@@ -317,6 +317,8 @@
     <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-7</span><span class="p">;</span> <span class="c1">// eps value for method (1.e-7 by default)</span>
     <span class="kt">double</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">*</span><span class="n">fv</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
     <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_solved</span><span class="p">;</span>
+
+    <span class="c1">// Initial point</span>
     <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
     <span class="n">is_solved</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">nonlinear_systems_of_equations</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fv</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;newton&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">);</span>

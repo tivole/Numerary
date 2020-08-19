@@ -143,7 +143,7 @@ Once we have calculated :math:`\mathbf{x}^{(1)}`, we repeat the process again, u
     \end{equation}
 
 
-usage
+Usage
 -----
 
 imagine that we want to solve the following nonlinear system of equations:
