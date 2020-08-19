@@ -92,6 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Minimum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maximum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
@@ -108,6 +118,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#step-5">Step 5:</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">usage</a></li>
 </ul>
 </li>
 </ul>
@@ -276,6 +287,55 @@
 \begin{equation}
     \left\|\mathbf{x}^{(k)}-\mathbf{x}^{(k-1)}\right\|=\sqrt{\left(x_{1}^{(k)}-x_{1}^{(k-1)}\right)^{2}+\cdots+\left(x_{n}^{(k)}-x_{n}^{(k-1)}\right)^{2}}=0
 \end{equation}</div></div>
+</div>
+<div class="section" id="usage">
+<h2>usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>imagine that we want to solve the following nonlinear system of equations:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}\left\{\begin{array}{l}
+    f(x, y)=x^{2}+y^{2}-5 \\
+    g(x, y)=y-3 x+5
+\end{array}\right.\end{equation}</div><p>then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_newton.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* System to solve */</span>
+<span class="kt">void</span> <span class="nf">system</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">fv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">fv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// Maximum interations for set method (100 by default)</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-7</span><span class="p">;</span> <span class="c1">// eps value for method (1.e-7 by default)</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">*</span><span class="n">fv</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_solved</span><span class="p">;</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="n">is_solved</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">nonlinear_systems_of_equations</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fv</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;newton&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_solved</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Solved!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;x = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;y = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Method not allowed!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">fv</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
