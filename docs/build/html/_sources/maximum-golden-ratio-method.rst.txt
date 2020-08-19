@@ -4,9 +4,19 @@ Golden Ratio Method
 Usage
 -----
 
+Imagine that we want to maximize the following function:
+
+.. math::
+    :nowrap:
+
+    \begin{equation}
+        f(x) = \frac{1}{1 + x^2}, x \in [-2, 2]
+    \end{equation}
+
+Then the code will look like this:
+
 .. code-block:: cpp
 
-    
     #include <iostream>
     #include "numerary.hpp" // Numerary library
 

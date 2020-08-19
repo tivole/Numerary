@@ -4,6 +4,17 @@ Bisection Method
 Usage
 -----
 
+Imagine that we want to minimize the following function:
+
+.. math::
+    :nowrap:
+
+    \begin{equation}
+        f(x) = 2x^2 - 5x +3, x \in [0, 2]
+    \end{equation}
+
+Then the code will look like this:
+
 .. code-block:: cpp
 
 
