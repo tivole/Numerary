@@ -38,6 +38,7 @@ Contents
     :caption: Maximum finding
     :name: maximum-finding
 
+    maximum-bisection-method.rst
     maximum-golden-ratio-method.rst
 
 

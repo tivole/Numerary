@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -8,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Numerary 0.0.1 documentation</title>
+  <title>Bisection Method &mdash; Numerary 0.0.1 documentation</title>
   
 
   
@@ -36,8 +35,10 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Golden Ratio Method" href="maximum-golden-ratio-method.html" />
+    <link rel="prev" title="Golden Ratio Method" href="minimum-golden-ratio-method.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,8 +98,11 @@
 <li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Maximum finding</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bisection Method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
@@ -170,12 +174,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Bisection Method</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/maximum-bisection-method.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -187,11 +193,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
+  <div class="section" id="bisection-method">
+<h1>Bisection Method<a class="headerlink" href="#bisection-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that we want to maximize the following function:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x) = \sin x, x \in [-2, 2]
+\end{equation}</div><p>Then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
 
-<h1 id="index">Index</h1>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
 
-<div class="genindex-jumpbox">
- 
+<span class="cm">/* Function to found local maximum */</span>
+<span class="kt">double</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-9</span><span class="p">;</span> <span class="c1">// eps value for method (1.e-9 by default)</span>
+    <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="c1">// &quot;a&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// &quot;b&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">maximum</span><span class="p">;</span>
+    <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_found</span><span class="p">;</span>
+
+    <span class="n">is_found</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">maximum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">maximum</span><span class="p">,</span> <span class="s">&quot;bisection&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_found</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Maximum is in x = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">maximum</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Method not allowed!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -199,6 +242,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="maximum-golden-ratio-method.html" class="btn btn-neutral float-right" title="Golden Ratio Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="minimum-golden-ratio-method.html" class="btn btn-neutral float-left" title="Golden Ratio Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
