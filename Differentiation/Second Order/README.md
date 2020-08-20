@@ -1,3 +1,0 @@
-# Second Method
-
-Second Method

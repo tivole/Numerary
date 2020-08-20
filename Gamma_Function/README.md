@@ -1,3 +1,0 @@
-# Incgamma Function
-
-incgamma function
