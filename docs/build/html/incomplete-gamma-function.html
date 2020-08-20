@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -8,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Numerary 0.0.1 documentation</title>
+  <title>Incomplete Gamma Function &mdash; Numerary 0.0.1 documentation</title>
   
 
   
@@ -36,8 +35,9 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Numerical differentiation. Calculation of the first derivative." href="differentiation-first-order.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -126,8 +126,12 @@
 <li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Numerical differentiation. Calculation of the first derivative.</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Other</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Incomplete Gamma Function</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Incomplete Gamma Function</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -174,12 +178,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Incomplete Gamma Function</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/incomplete-gamma-function.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -191,11 +197,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
+  <div class="section" id="incomplete-gamma-function">
+<h1>Incomplete Gamma Function<a class="headerlink" href="#incomplete-gamma-function" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \gamma(s, x)=\int_{0}^{x} t^{s-1} \mathrm{e}^{-t} \mathrm{d} t
+\end{equation}</div></div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that we want to calculate the value of:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+   \gamma(2, 1)
+\end{equation}</div><p>Then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_incomplete_gamma_function.cpp</span>
 
-<h1 id="index">Index</h1>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
 
-<div class="genindex-jumpbox">
- 
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kt">double</span> <span class="n">value</span><span class="p">;</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">incgamma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;IncGamma(2, 1) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -203,6 +241,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="differentiation-first-order.html" class="btn btn-neutral float-left" title="Numerical differentiation. Calculation of the first derivative." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

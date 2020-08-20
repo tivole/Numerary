@@ -88,3 +88,11 @@ Contents
    :name: differentiation
 
    differentiation-first-order.rst
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Other
+   :name: other
+
+   incomplete-gamma-function.rst
