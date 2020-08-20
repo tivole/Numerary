@@ -44,6 +44,16 @@ In other words, all basis polynomials are zero at :math:`x = x_i`, except :math:
 It follows that :math:`\ell_i(x_i) = y_i`, so at each point :math:`x_i`, :math:`L(x_i) = y_i + 0 + 0 + \dots + 0 = y_i`, showing that :math:`L` interpolates the function exactly.
 
 
+Runge's example
+---------------
+
+The function :math:`f(x) = \frac{1}{1+x^2}` cannot be interpolated accurately on :math:`[−5, 5]` using a tenth-degree polynomial (dashed curve) with equally-spaced interpolation points. This example that illustrates the difficulty that one can generally expect with high-degree polynomial interpolation with equally-spaced points is known as *Runge’s example*.
+
+.. image:: ../img/runge-example.png
+    :align: center
+    :scale: 30%
+
+
 Usage
 -----
 

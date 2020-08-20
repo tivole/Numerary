@@ -123,6 +123,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Lagrange’s Interpolation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#lagrange-polynomial">Lagrange polynomial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#runge-s-example">Runge’s example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
@@ -218,6 +219,11 @@
     \ell_{i}\left(x_{i}\right):=\prod_{m \neq i} \frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1
 \end{equation}</div><p>In other words, all basis polynomials are zero at <span class="math notranslate nohighlight">\(x = x_i\)</span>, except <span class="math notranslate nohighlight">\(\ell_i(x)\)</span>, for which it holds that <span class="math notranslate nohighlight">\(\ell_i(x_i) = 1\)</span>, because it lacks the <span class="math notranslate nohighlight">\((x - x_i)\)</span> term.</p>
 <p>It follows that <span class="math notranslate nohighlight">\(\ell_i(x_i) = y_i\)</span>, so at each point <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(L(x_i) = y_i + 0 + 0 + \dots + 0 = y_i\)</span>, showing that <span class="math notranslate nohighlight">\(L\)</span> interpolates the function exactly.</p>
+</div>
+<div class="section" id="runge-s-example">
+<h2>Runge’s example<a class="headerlink" href="#runge-s-example" title="Permalink to this headline">¶</a></h2>
+<p>The function <span class="math notranslate nohighlight">\(f(x) = \frac{1}{1+x^2}\)</span> cannot be interpolated accurately on <span class="math notranslate nohighlight">\([−5, 5]\)</span> using a tenth-degree polynomial (dashed curve) with equally-spaced interpolation points. This example that illustrates the difficulty that one can generally expect with high-degree polynomial interpolation with equally-spaced points is known as <em>Runge’s example</em>.</p>
+<a class="reference internal image-reference" href="_images/runge-example.png"><img alt="_images/runge-example.png" class="align-center" src="_images/runge-example.png" style="width: 576.0px; height: 324.0px;" /></a>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
