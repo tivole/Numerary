@@ -91,6 +91,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Minimum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maximum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
@@ -115,6 +125,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Numerical differentiation. Calculation of the first derivative.</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -215,6 +226,44 @@
 \end{align*}</div><p>This is the central difference scheme (central difference).</p>
 <p>In principle, it is possible to follow the path of improving the accuracy of the method for calculating the first derivative and further. For example, considering the expansion of the function <span class="math notranslate nohighlight">\(f(x)\)</span> in a Taylor series at the points <span class="math notranslate nohighlight">\(x + h\)</span>, <span class="math notranslate nohighlight">\(x + 2h\)</span>, <span class="math notranslate nohighlight">\(x - h\)</span>, and <span class="math notranslate nohighlight">\(x - 2h\)</span>, one can obtain a four-point scheme
 etc.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that we want to find the derivative of the following function:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x) = \sin{(x)}
+\end{equation}</div><p>Then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_first_order_derivative_h.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* Functiion to derive */</span>
+<span class="kt">double</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">short</span> <span class="kt">int</span> <span class="n">order</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">dy_dx</span><span class="p">;</span>
+
+    <span class="c1">// Point where we want get value of derivative function</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">M_PI</span><span class="p">;</span>
+
+    <span class="n">dy_dx</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">differentiate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;dy/dx (&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">dy_dx</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 

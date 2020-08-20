@@ -66,3 +66,49 @@ This is the central difference scheme (central difference).
 
 In principle, it is possible to follow the path of improving the accuracy of the method for calculating the first derivative and further. For example, considering the expansion of the function :math:`f(x)` in a Taylor series at the points :math:`x + h`, :math:`x + 2h`, :math:`x - h`, and :math:`x - 2h`, one can obtain a four-point scheme
 etc.
+
+
+Usage
+-----
+
+Imagine that we want to find the derivative of the following function:
+
+.. math::
+    :nowrap:
+
+    \begin{equation}
+        f(x) = \sin{(x)}
+    \end{equation}
+
+Then the code will look like this:
+
+.. code-block:: cpp
+
+    // example_first_order_derivative_h.cpp
+
+    #include <iostream>
+    #include "../src/numerary.hpp" // Numerary library
+
+    using namespace std;
+    using namespace numerary;
+
+    /* Functiion to derive */
+    double f(double x) {
+        return sin(x);
+    }
+
+    /* The main function */
+    int main() {
+
+        const short int order = 1;
+        double x, dy_dx;
+
+        // Point where we want get value of derivative function
+        x = M_PI;
+
+        dy_dx = Numerary::differentiate(f, order, x);
+
+        cout << "dy/dx (" << x << ") = " << dy_dx << endl;
+        
+        return 0;
+    }
