@@ -156,7 +156,7 @@ Then the code will look like this:
     // example_linear_regression.cpp
 
     #include <iostream>
-    #include "src/numerary.hpp" // Numerary library
+    #include "../src/numerary.hpp" // Numerary library
 
     using namespace std;
     using namespace numerary;

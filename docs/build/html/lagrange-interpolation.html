@@ -92,6 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Integral Approximation - Simpson’s Rule</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Minimum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maximum finding</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Bisection Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Golden Ratio Method</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Linear System of Equations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Gauss Elimination Method</a></li>
@@ -113,6 +123,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Lagrange’s Interpolation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#lagrange-polynomial">Lagrange polynomial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +218,75 @@
     \ell_{i}\left(x_{i}\right):=\prod_{m \neq i} \frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1
 \end{equation}</div><p>In other words, all basis polynomials are zero at <span class="math notranslate nohighlight">\(x = x_i\)</span>, except <span class="math notranslate nohighlight">\(\ell_i(x)\)</span>, for which it holds that <span class="math notranslate nohighlight">\(\ell_i(x_i) = 1\)</span>, because it lacks the <span class="math notranslate nohighlight">\((x - x_i)\)</span> term.</p>
 <p>It follows that <span class="math notranslate nohighlight">\(\ell_i(x_i) = y_i\)</span>, so at each point <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(L(x_i) = y_i + 0 + 0 + \dots + 0 = y_i\)</span>, showing that <span class="math notranslate nohighlight">\(L\)</span> interpolates the function exactly.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Imagine that we have following points and we want to build a Lagrange polynomial with this points:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.0</p></td>
+<td><p>10.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.0</p></td>
+<td><p>15.0</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>25.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>8.0</p></td>
+<td><p>40.0</p></td>
+</tr>
+<tr class="row-even"><td><p>12.0</p></td>
+<td><p>60.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Then the code will look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_lagrange_polynomial.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">X</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="o">*</span><span class="n">Y</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">;</span>
+
+    <span class="c1">// Points to interpolate</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">15.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">25.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">8.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">40.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">12.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">;</span>
+
+    <span class="c1">// Point where we want to get value of Lagrange Polynomial</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mf">7.0</span><span class="p">;</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">lagrange_polynomial</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;y(&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">X</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">Y</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
