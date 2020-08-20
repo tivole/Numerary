@@ -133,6 +133,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Numerical differentiation. Calculation of the first derivative.</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Incomplete Gamma Function</a></li>
+</ul>
 
             
           
@@ -202,7 +206,7 @@
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In statistics, linear regression is a linear approach to modeling the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). The case of one explanatory variable is called simple linear regression. For more than one explanatory variable, the process is called multiple linear regression. This term is distinct from multivariate linear regression, where multiple correlated dependent variables are predicted, rather than a single scalar variable.</p>
-<a class="reference internal image-reference" href="_images/linear-regression-1.png"><img alt="_images/linear-regression-1.png" class="align-center" src="_images/linear-regression-1.png" style="width: 366.0px; height: 227.60000000000002px;" /></a>
+<a class="reference internal image-reference" href="_images/linear-regression-1.png"><img alt="Linear Regression" class="align-center" src="_images/linear-regression-1.png" style="width: 366.0px; height: 227.60000000000002px;" /></a>
 </div>
 <div class="section" id="the-simple-linear-regression-model">
 <h2>The Simple Linear Regression Model<a class="headerlink" href="#the-simple-linear-regression-model" title="Permalink to this headline">¶</a></h2>
@@ -216,7 +220,7 @@
 <h2>A Linear Probabilistic Model<a class="headerlink" href="#a-linear-probabilistic-model" title="Permalink to this headline">¶</a></h2>
 <p><strong>Definition:</strong> (The Simple Linear Regression Model)</p>
 <p>There are parameters <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span>, and <span class="math notranslate nohighlight">\(\sigma^2\)</span>, such that for any fixed value of the independent variable <span class="math notranslate nohighlight">\(x\)</span>, the dependent variable is a random variable related to <span class="math notranslate nohighlight">\(x\)</span> through the model equation</p>
-<a class="reference internal image-reference" href="_images/linear-regression-2.png"><img alt="_images/linear-regression-2.png" class="align-center" src="_images/linear-regression-2.png" style="width: 359.0px; height: 177.0px;" /></a>
+<a class="reference internal image-reference" href="_images/linear-regression-2.png"><img alt="Model equation" class="align-center" src="_images/linear-regression-2.png" style="width: 359.0px; height: 177.0px;" /></a>
 <p>The quantity <span class="math notranslate nohighlight">\(\varepsilon\)</span> in the model equation is the “error” - a random variable, assumed to be symmetrically distributed with</p>
 <div class="math notranslate nohighlight">
 \begin{equation}
@@ -230,7 +234,7 @@
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{\beta_1}\)</span>: the expected (average) change in <span class="math notranslate nohighlight">\(Y\)</span> associated with a 1-unit increase in the value of <span class="math notranslate nohighlight">\(x\)</span>. (the slope of the true regression line)</p></li>
 </ul>
 <p>The points <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span> resulting from <span class="math notranslate nohighlight">\(n\)</span> independent observations will then be scattered about the true regression line:</p>
-<a class="reference internal image-reference" href="_images/linear-regression-3.png"><img alt="_images/linear-regression-3.png" class="align-center" src="_images/linear-regression-3.png" style="width: 441.1px; height: 231.55px;" /></a>
+<a class="reference internal image-reference" href="_images/linear-regression-3.png"><img alt="True Regression Line" class="align-center" src="_images/linear-regression-3.png" style="width: 441.1px; height: 231.55px;" /></a>
 </div>
 <div class="section" id="estimating-model-parameters">
 <h2>Estimating Model Parameters<a class="headerlink" href="#estimating-model-parameters" title="Permalink to this headline">¶</a></h2>
@@ -239,7 +243,7 @@
 <p>The data (pairs) are assumed to have been obtained independently of one another.</p>
 <p>The “best fit” line is motivated by the principle of <strong>least squares</strong>, which can be traced back to the German mathematician <strong>Gauss</strong> (1777–1855):</p>
 <p>A line provides the best fit to the data if the sum of the squared vertical distances (deviations) from the observed points to that line is as small as it can be.</p>
-<a class="reference internal image-reference" href="_images/linear-regression-4.png"><img alt="_images/linear-regression-4.png" class="align-center" src="_images/linear-regression-4.png" style="width: 317.90000000000003px; height: 253.00000000000003px;" /></a>
+<a class="reference internal image-reference" href="_images/linear-regression-4.png"><img alt="Squared Vertical Distances" class="align-center" src="_images/linear-regression-4.png" style="width: 317.90000000000003px; height: 253.00000000000003px;" /></a>
 <p>The sum of <em>squared vertical deviations</em> from the points <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight">
 \begin{equation}

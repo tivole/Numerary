@@ -8,6 +8,7 @@ In mathematics, the **bisection method** is a root-finding method that applies t
 
 .. image:: ../img/bisection-method.png
     :align: center
+    :alt: Bisection Method Visualization
 
 
 The Method

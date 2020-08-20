@@ -9,6 +9,7 @@ In numerical analysis, the **secant method** is a root-finding algorithm that us
 .. image:: ../img/secant-method.png
     :align: center
     :scale: 20%
+    :alt: Secant Method Visualization
 
 
 The Method

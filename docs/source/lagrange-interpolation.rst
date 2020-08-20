@@ -52,6 +52,7 @@ The function :math:`f(x) = \frac{1}{1+x^2}` cannot be interpolated accurately on
 .. image:: ../img/runge-example.png
     :align: center
     :scale: 30%
+    :alt: Runge Example
 
 
 Usage

@@ -9,6 +9,7 @@ In statistics, linear regression is a linear approach to modeling the relationsh
 .. image:: ../img/linear-regression-1.png
     :align: center
     :scale: 40%
+    :alt: Linear Regression
 
 
 The Simple Linear Regression Model
@@ -34,6 +35,7 @@ There are parameters :math:`\beta_0`, :math:`\beta_1`, and :math:`\sigma^2`, suc
 .. image:: ../img/linear-regression-2.png
     :align: center
     :scale: 25%
+    :alt: Model equation
 
 The quantity :math:`\varepsilon` in the model equation is the “error” - a random variable, assumed to be symmetrically distributed with
 
@@ -57,6 +59,7 @@ The points :math:`(x_1, y_1),\dots,(x_n, y_n)` resulting from :math:`n` independ
 .. image:: ../img/linear-regression-3.png
     :align: center
     :scale: 55%
+    :alt: True Regression Line
 
 
 Estimating Model Parameters
@@ -75,6 +78,7 @@ A line provides the best fit to the data if the sum of the squared vertical dist
 .. image:: ../img/linear-regression-4.png
     :align: center
     :scale: 55%
+    :alt: Squared Vertical Distances
 
 The sum of *squared vertical deviations* from the points :math:`(x_1, y_1),\dots,(x_n, y_n)`
 
