@@ -16,10 +16,34 @@ The library covers a list of topics in numerical computing. Features are availab
 
 
 ## Root-Finding
-You can find the root of the function `f`:
+You can find the root of the function `f` at any segment `[a, b]`:
 
 ```cpp
-Numerary::root(f, a, b, &root);
+#include <iostream>
+#include "src/numerary.hpp" // Numerary library
+
+using namespace std;
+using namespace numerary;
+
+double f(double x) {
+    return sin(x); // Function to found the root
+}
+
+/* The main function */
+int main() {
+    double a = -1, b = 1; // "a" and "b" value of segment [a, b]
+    double root; // Founded result of the root will be stored in this variable
+    short int is_found;
+
+    is_found = Numerary::root(f, a, b, &root);
+
+    if (is_found == 1)
+        cout << "Root is in x = " << root << endl;
+    else
+        cout << "Method not allowed!" << endl;
+
+    return 0;
+}
 ```
 
 And you can do it with several numerical methods such as Secant and Bisection provided by the library. To do this, you simply need to specify the method that you want to apply as an additional parameter:
@@ -37,7 +61,7 @@ Numerary::root(f, a, b, &root, "secant", 1.e-9); // To set eps = 1.e-9
 ```
 
 ## Minimizing
-You can minimize function `f` at segment any `[a, b]`:
+You can minimize function `f` at any segment `[a, b]`:
 
 ```cpp
 Numerary::minimum(f, a, b, &minimum);
