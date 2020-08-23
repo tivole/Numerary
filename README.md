@@ -2,20 +2,19 @@
 
 Numerary is open source Scientific Library that contains many numerical methods. Numerary have been written from scratch in C++.
 
-
 # Features
 
 The library covers a list of topics in numerical computing. Features are available for the following areas,
 
-| | | |
-|-|-|-|
+|                 |               |                                 |
+| --------------- | ------------- | ------------------------------- |
 | Root-Finding    | Minimizing    | Linear Systems Of Equations     |
 | Integration     | Maximizing    | Nonlinear Systems Of Equations  |
 | Differentiation | Regression    | Ordinary Differential Equations |
 | Gamma Functions | Interpolation |                                 |
 
-
 ## Root-Finding
+
 You can find the root of the function `f` at any segment `[a, b]`:
 
 ```cpp
@@ -55,23 +54,41 @@ Numerary::root(f, a, b, &root, "secant"); // To use Secant method
 
 In addition, you can adjust the results of the methods using additional parameters, such as `eps`:
 
-
 ```cpp
 Numerary::root(f, a, b, &root, "secant", 1.e-9); // To set eps = 1.e-9
 ```
 
 ## Minimizing
+
 You can minimize function `f` at any segment `[a, b]`:
 
 ```cpp
 Numerary::minimum(f, a, b, &minimum);
 ```
 
+For the `minimum` method, as with all other library methods, you can apply additional parameters:
 
+```cpp
+Numerary::minimum(f, a, b, &minimum, "golden_ratio", 1.e-7);
+```
 
-The use of these features is described in the [documentation](#documentation). The documentation for each method details the algorithm, definitions and examples of their use.
+## Integration
 
+You want to calculate the integrals, like this ![\int_{0}^{1} (5x^3 + 2\cos{x}) dx](https://latex.codecogs.com/gif.latex?%5Cinline%20%5Csmall%20%5Cint_%7B0%7D%5E%7B1%7D%20%285x%5E3%20+%202%5Ccos%7Bx%7D%29%20dx) ?
 
-# Documenation
+Numerary library can do it too. To do this, you just need to write:
+
+```cpp
+double *I = Numerary::integrate(f, from, to);
+
+cout << "ans = " << I[0] << endl; // Value of calculated integral
+cout << "err = " << I[1] << endl; // Error of calculated integral value
+```
+
+---
+
+The detail use of these features is described in the [documentation](#documentation). The documentation for each method details the algorithm, definitions and examples of their use.
+
+# Documentation
 
 The Numerary documentation is hosted at [Read the docs](https://numerary.readthedocs.io/).
