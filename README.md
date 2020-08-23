@@ -147,7 +147,7 @@ int main() {
 }
 ```
 
-## And many other useful features
+## And Many Other Useful Features
 
 In addition to the above, Numerary library has a lot more.
 
