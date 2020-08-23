@@ -147,11 +147,16 @@ int main() {
 }
 ```
 
+## And many other useful features
 
----
+In addition to the above, Numerary library has a lot more.
 
 The detail use of these features is described in the [documentation](#documentation). The documentation for each method details the algorithm, definitions and examples of their use.
 
 # Documentation
 
 The Numerary documentation is hosted at [Read the docs](https://numerary.readthedocs.io/).
+
+# License
+
+Numerary is released under the MIT License. See the [LICENSE](./LICENSE) file for details.
