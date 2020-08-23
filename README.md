@@ -45,7 +45,7 @@ int main() {
 }
 ```
 
-And you can do it with several numerical methods such as Secant and Bisection provided by the library. To do this, you simply need to specify the method that you want to apply as an additional parameter:
+And you can do it with several numerical methods such as *Secant* and *Bisection* provided by the library. To do this, you simply need to specify the method that you want to apply as an additional parameter:
 
 ```cpp
 Numerary::root(f, a, b, &root, "bisection"); // To use Bisection method
@@ -100,6 +100,52 @@ cout << "y = " << predicted_kc[0] << "*x + " << predicted_kc[1] << endl; // y=k*
 <p align="center">
   <img width="45%" height="45%" src="./docs/img/linear-regression-1.png">
 </p>
+
+## Solving Nonlinear System Of Equations
+
+Numerary library allows you to solve systems of nonlinear equations like:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bl%7D%20f%28x%2C%20y%29%3Dx%5E%7B2%7D&plus;y%5E%7B2%7D-5%20%5C%5C%20g%28x%2C%20y%29%3Dy-3%20x&plus;5%20%5Cend%7Barray%7D%20%5Cright.">
+</p>
+
+To do this, you just need to write:
+
+```cpp
+#include <iostream>
+#include "../src/numerary.hpp" // Numerary library
+
+using namespace std;
+using namespace numerary;
+
+/* System to solve */
+void system(double *x, double *fv, int n) {
+    fv[0] = x[0]*x[0] + x[1]*x[1] - 5;
+    fv[1] = x[1] - 3*x[0] + 5;
+}
+
+int main() {
+    double *x = new double[2], *fv = new double[2];
+    short int is_solved;
+
+    x[0] = 1; x[1] = 2; // Initial point
+
+    is_solved = Numerary::nonlinear_systems_of_equations(system, x, fv, 2);
+
+    if (is_solved == 1) {
+        cout << "Solved!" << endl;
+        cout << "x = " << x[0] << endl;
+        cout << "y = " << x[1] << endl;
+    } else {
+        cout << "Method not allowed!";
+    }
+
+    delete[] x;
+    delete[] fv;
+
+    return 0;
+}
+```
 
 
 ---
