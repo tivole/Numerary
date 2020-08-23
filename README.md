@@ -85,6 +85,23 @@ cout << "ans = " << I[0] << endl; // Value of calculated integral
 cout << "err = " << I[1] << endl; // Error of calculated integral value
 ```
 
+## Regression
+
+With the helping of Numerary library you can also use regression models. Here is an example of linear regression:
+
+```cpp
+// Get predicted linear regression line
+predicted_kc = Numerary::linear_regression(X, Y, N);
+
+// Equation of regression line
+cout << "y = " << predicted_kc[0] << "*x + " << predicted_kc[1] << endl; // y=k*x+c
+```
+
+<p align="center">
+  <img width="45%" height="45%" src="./docs/img/linear-regression-1.png">
+</p>
+
+
 ---
 
 The detail use of these features is described in the [documentation](#documentation). The documentation for each method details the algorithm, definitions and examples of their use.
