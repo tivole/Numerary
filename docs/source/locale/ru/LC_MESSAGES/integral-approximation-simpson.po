@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Kamran Asgarov
+# This file is distributed under the same license as the Numerary package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Numerary \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 18:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../source/integral-approximation-simpson.rst:2
+msgid "Integral Approximation - Simpson's Rule"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:5
+msgid "Definition"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:7
+msgid ""
+"Suppose :math:`f(x)` is defined on the interval :math:`[a, b]`. Then "
+"Simpson's rule on the entire interval approximates the definite integral "
+"of :math:`f(x)` on the interval by the formula"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:9
+msgid ""
+"\\begin{equation}\n"
+"    \\int_{a}^{b} f(x) d x \\approx \\frac{b-a}{6}\\left(f(a)+4 "
+"f\\left(\\frac{a+b}{2}\\right)+f(b)\\right)\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:16
+msgid ""
+"The idea is that if :math:`f(x) = 1, x, x^2`, this formula is an exact "
+"equality. So Simpson's rule gives the correct integral of any quadratic "
+"function. In general, Simpson's rule approximates :math:`f(x)` by a "
+"parabola through the points on the graph of :math:`f(x)` with "
+":math:`x`-coordinates :math:`a, \\frac{a+b}{2}, b`."
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:18
+msgid ""
+"Simpson's rule is usually applied by breaking the interval into :math:`N`"
+" equal-sized subintervals, where :math:`N` is an even number, and "
+"approximating the integral over each pair of adjacent subintervals using "
+"the above estimate."
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:20
+msgid ""
+"That is, let :math:`x_0=a, x_1=a+\\frac{b-a}{N}, x_2=a+2\\frac{b-x}{N}, "
+"\\dots, x_{N-1}=a+(N-1)\\frac{b-a}{N}, x_N=b`. Then"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:22
+msgid ""
+"\\begin{equation}\n"
+"    \\int_{a}^{x_{2}} f(x) d x \\approx \\frac{b-a}{3 N}\\left(f(a)+4 "
+"f\\left(x_{1}\\right)+f\\left(x_{2}\\right)\\right)\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:29
+msgid ""
+"\\begin{equation}\n"
+"    \\int_{x_2}^{x_{4}} f(x) d x \\approx \\frac{b-a}{3 N}\\left(f(x_2)+4"
+" f\\left(x_{3}\\right)+f\\left(x_{4}\\right)\\right)\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:36
+msgid "and so on. Adding these up gives"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:38
+msgid ""
+"\\begin{equation}\n"
+"    \\int_{a}^{b} f(x) d x \\approx \\frac{b-a}{3 N}\\left(f(a)+4 "
+"f\\left(x_{1}\\right)+2 f\\left(x_{2}\\right)+4 f\\left(x_{3}\\right)+2 "
+"f\\left(x_{4}\\right)+\\cdots+4 f\\left(x_{N-1}\\right)+f(b)\\right).\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:47
+msgid "Usage"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:49
+msgid "Imagine that we want to integrate the following expression:"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:51
+msgid ""
+"\\begin{equation}\n"
+"    \\int_{0}^{1} (5x^3 + 2\\cos{x}) dx.\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/integral-approximation-simpson.rst:58
+msgid "Then the code will look like this:"
+msgstr ""
+

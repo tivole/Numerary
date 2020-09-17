@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Kamran Asgarov
+# This file is distributed under the same license as the Numerary package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Numerary \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 18:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/gauss-elimination-method.rst:2
+msgid "Gauss Elimination Method"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:5
+msgid "Algorithm"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:7
+msgid "The Gauss method is a classical method for solving a system of linear algebraic equations (SLAE). Consider a system of linear equations with real constant coefficients"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:9
+msgid "\\begin{align*}\n"
+"    \\left\\{\n"
+"        \\begin{array}{ccc}\n"
+"            a_{11}  \\cdot x_{1}  + a_{12}  \\cdot x_{2}  + & \\cdots & +  a_{1 n} \\cdot x_{n}=y_{1} \\\\\n"
+"            a_{21}  \\cdot x_{1}  + a_{22}  \\cdot x_{2}  + & \\cdots & +  a_{2 n} \\cdot x_{n}=y_{2} \\\\\n"
+"                                                          & \\cdots & \\\\\n"
+"            a_{n 1} \\cdot x_{1}  + a_{n 2} \\cdot x_{2}  + & \\cdots & +  a_{n n} \\cdot x_{n}=y_{n}\n"
+"        \\end{array}\n"
+"    \\right.\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:23
+msgid "or in matrix form"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:25
+msgid "\\begin{align*}\n"
+"    A x = y,\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:32
+msgid "where"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:34
+msgid "\\begin{align*}\n"
+"    A=\\left(\n"
+"        \\begin{array}{ccc}\n"
+"            a_{11}  & \\dots & a_{1 n} \\\\\n"
+"                    & \\dots & \\\\\n"
+"            a_{n 1} & \\dots & a_{n n}\n"
+"        \\end{array}\n"
+"    \\right),\n"
+"    \\quad x=\\left(\n"
+"        \\begin{array}{c}\n"
+"            x_{1} \\\\\n"
+"            \\vdots \\\\\n"
+"            x_{n}\n"
+"        \\end{array}\n"
+"    \\right),\n"
+"    \\quad y=\\left(\n"
+"        \\begin{array}{c}\n"
+"            y_{1} \\\\\n"
+"            \\vdots \\\\\n"
+"            y_{m}\n"
+"        \\end{array}\n"
+"    \\right).\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:61
+msgid "The Gauss method of solving a system of linear equations includes 2 stages:"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:63
+msgid "sequential (direct) exception;"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:64
+msgid "reverse substitution."
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:68
+msgid "Sequential exception"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:70
+msgid "Gauss exceptions are based on the idea of ​​successive exceptions variables one at a time until only one equation remains with one variable on the left side. Then this equation is solved with respect to a single variable. Thus, the system of equations lead to a triangular (step) shape. For this, among the elements the first column of the matrix is ​​selected nonzero (and most often maximum) element and move it to its highest position by rearranging lines. Then all the equations are normalized, dividing it by the coefficient ai1, where i is the column number."
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:72
+msgid " \\begin{align*}\n"
+"        \\left\\{\n"
+"            \\begin{array}{ccc}\n"
+"                x_{1}+\\frac{a_{12}}{a_{11}}   \\cdot x_{2} + & \\cdots & + \\frac{a_{1 n}}{a_{11}}  \\cdot x_{n}=\\frac{y_{1}}{a_{11}} \\\\\n"
+"                x_{1}+\\frac{a_{22}}{a_{21}}   \\cdot x_{2} + & \\cdots & + \\frac{a_{2 n}}{a_{21}}  \\cdot x_{n}=\\frac{y_{2}}{a_{21}} \\\\\n"
+"                                                            & \\cdots & \\\\\n"
+"                x_{1}+\\frac{a_{n 2}}{a_{n 1}} \\cdot x_{2} + & \\cdots & + \\frac{a_{n n}}{a_{n 1}} \\cdot x_{n}=\\frac{y_{n}}{a_{n 1}}\n"
+"            \\end{array}\n"
+"        \\right.\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:87
+msgid "Then the first line obtained after the permutation is subtracted from the remaining lines:"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:89
+msgid "\\begin{align*}\n"
+"        \\left\\{\n"
+"            \\begin{array}{r c r c r c l}\n"
+"                x_{1} & + & \\frac{a_{12}}{a_{11}} \\cdot x_{2}                                      & + \\cdots + & \\frac{a_{1 n}}{a_{11}} \\cdot x_{n}                                       & = & \\frac{y_{1}}{a_{11}} \\\\\n"
+"                0     & + & \\left(\\frac{a_{22}}{a_{21}}-\\frac{a_{12}}{a_{11}}\\right) \\cdot x_{2}   & + \\cdots + &  \\left(\\frac{a_{2 n}}{a_{21}}-\\frac{a_{1 n}}{a_{11}}\\right) \\cdot x_{n}  & = & \\left(\\frac{y_{2}}{a_{21}}-\\frac{y_{1}}{a_{11}}\\right) \\\\\n"
+"                      &&                                                                           &   \\cdots   & \\\\\n"
+"                0     & + & \\left(\\frac{a_{n 2}}{a_{n 1}}-\\frac{a_{12}}{a_{11}}\\right) \\cdot x_{2} & + \\cdots + &  \\left(\\frac{a_{n n}}{a_{n 1}}-\\frac{a_{1 n}}{a_{11}}\\right) \\cdot x_{n} & = & \\left(\\frac{y_{n}}{a_{n 1}}-\\frac{y_{1}}{a_{11}}\\right)\n"
+"            \\end{array}\n"
+"        \\right.\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:103
+msgid "A new system of equations is obtained, in which the corresponding coefficients are replaced."
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:105
+msgid "\\begin{align*}\n"
+"        \\left\\{\n"
+"            \\begin{array}{r c r c r c r}\n"
+"                x_{1} & + & a_{12}^{\\prime} \\cdot x_{2}  & + \\cdots + & a_{1 n}^{\\prime} \\cdot x_{n} & = & y_{1}^{\\prime} \\\\\n"
+"                0     & + & a_{22}^{\\prime} \\cdot x_{2}  & + \\cdots + & a_{2 n}^{\\prime} \\cdot x_{n} & = & y_{2}^{\\prime} \\\\\n"
+"                      &&                                 &   \\cdots   & \\\\\n"
+"                0     & + & a_{n 2}^{\\prime} \\cdot x_{2} & + \\cdots + & a_{n n}^{\\prime} \\cdot x_{n} & = & y_{n}^{\\prime}\n"
+"            \\end{array}\n"
+"        \\right.\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:119
+msgid "After the indicated transformations have been completed, the first row and the first column are mentally deleted and continue the specified process for all subsequent equations until an equation with one unknown:"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:121
+msgid "\\begin{align*}\n"
+"        \\left\\{\n"
+"            \\begin{array}{r c r c r c r c r}\n"
+"                x_{1} & + & a_{12}^{\\prime} \\cdot x_{2} & + & a_{13}^{\\prime} \\cdot x_{3}        & + \\cdots + & a_{1 n}^{\\prime} \\cdot x_{n}               & = & y_{1}^{\\prime} \\\\\n"
+"                0     & + & x_{2}                       & + & a_{23}^{\\prime \\prime} \\cdot x_{3} & + \\cdots + & a_{2 n}^{\\prime \\prime} \\cdot x_{n}        & = & y_{2}^{\\prime \\prime} \\\\\n"
+"                0     & + & 0                           & + & x_{3}                              & + \\cdots + & a_{3 n}^{\\prime \\prime \\prime} \\cdot x_{n} & = & y_{3}^{\\prime \\prime \\prime} \\\\\n"
+"                      &&                                &&                                       &   \\cdots   & \\\\\n"
+"                0     & + & 0                           & + & 0                                  & + \\cdots + & x_{n}                                      & = & y_{n}^{n \\prime}\n"
+"            \\end{array}\n"
+"        \\right.\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:138
+msgid "Reverse substitution"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:140
+msgid "Reverse substitution involves the substitution of the value of x_n obtained in the previous step into the previous equations:"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:142
+msgid "\\begin{align*}\n"
+"        \\begin{array}{rcl}\n"
+"            x_{n-1}                                                                                                 & = & y_{n-1}^{(n-1)^{\\prime}}-a_{(n-1) n}^{(n-1) \\prime} \\cdot x_{n} \\\\\n"
+"            x_{n-2}+a_{(n-2)(n-1)}^{(n-2) \\prime} \\cdot x_{n-1}                                                     & = & y_{n-2}^{(n-2)^{\\prime}}-a_{(n-2) n}^{(n-2) \\prime} \\cdot x_{n} \\\\\n"
+"            \\cdots \\\\\n"
+"            x_{2}+a_{23}^{\\prime \\prime} \\cdot x_{3}+\\cdots+a_{2(n-1)}^{\\prime \\prime} \\cdot x_{n-1}                & = & y_{2}^{\\prime \\prime}-a_{2 n}^{\\prime \\prime} \\cdot x_{n} \\\\\n"
+"            x_{1}+a_{12}^{\\prime} \\cdot x_{2}+a_{13}^{\\prime} \\cdot x_{3}+\\cdots+a_{1(n-1)}^{\\prime} \\cdot x_{n-1}  & = & y_{1}^{\\prime}-a_{1 n}^{\\prime} \\cdot x_{n}\n"
+"        \\end{array}\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:155
+msgid "This procedure is repeated for all remaining solutions:"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:157
+msgid "\\begin{align*}\n"
+"    \\begin{array}{rcl}\n"
+"        x_{n-2}                                                              & = & \\left(y_{n-2}^{(n-2)^{\\prime}}-a_{(n-2) n}^{(n-2)^{\\prime}} \\cdot x_{n}\\right)-a_{(n-2)(n-1)}^{(n-2) \\prime} \\cdot x_{n-1} \\\\\n"
+"        & \\cdots & \\\\\n"
+"        x_{2}+a_{23}^{\\prime \\prime} \\cdot x_{3}+\\cdots                      & = & \\left(y_{2}^{\\prime \\prime}-a_{2 n}^{\\prime \\prime} \\cdot x_{n}\\right)-a_{2(n-1)}^{\\prime \\prime} \\cdot x_{n-1} \\\\\n"
+"        x_{1}+a_{12}^{\\prime} \\cdot x_{2}+a_{13}^{\\prime} \\cdot x_{3}+\\cdots & = & \\left(y_{1}^{\\prime}-a_{1 n}^{\\prime} \\cdot x_{n}\\right)-a_{1(n-1)}^{\\prime} \\cdot x_{n-1}\n"
+"    \\end{array}\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:171
+msgid "Usage"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:173
+msgid "Imagine that we want to solve following linear system of equations:"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:175
+msgid "\\begin{align*}\n"
+"    \\left(\n"
+"        \\begin{array}{cc}\n"
+"            2  & 1 \\\\\n"
+"            -1 & 1\n"
+"        \\end{array}\n"
+"    \\right)\n"
+"    \\left(\n"
+"        \\begin{array}{c}\n"
+"            x_{1} \\\\\n"
+"            x_{2}\n"
+"        \\end{array}\n"
+"    \\right)\n"
+"    =\n"
+"    \\left(\n"
+"        \\begin{array}{c}\n"
+"            5 \\\\\n"
+"            2\n"
+"        \\end{array}\n"
+"    \\right).\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/gauss-elimination-method.rst:200
+msgid "Then the code will look like this:"
+msgstr ""

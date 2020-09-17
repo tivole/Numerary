@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Kamran Asgarov
+# This file is distributed under the same license as the Numerary package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Numerary \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 18:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/linear-regression.rst:2
+msgid "Linear Regression"
+msgstr ""
+
+#: ../../source/linear-regression.rst:5
+msgid "Introduction"
+msgstr ""
+
+#: ../../source/linear-regression.rst:7
+msgid "In statistics, linear regression is a linear approach to modeling the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). The case of one explanatory variable is called simple linear regression. For more than one explanatory variable, the process is called multiple linear regression. This term is distinct from multivariate linear regression, where multiple correlated dependent variables are predicted, rather than a single scalar variable."
+msgstr ""
+
+#: ../../source/linear-regression.rst:16
+msgid "The Simple Linear Regression Model"
+msgstr ""
+
+#: ../../source/linear-regression.rst:18
+msgid "The simplest deterministic mathematical relationship between two variables :math:`x` and :math:`y` is a linear relationship: :math:`y = \\beta_0 + \\beta_1 x`."
+msgstr ""
+
+#: ../../source/linear-regression.rst:20
+msgid "The objective of this section is to develop an equivalent *linear probabilistic model*."
+msgstr ""
+
+#: ../../source/linear-regression.rst:22
+msgid "If the two (random) variables are probabilistically related, then for a fixed value of x, there is uncertainty in the value of the second variable."
+msgstr ""
+
+#: ../../source/linear-regression.rst:24
+msgid "So we assume :math:`Y = \\beta_0 + \\beta_1 x + \\varepsilon`, where :math:`\\varepsilon` is a random variable."
+msgstr ""
+
+#: ../../source/linear-regression.rst:26
+msgid "Two variables are related linearly “on average” if for fixed x the actual value of Y differs from its expected value by a random amount (i.e. there is random error)."
+msgstr ""
+
+#: ../../source/linear-regression.rst:29
+msgid "A Linear Probabilistic Model"
+msgstr ""
+
+#: ../../source/linear-regression.rst:31
+msgid "**Definition:** (The Simple Linear Regression Model)"
+msgstr ""
+
+#: ../../source/linear-regression.rst:33
+msgid "There are parameters :math:`\\beta_0`, :math:`\\beta_1`, and :math:`\\sigma^2`, such that for any fixed value of the independent variable :math:`x`, the dependent variable is a random variable related to :math:`x` through the model equation"
+msgstr ""
+
+#: ../../source/linear-regression.rst:40
+msgid "The quantity :math:`\\varepsilon` in the model equation is the “error” - a random variable, assumed to be symmetrically distributed with"
+msgstr ""
+
+#: ../../source/linear-regression.rst:42
+msgid "\\begin{equation}\n"
+"    E(\\varepsilon)=0 \\text { and } V(\\varepsilon)=\\sigma_{\\varepsilon}^{2}=\\sigma^{2}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/linear-regression.rst:49
+msgid "(no assumption made about the distribution of :math:`\\varepsilon`, yet)"
+msgstr ""
+
+#: ../../source/linear-regression.rst:51
+msgid ":math:`\\boldsymbol{X}`: the independent, predictor, or explanatory variable (usually known)."
+msgstr ""
+
+#: ../../source/linear-regression.rst:52
+msgid ":math:`\\boldsymbol{Y}`: the dependent or response variable. For fixed :math:`x`, :math:`Y` will be random variable."
+msgstr ""
+
+#: ../../source/linear-regression.rst:53
+msgid ":math:`\\boldsymbol{\\varepsilon}`: the random deviation or random error term. For fixed :math:`x`, :math:`\\varepsilon` will be random variable."
+msgstr ""
+
+#: ../../source/linear-regression.rst:54
+msgid ":math:`\\boldsymbol{\\beta_0}`: the average value of :math:`Y` when :math:`x` is zero (the intercept of the true regression line)"
+msgstr ""
+
+#: ../../source/linear-regression.rst:55
+msgid ":math:`\\boldsymbol{\\beta_1}`: the expected (average) change in :math:`Y` associated with a 1-unit increase in the value of :math:`x`. (the slope of the true regression line)"
+msgstr ""
+
+#: ../../source/linear-regression.rst:57
+msgid "The points :math:`(x_1, y_1),\\dots,(x_n, y_n)` resulting from :math:`n` independent observations will then be scattered about the true regression line:"
+msgstr ""
+
+#: ../../source/linear-regression.rst:66
+msgid "Estimating Model Parameters"
+msgstr ""
+
+#: ../../source/linear-regression.rst:68
+msgid "The values of :math:`\\beta_0`, :math:`beta_1`, and :math:`sigma` will almost never be known to an investigator."
+msgstr ""
+
+#: ../../source/linear-regression.rst:70
+msgid "Instead, sample data consists of n observed pairs :math:`(x_1, y_1),\\dots,(x_n, y_n)` from which the model parameters and the true regression line itself can be estimated."
+msgstr ""
+
+#: ../../source/linear-regression.rst:72
+msgid "The data (pairs) are assumed to have been obtained independently of one another."
+msgstr ""
+
+#: ../../source/linear-regression.rst:74
+msgid "The “best fit” line is motivated by the principle of **least squares**, which can be traced back to the German mathematician **Gauss** (1777–1855):"
+msgstr ""
+
+#: ../../source/linear-regression.rst:76
+msgid "A line provides the best fit to the data if the sum of the squared vertical distances (deviations) from the observed points to that line is as small as it can be."
+msgstr ""
+
+#: ../../source/linear-regression.rst:83
+msgid "The sum of *squared vertical deviations* from the points :math:`(x_1, y_1),\\dots,(x_n, y_n)`"
+msgstr ""
+
+#: ../../source/linear-regression.rst:85
+msgid "\\begin{equation}\n"
+"    f\\left(b_{0}, b_{1}\\right)=\\sum_{i=1}^{n}\\left[y_{i}-\\left(b_{0}+b_{1} x_{i}\\right)\\right]^{2}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/linear-regression.rst:92
+msgid "The point estimates of :math:`\\beta_0` and :math:`\\beta_1`, denoted by and, are called the least squares estimates – they are those values that minimize :math:`f(b_0, b_1)`."
+msgstr ""
+
+#: ../../source/linear-regression.rst:94
+msgid "The fitted **regression line** or **least squares** line is then the line whose equation is :math:`y=\\hat{\\beta}_{0}+\\hat{\\beta}_{1} x`."
+msgstr ""
+
+#: ../../source/linear-regression.rst:96
+msgid "The minimizing values of :math:`b_0` and :math:`b_1` are found by taking partial derivatives of :math:`f(b_0, b_1)` with respect to both :math:`b_0` and :math:`b_1`, equating them both to zero [analogously to :math:`f'(b)=0` in univariate calculus], and solving the equations"
+msgstr ""
+
+#: ../../source/linear-regression.rst:98
+msgid "\\begin{equation}\n"
+"    \\begin{array}{l}\n"
+"        \\frac{\\partial f\\left(b_{0}, b_{1}\\right)}{\\partial b_{0}}=\\sum 2\\left(y_{i}-b_{0}-b_{1} x_{i}\\right)(-1)=0 \\\\\n"
+"\n"
+"        \\frac{\\partial f\\left(b_{0}, b_{1}\\right)}{\\partial b_{1}}=\\sum 2\\left(y_{i}-b_{0}-b_{1} x_{i}\\right)\\left(-x_{i}\\right)=0\n"
+"    \\end{array}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/linear-regression.rst:109
+msgid "The least squares estimate of the slope coefficient :math:`\\beta_1` of the true regression line is"
+msgstr ""
+
+#: ../../source/linear-regression.rst:111
+msgid "\\begin{equation}\n"
+"    b_{1}=\\hat{\\beta}_{1}=\\frac{\\sum\\left(x_{i}-\\bar{x}\\right)\\left(y_{i}-\\bar{y}\\right)}{\\sum\\left(x_{i}-\\bar{x}\\right)^{2}}=\\frac{S_{x y}}{S_{x x}}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/linear-regression.rst:118
+msgid "*Shortcut formulas* for the numerator and denominator of :math:`\\hat{\\beta_1}` are"
+msgstr ""
+
+#: ../../source/linear-regression.rst:120
+msgid "\\begin{equation}\n"
+"    S_{x y}=\\sum{x_{i} y_{i}}-\\frac{\\left(\\sum{x_{i}}\\right)\\left(\\sum{y_{i}}\\right)}{n} \\quad \\text { and } \\quad S_{x x}=\\sum{x_{i}^{2}}-\\frac{\\left(\\sum{x_{i}}\\right)^2}{n}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/linear-regression.rst:127
+msgid "The least squares estimate of the intercept :math:`b_0` of the true regression line is"
+msgstr ""
+
+#: ../../source/linear-regression.rst:129
+msgid "\\begin{equation}\n"
+"    b_{0}=\\hat{\\beta}_{0}=\\frac{\\sum y_{i}-\\hat{\\beta}_{1} \\sum x_{i}}{n}=\\bar{y}-\\hat{\\beta}_{1} \\bar{x}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/linear-regression.rst:137
+msgid "Usage"
+msgstr ""
+
+#: ../../source/linear-regression.rst:139
+msgid "Imagine that we have following points and we want to build a linear regression model:"
+msgstr ""
+
+#: ../../source/linear-regression.rst:142
+msgid "X"
+msgstr ""
+
+#: ../../source/linear-regression.rst:142
+msgid "Y"
+msgstr ""
+
+#: ../../source/linear-regression.rst:144
+#: ../../source/linear-regression.rst:144
+msgid "1.0"
+msgstr ""
+
+#: ../../source/linear-regression.rst:146
+#: ../../source/linear-regression.rst:146
+msgid "2.0"
+msgstr ""
+
+#: ../../source/linear-regression.rst:148
+msgid "3.0"
+msgstr ""
+
+#: ../../source/linear-regression.rst:148
+msgid "1.3"
+msgstr ""
+
+#: ../../source/linear-regression.rst:150
+msgid "4.0"
+msgstr ""
+
+#: ../../source/linear-regression.rst:150
+msgid "3.75"
+msgstr ""
+
+#: ../../source/linear-regression.rst:152
+msgid "5.0"
+msgstr ""
+
+#: ../../source/linear-regression.rst:152
+msgid "2.25"
+msgstr ""
+
+#: ../../source/linear-regression.rst:155
+msgid "Then the code will look like this:"
+msgstr ""

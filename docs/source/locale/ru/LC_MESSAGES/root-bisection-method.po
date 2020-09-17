@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Kamran Asgarov
+# This file is distributed under the same license as the Numerary package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Numerary \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 18:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../source/root-bisection-method.rst:2
+msgid "Bisection Method"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:5
+msgid "Overview"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:7
+msgid ""
+"In mathematics, the **bisection method** is a root-finding method that "
+"applies to any continuous functions for which one knows two values with "
+"opposite signs. The method consists of repeatedly bisecting the interval "
+"defined by these values and then selecting the subinterval in which the "
+"function changes sign, and therefore must contain a root. It is a very "
+"simple and robust method, but it is also relatively slow. Because of "
+"this, it is often used to obtain a rough approximation to a solution "
+"which is then used as a starting point for more rapidly converging "
+"methods. The method is also called the **interval halving method**, the "
+"**binary search method**, or the **dichotomy method**."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:15
+msgid "The Method"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:17
+msgid ""
+"The method is applicable for numerically solving the equation :math:`f(x)"
+" = 0` for the real variable :math:`x`, where :math:`f` is a continuous "
+"function defined on an interval :math:`[a, b]` and where :math:`f(a)` and"
+" :math:`f(b)` have opposite signs. In this case :math:`a` and :math:`b` "
+"are said to bracket a root since, by the intermediate value theorem, the "
+"continuous function :math:`f` must have at least one root in the interval"
+" :math:`(a, b)`."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:19
+msgid ""
+"At each step the method divides the interval in two by computing the "
+"midpoint :math:`c = \\frac{a+b}{2}` of the interval and the value of the "
+"function :math:`f(c)` at that point. Unless :math:`c` is itself a root "
+"(which is very unlikely, but possible) there are now only two "
+"possibilities: either :math:`f(a)` and :math:`f(c)` have opposite signs "
+"and bracket a root, or :math:`f(c)` and :math:`f(b)` have opposite signs "
+"and bracket a root. The method selects the subinterval that is guaranteed"
+" to be a bracket as the new interval to be used in the next step. In this"
+" way an interval that contains a zero of :math:`f` is reduced in width by"
+" *50%* at each step. The process is continued until the interval is "
+"sufficiently small."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:21
+msgid ""
+"Explicitly, if :math:`f(a)` and :math:`f(c)` have opposite signs, then "
+"the method sets :math:`c` as the new value for :math:`b`, and if "
+":math:`f(b)` and :math:`f(c)` have opposite signs then the method sets "
+":math:`c` as the new :math:`a`. (If :math:`f(c)=0` then :math:`c` may be "
+"taken as the solution and the process stops.) In both cases, the new "
+":math:`f(a)` and :math:`f(b)` have opposite signs, so the method is "
+"applicable to this smaller interval."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:25
+msgid "Iteration Tasks"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:27
+msgid ""
+"Calculate :math:`c`, the midpoint of the interval, "
+":math:`c=\\frac{a+b}{2}`."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:28
+msgid "Calculate the function value at the midpoint, :math:`f(c)`."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:29
+msgid ""
+"If convergence is satisfactory (that is, :math:`c-a` is sufficiently "
+"small, or :math:`|f(c)|` is sufficiently small), return :math:`c` and "
+"stop iterating."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:30
+msgid ""
+"Examine the sign of :math:`f(c)` and replace either :math:`(a, f(a))` or "
+":math:`(b, f(b))` with :math:`(c, f(c))` so that there is a zero crossing"
+" within the new interval."
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:34
+msgid "Usage"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:36
+msgid "Imagine that we want to find the root of the following function:"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:38
+msgid ""
+"\\begin{equation}\n"
+"    f(x) = \\sin{(x)}, x \\in [-1, 1]\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/root-bisection-method.rst:45
+msgid "Then the code will look like this:"
+msgstr ""
+

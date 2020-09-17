@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Kamran Asgarov
+# This file is distributed under the same license as the Numerary package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Numerary \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 18:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../source/lagrange-interpolation.rst:2
+msgid "Lagrange's Interpolation"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:5
+msgid "Lagrange polynomial"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:7
+msgid ""
+"In numerical analysis, Lagrange polynomials are used for polynomial "
+"interpolation. For a given set of points :math:`(x_j, y_j)` with no two "
+":math:`x_j` values equal, the Lagrange polynomial is the polynomial of "
+"lowest degree that assumes at each value :math:`x_j` the corresponding "
+"value :math:`x_j`, so that the functions coincide at each point."
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:11
+msgid "Definition"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:13
+msgid ""
+"Given a set of :math:`k+1` data points :math:`(x_0, y_0),\\dots,(x_j, "
+"y_j),\\dots,(x_k, y_k)` where no two :math:`x_j` are the same, the "
+"**interpolation polynomial in the Lagrange form** is a linear combination"
+" :math:`L(x):=\\sum_{j=0}^{k} y_{j} \\ell_{j}(x)`, of Lagrange basis "
+"polynomials"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:15
+msgid ""
+"\\begin{equation}\n"
+"    \\ell_{j}(x):=\\prod_{0 \\leq m \\leq k \\atop m \\neq j} "
+"\\frac{x-x_{m}}{x_{j}-x_{m}}=\\frac{\\left(x-x_{0}\\right)}{\\left(x_{j}-x_{0}\\right)}"
+" \\cdots \\frac{\\left(x-x_{j-1}\\right)}{\\left(x_{j}-x_{j-1}\\right)} "
+"\\frac{\\left(x-x_{j+1}\\right)}{\\left(x_{j}-x_{j+1}\\right)} \\cdots "
+"\\frac{\\left(x-x_{k}\\right)}{\\left(x_{j}-x_{k}\\right)}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:22
+msgid ""
+"where :math:`0 \\leq j \\leq k`. Note how, given the initial assumption "
+"that no two :math:`x_j` are the same, :math:`x_j - x_m \\neq 0`, so this "
+"expression is always well-defined. The reason pairs :math:`x_i = x_j` "
+"with :math:`y_i \\neq y_j` are not allowed is that no interpolation "
+"function :math:`L` such that :math:`y_i=L(x_i)` would exist; a function "
+"can only get one value for each argumetn :math:`x_i`. On the other hand, "
+"if also :math:`y_i = y_j`, then those two points would actually be one "
+"single point."
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:24
+msgid ""
+"For all :math:`i \\neq j`, :math:`\\ell(x)` includes the term "
+":math:`(x-x_i)` in the numerator, so the whole pruduct will be zero at "
+":math:`x = x_i`:"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:26
+msgid ""
+"\\begin{equation}\n"
+"    \\ell_{j \\neq i}\\left(x_{i}\\right)=\\prod_{m \\neq j} "
+"\\frac{x_{i}-x_{m}}{x_{j}-x_{m}}=\\frac{\\left(x_{i}-x_{0}\\right)}{\\left(x_{j}-x_{0}\\right)}"
+" \\cdots \\frac{\\left(x_{i}-x_{i}\\right)}{\\left(x_{j}-x_{i}\\right)} "
+"\\cdots \\frac{\\left(x_{i}-x_{k}\\right)}{\\left(x_{j}-x_{k}\\right)}=0"
+"\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:33
+msgid "On the other hand,"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:35
+msgid ""
+"\\begin{equation}\n"
+"    \\ell_{i}\\left(x_{i}\\right):=\\prod_{m \\neq i} "
+"\\frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:42
+msgid ""
+"In other words, all basis polynomials are zero at :math:`x = x_i`, except"
+" :math:`\\ell_i(x)`, for which it holds that :math:`\\ell_i(x_i) = 1`, "
+"because it lacks the :math:`(x - x_i)` term."
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:44
+msgid ""
+"It follows that :math:`\\ell_i(x_i) = y_i`, so at each point :math:`x_i`,"
+" :math:`L(x_i) = y_i + 0 + 0 + \\dots + 0 = y_i`, showing that :math:`L` "
+"interpolates the function exactly."
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:48
+msgid "Runge's example"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:50
+msgid ""
+"The function :math:`f(x) = \\frac{1}{1+x^2}` cannot be interpolated "
+"accurately on :math:`[−5, 5]` using a tenth-degree polynomial (dashed "
+"curve) with equally-spaced interpolation points. This example that "
+"illustrates the difficulty that one can generally expect with high-degree"
+" polynomial interpolation with equally-spaced points is known as *Runge’s"
+" example*."
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:59
+msgid "Usage"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:61
+msgid ""
+"Imagine that we have following points and we want to build a Lagrange "
+"polynomial with this points:"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:64
+msgid "X"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:64
+msgid "Y"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:66
+msgid "2.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:66
+msgid "10.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:68
+msgid "3.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:68
+msgid "15.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:70
+msgid "5.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:70
+msgid "25.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:72
+msgid "8.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:72
+msgid "40.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:74
+msgid "12.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:74
+msgid "60.0"
+msgstr ""
+
+#: ../../source/lagrange-interpolation.rst:77
+msgid "Then the code will look like this:"
+msgstr ""
+

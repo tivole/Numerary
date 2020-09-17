@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Kamran Asgarov
+# This file is distributed under the same license as the Numerary package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Numerary \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 18:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../source/differentiation-first-order.rst:2
+msgid "Numerical differentiation. Calculation of the first derivative."
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:5
+msgid "Definition"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:7
+msgid ""
+"By definition, the first derivative of a smooth function :math:`f(x)` at "
+"a point x is calculated as"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:9
+msgid ""
+"\\begin{equation}\n"
+"    f^{\\prime}(x)=\\lim _{h \\rightarrow 0} \\frac{f(x+h)-f(x)}{h}.\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:16
+msgid ""
+"When calculating the first derivative of the function :math:`f(x)` on a "
+"computer, we replace the infinitesimal :math:`h \\rightarrow \\infty` "
+"with a small but finite value :math:`h`:"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:18
+msgid ""
+"\\begin{equation}\n"
+"    f^{\\prime}(x)=\\frac{f(x+h)-f(x)}{h}+\\mathrm{O}(h),\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:25
+msgid ""
+"where :math:`\\mathrm{O}(h)` is the derivative calculation error, which "
+"naturally depends on :math:`h`. Previous formula is called a difference "
+"scheme for calculating the first derivative (more precisely, a right "
+"difference scheme or just a right difference). Similarly, maybe the left-"
+"hand difference scheme is written."
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:27
+msgid ""
+"How to determine :math:`\\mathrm{O}(h)`? Expand the function :math:`f(x)`"
+" in a Taylor series at the point :math:`x + h`:"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:29
+msgid ""
+"\\begin{equation}\n"
+"    f(x+h)=f(x)+h f^{\\prime}(x)+\\frac{h^{2}}{2} f^{\\prime "
+"\\prime}(x)+\\frac{h^{3}}{6} f^{\\prime \\prime \\prime}(x)+\\ldots,\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:36
+msgid "whence it follows that in the first order of the expansion"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:38
+msgid ""
+"\\begin{equation}\n"
+"    \\mathrm{O}(h)=-\\frac{h}{2} f^{\\prime \\prime}(x)+\\ldots.\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:45
+msgid ""
+"By choosing a very small :math:`h`, the round-off errors in computing on "
+"a computer can be comparable to or greater than :math:`h`. Therefore, we "
+"are interested in an algorithm that gives lower error value for the same "
+"value of :math:`h`."
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:47
+msgid ""
+"Such an improved algorithm can be easily obtained by expanding the "
+"function :math:`f(x)` into a Taylor series at the points :math:`x + h` "
+"and :math:`x - h`, then subtracting one result from the other, which "
+"gives"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:49
+msgid ""
+"\\begin{equation}\n"
+"    f^{\\prime}(x)=\\frac{f(x+h)-f(x-h)}{2 "
+"h}+\\mathrm{O}\\left(h^{2}\\right),\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:56
+msgid "where the error in calculating the first derivative"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:58
+msgid ""
+"\\begin{align*}\n"
+"    \\mathrm{O}\\left(h^{2}\\right)=-\\frac{h^{2}}{6} f^{\\prime \\prime "
+"\\prime}(x)+\\ldots.\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:65
+msgid "This is the central difference scheme (central difference)."
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:67
+msgid ""
+"In principle, it is possible to follow the path of improving the accuracy"
+" of the method for calculating the first derivative and further. For "
+"example, considering the expansion of the function :math:`f(x)` in a "
+"Taylor series at the points :math:`x + h`, :math:`x + 2h`, :math:`x - h`,"
+" and :math:`x - 2h`, one can obtain a four-point scheme etc."
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:72
+msgid "Usage"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:74
+msgid "Imagine that we want to find the derivative of the following function:"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:76
+msgid ""
+"\\begin{equation}\n"
+"    f(x) = \\sin{(x)}\n"
+"\\end{equation}"
+msgstr ""
+
+#: ../../source/differentiation-first-order.rst:83
+msgid "Then the code will look like this:"
+msgstr ""
+
