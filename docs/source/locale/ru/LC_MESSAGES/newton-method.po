@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Numerary \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-17 18:15+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-09-18 22:20+0400\n"
+"Last-Translator: Kamran Asgarov <asgarovkamran@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../source/newton-method.rst:2
 msgid "Newton's Method"
-msgstr ""
+msgstr "Метод Ньютона"
 
 #: ../../source/newton-method.rst:5
 msgid "Overview"
-msgstr ""
+msgstr "Обзор"
 
 #: ../../source/newton-method.rst:7
 msgid ""
@@ -33,6 +33,10 @@ msgid ""
 "originates from the *Taylor’s series* expansion of the function "
 ":math:`f(x)` about the point :math:`x1`:"
 msgstr ""
+"**Метод Ньютона** - один из самых популярных численных методов, и Бёрден "
+"и Фейрес даже называют его самым мощным методом, который используется для "
+"решения уравнения :math:`f(x) = 0`. Этот метод основан на разложении в ряд Тейлора "
+"функции :math:`f(x)` относительно точки :math:`x_1`:"
 
 #: ../../source/newton-method.rst:9
 msgid ""
@@ -42,6 +46,11 @@ msgid ""
 "f^{\\prime \\prime}\\left(x_{1}\\right)+\\cdots\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f(x)=f\\left(x_{1}\\right)+\\left(x-x_{1}\\right) "
+"f^{\\prime}\\left(x_{1}\\right)+\\frac{1}{2 !}\\left(x-x_{1}\\right)^{2} "
+"f^{\\prime \\prime}\\left(x_{1}\\right)+\\cdots\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:16
 msgid ""
@@ -49,6 +58,9 @@ msgid ""
 "and :math:`f''` are calculated at :math:`x_1`. If we take the first two "
 "terms of the Taylor’s series expansion we have:"
 msgstr ""
+"где :math:`f`, а также его производные первого и второго порядка, :math:`f'` и :math:`f'` "
+"вычисляются в :math:`x_1`. Если мы возьмем первые два члена разложения "
+"в ряд Тейлора, мы получим:"
 
 #: ../../source/newton-method.rst:18
 msgid ""
@@ -57,12 +69,18 @@ msgid ""
 "f^{\\prime}\\left(x_{1}\\right).\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f(x) \\approx f\\left(x_{1}\\right)+\\left(x-x_{1}\\right) "
+"f^{\\prime}\\left(x_{1}\\right).\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:25
 msgid ""
 "We then set previous expression to zero (i.e :math:`f(x) = 0` ) to find "
 "the root of the equation which gives us:"
 msgstr ""
+"Затем мы устанавливаем предыдущее выражение равным нулю (т.е. :math:`f(x) = 0`), "
+"чтобы найти корень уравнения, которое дает нам:"
 
 #: ../../source/newton-method.rst:27
 msgid ""
@@ -71,12 +89,18 @@ msgid ""
 "f^{\\prime}\\left(x_{1}\\right)=0.\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f\\left(x_{1}\\right)+\\left(x-x_{1}\\right) "
+"f^{\\prime}\\left(x_{1}\\right)=0.\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:34
 msgid ""
 "Rearranging the previous expression we obtain the next approximation to "
 "the root, giving us:"
 msgstr ""
+"Переставляя предыдущее выражение, мы получаем следующее "
+"приближение к корню, что дает нам:"
 
 #: ../../source/newton-method.rst:36
 msgid ""
@@ -86,10 +110,15 @@ msgid ""
 "\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    "
+"x=x_{2}=x_{1}-\\frac{f\\left(x_{1}\\right)}{f^{\\prime}\\left(x_{1}\\right)}"
+"\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:43
 msgid "Thus generalizing previous expression we obtain Newton’s iterative method:"
-msgstr ""
+msgstr "Таким образом, обобщая предыдущее выражение, мы получаем итерационный метод Ньютона:"
 
 #: ../../source/newton-method.rst:46
 msgid ""
@@ -99,6 +128,11 @@ msgid ""
 " i \\in \\mathbb{N}\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    "
+"x_{i}=x_{i-1}-\\frac{f\\left(x_{i-1}\\right)}{f^{\\prime}\\left(x_{i-1}\\right)},"
+" i \\in \\mathbb{N}\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:55
 msgid ""
@@ -106,6 +140,8 @@ msgid ""
 "\\infty`), and :math:`x` is the approximation to a root of the function "
 ":math:`f(x)`."
 msgstr ""
+"где :math:`x_{i} \\rightarrow \\bar{x}` (при :math:`i \\rightarrow \\infty`), а "
+"x - приближение к корню функции f (x)."
 
 #: ../../source/newton-method.rst:57
 msgid ""
@@ -114,38 +150,45 @@ msgid ""
 ":math:`f(x)` converges to :math:`\\bar{x}`. Thus :math:`x_i` is the root "
 "of the function :math:`f(x)`."
 msgstr ""
+"**Примечание:** Поскольку итерации начинают иметь одинаковые повторяющиеся значения, "
+"т.е. как :math:`x_i = x_{i+1} = \\bar{x}`, это указывает на то, "
+"что :math:`f(x)` сходится к :math:`\\bar{x}`. Таким образом, :math:`x_i` - это корень функции :math:`f(x)`."
 
 #: ../../source/newton-method.rst:61
 msgid "The Method"
-msgstr ""
+msgstr "Метод"
 
 #: ../../source/newton-method.rst:64
 msgid "Step 1:"
-msgstr ""
+msgstr "Шаг 1:"
 
 #: ../../source/newton-method.rst:66
 msgid ""
 "Let :math:`\\mathbf{x}^{(0)}=\\left(x_{1}^{(0)}, x_{2}^{(0)}, \\ldots, "
 "x_{n}^{(0)}\\right)` be a given initial vector."
 msgstr ""
+"Пусть :math:`\\mathbf{x}^{(0)}=\\left(x_{1}^{(0)}, x_{2}^{(0)}, \\ldots, x_{n}^{(0)}\\right)` "
+"- заданный начальный вектор."
 
 #: ../../source/newton-method.rst:69
 msgid "Step 2:"
-msgstr ""
+msgstr "Шаг 2:"
 
 #: ../../source/newton-method.rst:71
 msgid ""
 "Calculate :math:`J\\left(\\mathbf{x}^{(0)}\\right)` and "
 ":math:`\\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`."
 msgstr ""
+"Вычислите :math:`J\\left(\\mathbf{x}^{(0)}\\right)` "
+"и :math:`\\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`."
 
 #: ../../source/newton-method.rst:74
 msgid "Step 3:"
-msgstr ""
+msgstr "Шаг 3:"
 
 #: ../../source/newton-method.rst:76
 msgid "We now have to calculate the vector :math:`\\mathbf{y}^{(0)}`, where"
-msgstr ""
+msgstr "Теперь нам нужно вычислить вектор :math:`\\mathbf{y}^{(0)}`, где"
 
 #: ../../source/newton-method.rst:78
 msgid ""
@@ -161,6 +204,17 @@ msgid ""
 "    \\right]\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    \\mathbf{y}=\n"
+"    \\left[\n"
+"        \\begin{array}{c}\n"
+"            y_{1} \\\\\n"
+"            y_{2} \\\\\n"
+"            \\vdots \\\\\n"
+"            y_{n}\n"
+"        \\end{array}\n"
+"    \\right]\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:93
 msgid ""
@@ -169,6 +223,9 @@ msgid ""
 "\\mathbf{y}^{(0)}=-\\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`, using "
 "Gaussian Elimination."
 msgstr ""
+"Чтобы найти :math:`\\mathbf{y}^{(0)}`, мы решаем линейную систему "
+":math:`J\\left(\\mathbf{x}^{(0)}\\right) \\mathbf{y}^{(0)}=-\\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`"
+"используя метод исключения Гаусса."
 
 #: ../../source/newton-method.rst:95
 msgid ""
@@ -182,6 +239,12 @@ msgid ""
 "\\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)` in our iterative formula "
 "with :math:`\\mathbf{y}^{(0)}`. This result will yield that"
 msgstr ""
+"**Примечание:** преобразовав систему на *шаге 3*, мы получим "
+":math:`\\mathbf{y}^{(0)}=-J\\left(\\mathbf{x}^{(0)}\\right)^{-1} \\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`."
+" Значение этого состоит в том, что, поскольку "
+"math:`\\mathbf{y}^{(0)}=-J\\left(\\mathbf{x}^{(0)}\\right)^{-1} \\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`"
+", мы можем заменить :math:`-J\\left(\\mathbf{x}^{(0)}\\right)^{-1} \\mathbf{F}\\left(\\mathbf{x}^{(0)}\\right)`"
+" в наша итерационная формула с :math:`\\mathbf{y}^{(0)}`. Этот результат даст, что"
 
 #: ../../source/newton-method.rst:97
 msgid ""
@@ -193,10 +256,17 @@ msgid ""
 "\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    "
+"\\mathbf{x}^{(k)}=\\mathbf{x}^{(k-1)}-J\\left(\\mathbf{x}^{(k-1)}\\right)^{-1}"
+" "
+"\\mathbf{F}\\left(\\mathbf{x}^{(k-1)}\\right)=\\mathbf{x}^{(k-1)}-\\mathbf{y}^{(k-1)}"
+"\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:106
 msgid "Step 4:"
-msgstr ""
+msgstr "Шаг 4:"
 
 #: ../../source/newton-method.rst:108
 msgid ""
@@ -204,6 +274,8 @@ msgid ""
 " first iteration by solving for :math:`\\mathbf{x}^{(1)}`. Thus using the"
 " result from *Step 3*, we have that"
 msgstr ""
+"Как только :math:`\\mathbf{y}^{(0)}` найден, мы можем приступить к завершению первой "
+"итерации, решив для :math:`\\mathbf{x}^{(1)}`. Таким образом, используя результат *шага 3*, мы имеем"
 
 #: ../../source/newton-method.rst:110
 msgid ""
@@ -224,10 +296,26 @@ msgid ""
 "    \\end{array}\\right]\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    \\mathbf{x}^{(1)}=\\mathbf{x}^{(0)}+\\mathbf{y}^{(0)}=\n"
+"    \\left[\\begin{array}{c}\n"
+"        x_{1}^{(0)} \\\\\n"
+"        x_{2}^{(0)} \\\\\n"
+"        \\vdots \\\\\n"
+"        x_{n}^{(0)}\n"
+"    \\end{array}\\right]\n"
+"    +\n"
+"    \\left[\\begin{array}{c}\n"
+"        y_{1}^{(0)} \\\\\n"
+"        y_{2}^{(0)} \\\\\n"
+"        \\vdots \\\\\n"
+"        y_{n}^{(0)}\n"
+"    \\end{array}\\right]\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:132
 msgid "Step 5:"
-msgstr ""
+msgstr "Шаг 5:"
 
 #: ../../source/newton-method.rst:134
 msgid ""
@@ -237,6 +325,9 @@ msgid ""
 ":math:`\\mathbf{F}(\\mathbf{x})=\\mathbf{0}`, where :math:`\\bar{x}` is "
 "the solution to the system."
 msgstr ""
+"После того, как мы вычислили :math:`\\mathbf{x}^{(1)}`, мы повторяем процесс снова, пока "
+":math:`\\mathbf{x}^{(k)}` не сходится к :math:`\\bar{x}`. Это указывает на то, что мы достигли решения "
+":math:`\\mathbf{F}(\\mathbf{x})=\\mathbf{0}`, где :math:`\\bar{x}` - решение системы."
 
 #: ../../source/newton-method.rst:136
 msgid ""
@@ -244,6 +335,9 @@ msgid ""
 ":math:`\\left\\|\\mathbf{x}^{(k)}-\\mathbf{x}^{(k-1)}\\right\\|=0`. This "
 "means that"
 msgstr ""
+"Примечание: когда набор векторов сходится, норма "
+":math:`\\left\\|\\mathbf{x}^{(k)}-\\mathbf{x}^{(k-1)}\\right\\|=0`. "
+"Это означает, что"
 
 #: ../../source/newton-method.rst:138
 msgid ""
@@ -253,14 +347,19 @@ msgid ""
 "\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    "
+"\\left\\|\\mathbf{x}^{(k)}-\\mathbf{x}^{(k-1)}\\right\\|=\\sqrt{\\left(x_{1}^{(k)}-x_{1}^{(k-1)}\\right)^{2}+\\cdots+\\left(x_{n}^{(k)}-x_{n}^{(k-1)}\\right)^{2}}=0"
+"\n"
+"\\end{equation}"
 
 #: ../../source/newton-method.rst:147
 msgid "Usage"
-msgstr ""
+msgstr "Использование"
 
 #: ../../source/newton-method.rst:149
 msgid "imagine that we want to solve the following nonlinear system of equations:"
-msgstr ""
+msgstr "представьте, что мы хотим решить следующую нелинейную систему уравнений:"
 
 #: ../../source/newton-method.rst:151
 msgid ""
@@ -269,8 +368,12 @@ msgid ""
 "    g(x, y)=y-3 x+5\n"
 "\\end{array}\\right.\\end{equation}"
 msgstr ""
+"\\begin{equation}\\left\\{\\begin{array}{l}\n"
+"    f(x, y)=x^{2}+y^{2}-5 \\\\\n"
+"    g(x, y)=y-3 x+5\n"
+"\\end{array}\\right.\\end{equation}"
 
 #: ../../source/newton-method.rst:159
 msgid "then the code will look like this:"
-msgstr ""
+msgstr "тогда код будет выглядеть так:"
 
