@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Numerary \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-17 18:15+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-09-18 15:34+0400\n"
+"Last-Translator: Kamran Asgarov <asgarovkamran@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../source/lagrange-interpolation.rst:2
 msgid "Lagrange's Interpolation"
-msgstr ""
+msgstr "Интерполяция Лагранжа"
 
 #: ../../source/lagrange-interpolation.rst:5
 msgid "Lagrange polynomial"
-msgstr ""
+msgstr "Полином Лагранжа"
 
 #: ../../source/lagrange-interpolation.rst:7
 msgid ""
@@ -33,10 +33,15 @@ msgid ""
 "lowest degree that assumes at each value :math:`x_j` the corresponding "
 "value :math:`x_j`, so that the functions coincide at each point."
 msgstr ""
+"В численном анализе полиномы Лагранжа используются для полиномиальной "
+"интерполяции. Для данного набора точек :math:`(x_j, y_j)`, в котором нет двух "
+"одинаковых значений :math:`x_j`, многочлен Лагранжа является многочленом "
+"самой низкой степени, который принимает для каждого значения :math:`x_j` "
+"соответствующее значение :math:`x_j`, так что функции совпадают в каждой точке."
 
 #: ../../source/lagrange-interpolation.rst:11
 msgid "Definition"
-msgstr ""
+msgstr "Определение"
 
 #: ../../source/lagrange-interpolation.rst:13
 msgid ""
@@ -46,6 +51,10 @@ msgid ""
 " :math:`L(x):=\\sum_{j=0}^{k} y_{j} \\ell_{j}(x)`, of Lagrange basis "
 "polynomials"
 msgstr ""
+"Для набора из :math:`k+1` точек данных :math:`(x_0, y_0),\\dots,(x_j, y_j),\\dots,(x_k, y_k)`, "
+"где нет двух одинаковых :math:`x_j`, интерполяционный многочлен в форме "
+"Лагранжа представляет собой линейную комбинацию "
+":math:`L(x):=\\sum_{j=0}^{k} y_{j} \\ell_{j}(x)`, базисных полиномов Лагранжа"
 
 #: ../../source/lagrange-interpolation.rst:15
 msgid ""
@@ -57,6 +66,13 @@ msgid ""
 "\\frac{\\left(x-x_{k}\\right)}{\\left(x_{j}-x_{k}\\right)}\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    \\ell_{j}(x):=\\prod_{0 \\leq m \\leq k \\atop m \\neq j} "
+"\\frac{x-x_{m}}{x_{j}-x_{m}}=\\frac{\\left(x-x_{0}\\right)}{\\left(x_{j}-x_{0}\\right)}"
+" \\cdots \\frac{\\left(x-x_{j-1}\\right)}{\\left(x_{j}-x_{j-1}\\right)} "
+"\\frac{\\left(x-x_{j+1}\\right)}{\\left(x_{j}-x_{j+1}\\right)} \\cdots "
+"\\frac{\\left(x-x_{k}\\right)}{\\left(x_{j}-x_{k}\\right)}\n"
+"\\end{equation}"
 
 #: ../../source/lagrange-interpolation.rst:22
 msgid ""
@@ -69,6 +85,14 @@ msgid ""
 "if also :math:`y_i = y_j`, then those two points would actually be one "
 "single point."
 msgstr ""
+"где :math:`0 \\leq j \\leq k`. Обратите внимание на то, что при исходном "
+"предположении, что нет двух одинаковых :math:`x_j`, :math:`x_j - x_m \\neq 0`,"
+" поэтому это выражение всегда хорошо определено. Причина, по которой пары "
+":math:`x_i = x_j` с :math:`y_i \\neq y_j` недопустимы, заключается в том, "
+"что не существует интерполяционной функции :math:`L`, такой что "
+":math:`y_i=L(x_i)`; функция может получить только одно значение для каждого "
+"аргумента :math:`x_i`. С другой стороны, если также :math:`y_i = y_j`, "
+"то эти две точки фактически будут одной точкой."
 
 #: ../../source/lagrange-interpolation.rst:24
 msgid ""
@@ -76,6 +100,8 @@ msgid ""
 ":math:`(x-x_i)` in the numerator, so the whole pruduct will be zero at "
 ":math:`x = x_i`:"
 msgstr ""
+"Для всех :math:`i \\neq j`, :math:`\\ell(x)` включает член :math:`(x-x_i)` в числителе, "
+"поэтому все произведение будет равно нулю при :math:`x = x_i`"
 
 #: ../../source/lagrange-interpolation.rst:26
 msgid ""
@@ -87,10 +113,17 @@ msgid ""
 "\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    \\ell_{j \\neq i}\\left(x_{i}\\right)=\\prod_{m \\neq j} "
+"\\frac{x_{i}-x_{m}}{x_{j}-x_{m}}=\\frac{\\left(x_{i}-x_{0}\\right)}{\\left(x_{j}-x_{0}\\right)}"
+" \\cdots \\frac{\\left(x_{i}-x_{i}\\right)}{\\left(x_{j}-x_{i}\\right)} "
+"\\cdots \\frac{\\left(x_{i}-x_{k}\\right)}{\\left(x_{j}-x_{k}\\right)}=0"
+"\n"
+"\\end{equation}"
 
 #: ../../source/lagrange-interpolation.rst:33
 msgid "On the other hand,"
-msgstr ""
+msgstr "С другой стороны,"
 
 #: ../../source/lagrange-interpolation.rst:35
 msgid ""
@@ -99,6 +132,10 @@ msgid ""
 "\\frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    \\ell_{i}\\left(x_{i}\\right):=\\prod_{m \\neq i} "
+"\\frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1\n"
+"\\end{equation}"
 
 #: ../../source/lagrange-interpolation.rst:42
 msgid ""
@@ -106,6 +143,9 @@ msgid ""
 " :math:`\\ell_i(x)`, for which it holds that :math:`\\ell_i(x_i) = 1`, "
 "because it lacks the :math:`(x - x_i)` term."
 msgstr ""
+"Другими словами, все базисные полиномы равны нулю при :math:`x = x_i`, за "
+"исключением :math:`\\ell_i(x)`, для которого выполняется :math:`\\ell_i(x_i) = 1`, поскольку "
+"в нем отсутствует член :math:`(x - x_i)`."
 
 #: ../../source/lagrange-interpolation.rst:44
 msgid ""
@@ -113,10 +153,13 @@ msgid ""
 " :math:`L(x_i) = y_i + 0 + 0 + \\dots + 0 = y_i`, showing that :math:`L` "
 "interpolates the function exactly."
 msgstr ""
+"Отсюда следует, что :math:`\\ell_i(x_i) = y_i`, поэтому в каждой точке "
+":math:`x_i` :math:`L(x_i) = y_i + 0 + 0 + \\dots + 0 = y_i`, показывая, что :math:`L` точно"
+" интерполирует функцию."
 
 #: ../../source/lagrange-interpolation.rst:48
 msgid "Runge's example"
-msgstr ""
+msgstr "Пример Рунге"
 
 #: ../../source/lagrange-interpolation.rst:50
 msgid ""
@@ -127,66 +170,73 @@ msgid ""
 " polynomial interpolation with equally-spaced points is known as *Runge’s"
 " example*."
 msgstr ""
+"Функция :math:`f(x) = \\frac{1}{1+x^2}` не может быть точно интерполирована "
+"на :math:`[−5, 5]` с использованием многочлена десятой степени (пунктирная "
+"кривая) с равноотстоящими точками интерполяции. Этот пример, иллюстрирующий "
+"сложность, которую обычно можно ожидать от полиномиальной интерполяции высокой "
+"степени с равноотстоящими точками, известен как *пример Рунге*."
 
 #: ../../source/lagrange-interpolation.rst:59
 msgid "Usage"
-msgstr ""
+msgstr "Использование"
 
 #: ../../source/lagrange-interpolation.rst:61
 msgid ""
 "Imagine that we have following points and we want to build a Lagrange "
 "polynomial with this points:"
 msgstr ""
+"Представьте, что у нас есть следующие точки, и мы хотим построить "
+"многочлен Лагранжа из этих точек:"
 
 #: ../../source/lagrange-interpolation.rst:64
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #: ../../source/lagrange-interpolation.rst:64
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: ../../source/lagrange-interpolation.rst:66
 msgid "2.0"
-msgstr ""
+msgstr "2.0"
 
 #: ../../source/lagrange-interpolation.rst:66
 msgid "10.0"
-msgstr ""
+msgstr "10.0"
 
 #: ../../source/lagrange-interpolation.rst:68
 msgid "3.0"
-msgstr ""
+msgstr "3.0"
 
 #: ../../source/lagrange-interpolation.rst:68
 msgid "15.0"
-msgstr ""
+msgstr "15.0"
 
 #: ../../source/lagrange-interpolation.rst:70
 msgid "5.0"
-msgstr ""
+msgstr "5.0"
 
 #: ../../source/lagrange-interpolation.rst:70
 msgid "25.0"
-msgstr ""
+msgstr "25.0"
 
 #: ../../source/lagrange-interpolation.rst:72
 msgid "8.0"
-msgstr ""
+msgstr "8.0"
 
 #: ../../source/lagrange-interpolation.rst:72
 msgid "40.0"
-msgstr ""
+msgstr "40.0"
 
 #: ../../source/lagrange-interpolation.rst:74
 msgid "12.0"
-msgstr ""
+msgstr "12.0"
 
 #: ../../source/lagrange-interpolation.rst:74
 msgid "60.0"
-msgstr ""
+msgstr "60.0"
 
 #: ../../source/lagrange-interpolation.rst:77
 msgid "Then the code will look like this:"
-msgstr ""
+msgstr "Тогда код будет выглядеть так:"
 
