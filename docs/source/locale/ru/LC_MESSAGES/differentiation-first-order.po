@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Numerary \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-17 18:15+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-09-18 13:07+0400\n"
+"Last-Translator: Kamran Asgarov <asgarovkamran@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,17 +19,19 @@ msgstr ""
 
 #: ../../source/differentiation-first-order.rst:2
 msgid "Numerical differentiation. Calculation of the first derivative."
-msgstr ""
+msgstr "Численное дифференцирование. Расчет первой производной."
 
 #: ../../source/differentiation-first-order.rst:5
 msgid "Definition"
-msgstr ""
+msgstr "Определение"
 
 #: ../../source/differentiation-first-order.rst:7
 msgid ""
 "By definition, the first derivative of a smooth function :math:`f(x)` at "
 "a point x is calculated as"
 msgstr ""
+"По определению первая производная гладкой функции :math:`f` в"
+"точке x вычисляется как"
 
 #: ../../source/differentiation-first-order.rst:9
 msgid ""
@@ -37,6 +39,9 @@ msgid ""
 "    f^{\\prime}(x)=\\lim _{h \\rightarrow 0} \\frac{f(x+h)-f(x)}{h}.\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f^{\\prime}(x)=\\lim _{h \\rightarrow 0} \\frac{f(x+h)-f(x)}{h}.\n"
+"\\end{equation}"
 
 #: ../../source/differentiation-first-order.rst:16
 msgid ""
@@ -44,6 +49,9 @@ msgid ""
 "computer, we replace the infinitesimal :math:`h \\rightarrow \\infty` "
 "with a small but finite value :math:`h`:"
 msgstr ""
+"При вычислении первой производной функции :math:`f(x)` на "
+"компьютере мы заменяем бесконечно малую :math:`h \\rightarrow \\infty`"
+"на маленькое, но конечное значение :math:`h`:"
 
 #: ../../source/differentiation-first-order.rst:18
 msgid ""
@@ -51,6 +59,9 @@ msgid ""
 "    f^{\\prime}(x)=\\frac{f(x+h)-f(x)}{h}+\\mathrm{O}(h),\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f^{\\prime}(x)=\\frac{f(x+h)-f(x)}{h}+\\mathrm{O}(h),\n"
+"\\end{equation}"
 
 #: ../../source/differentiation-first-order.rst:25
 msgid ""
@@ -60,12 +71,19 @@ msgid ""
 "difference scheme or just a right difference). Similarly, maybe the left-"
 "hand difference scheme is written."
 msgstr ""
+"где :math:`\\mathrm{O}(h)` - это ошибка вычисления производной, которая, "
+"естественно, зависит от :math:`h`. Предыдущая формула называется разностной "
+"схемой для вычисления первой производной (точнее, правильной "
+"разностной схемой или просто правильной разностной). Точно так же, может быть, "
+"написана левая разностная схема."
 
 #: ../../source/differentiation-first-order.rst:27
 msgid ""
 "How to determine :math:`\\mathrm{O}(h)`? Expand the function :math:`f(x)`"
 " in a Taylor series at the point :math:`x + h`:"
 msgstr ""
+"Как определить :math:`\\mathrm{O}(h)`? Разложим функцию :math:`f(x)`"
+" в ряд Тейлора в точке :math:`x + h`:"
 
 #: ../../source/differentiation-first-order.rst:29
 msgid ""
@@ -74,10 +92,14 @@ msgid ""
 "\\prime}(x)+\\frac{h^{3}}{6} f^{\\prime \\prime \\prime}(x)+\\ldots,\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f(x+h)=f(x)+h f^{\\prime}(x)+\\frac{h^{2}}{2} f^{\\prime "
+"\\prime}(x)+\\frac{h^{3}}{6} f^{\\prime \\prime \\prime}(x)+\\ldots,\n"
+"\\end{equation}"
 
 #: ../../source/differentiation-first-order.rst:36
 msgid "whence it follows that in the first order of the expansion"
-msgstr ""
+msgstr "откуда следует, что в первом порядке разложения"
 
 #: ../../source/differentiation-first-order.rst:38
 msgid ""
@@ -85,6 +107,9 @@ msgid ""
 "    \\mathrm{O}(h)=-\\frac{h}{2} f^{\\prime \\prime}(x)+\\ldots.\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    \\mathrm{O}(h)=-\\frac{h}{2} f^{\\prime \\prime}(x)+\\ldots.\n"
+"\\end{equation}"
 
 #: ../../source/differentiation-first-order.rst:45
 msgid ""
@@ -93,6 +118,10 @@ msgid ""
 "are interested in an algorithm that gives lower error value for the same "
 "value of :math:`h`."
 msgstr ""
+"Выбирая очень маленький :math:`h`, ошибки округления при вычислениях на "
+"компьютере могут быть сопоставимы с :math:`h` или больше. Поэтому нас "
+"интересует алгоритм, дающий меньшее значение ошибки при том же "
+"значении :math:`h`."
 
 #: ../../source/differentiation-first-order.rst:47
 msgid ""
@@ -101,6 +130,10 @@ msgid ""
 "and :math:`x - h`, then subtracting one result from the other, which "
 "gives"
 msgstr ""
+"Такой улучшенный алгоритм может быть легко получен путем разложения "
+"функции :math:`f(x)` в ряд Тейлора в точках :math:`x + h` и :math:`x - h`, "
+"а затем вычитания одного результата из другого, что "
+"дает"
 
 #: ../../source/differentiation-first-order.rst:49
 msgid ""
@@ -109,10 +142,14 @@ msgid ""
 "h}+\\mathrm{O}\\left(h^{2}\\right),\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f^{\\prime}(x)=\\frac{f(x+h)-f(x-h)}{2 "
+"h}+\\mathrm{O}\\left(h^{2}\\right),\n"
+"\\end{equation}"
 
 #: ../../source/differentiation-first-order.rst:56
 msgid "where the error in calculating the first derivative"
-msgstr ""
+msgstr "где погрешность вычисления первой производной"
 
 #: ../../source/differentiation-first-order.rst:58
 msgid ""
@@ -121,10 +158,14 @@ msgid ""
 "\\prime}(x)+\\ldots.\n"
 "\\end{align*}"
 msgstr ""
+"\\begin{align*}\n"
+"    \\mathrm{O}\\left(h^{2}\\right)=-\\frac{h^{2}}{6} f^{\\prime \\prime "
+"\\prime}(x)+\\ldots.\n"
+"\\end{align*}"
 
 #: ../../source/differentiation-first-order.rst:65
 msgid "This is the central difference scheme (central difference)."
-msgstr ""
+msgstr "Это центральная разностная схема (центральная разностная схема)."
 
 #: ../../source/differentiation-first-order.rst:67
 msgid ""
@@ -134,14 +175,18 @@ msgid ""
 "Taylor series at the points :math:`x + h`, :math:`x + 2h`, :math:`x - h`,"
 " and :math:`x - 2h`, one can obtain a four-point scheme etc."
 msgstr ""
+"В принципе, можно пойти по пути повышения точности "
+"метода вычисления первой производной и далее. Например, "
+"рассматривая разложение функции f (x) в ряд Тейлора в точках :math:`x + h`,"
+" :math:`x + 2h`, :math:`x - h` и :math:`x - 2h`, можно получить четырехточечную схему и т. д."
 
 #: ../../source/differentiation-first-order.rst:72
 msgid "Usage"
-msgstr ""
+msgstr "Использование"
 
 #: ../../source/differentiation-first-order.rst:74
 msgid "Imagine that we want to find the derivative of the following function:"
-msgstr ""
+msgstr "Представьте, что мы хотим найти производную следующей функции:"
 
 #: ../../source/differentiation-first-order.rst:76
 msgid ""
@@ -149,8 +194,11 @@ msgid ""
 "    f(x) = \\sin{(x)}\n"
 "\\end{equation}"
 msgstr ""
+"\\begin{equation}\n"
+"    f(x) = \\sin{(x)}\n"
+"\\end{equation}"
 
 #: ../../source/differentiation-first-order.rst:83
 msgid "Then the code will look like this:"
-msgstr ""
+msgstr "Тогда код будет выглядеть так:"
 
