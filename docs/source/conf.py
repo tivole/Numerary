@@ -30,7 +30,8 @@ copyright = "2020, Kamran Asgarov"
 author = "Kamran Asgarov"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+version = os.getenv("READTHEDOCS_VERSION", "latest")
+release = version
 
 
 # -- General configuration ---------------------------------------------------
@@ -79,7 +80,22 @@ exclude_patterns = []
 #
 html_theme = "sphinx_rtd_theme"
 highlight_language = "cpp"
+
+html_context = {
+    "github_user": "tivole",  # Username
+    "github_repo": "Numerary",  # Repo name
+    "github_version": "master",  # Version
+    "conf_py_path": "/docs/source",  # Path in the checkout to the docs root
+    "numerary_inject_language_links": True,
+    "numerary_docs_supported_languages": list(supported_languages.keys()),
+    "numerary_docs_basepath": "https://numerary.readthedocs.io/",
+    "numerary_docs_suffix": ".html",
+    "numerary_default_lang": "en",
+    "numerary_canonical_version": "stable",
+}
+
+html_title = supported_languages[language] % version
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# html_static_path = ["_static"]
