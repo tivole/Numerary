@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Линейная регрессия &mdash; документация Numerary 0.0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Интерполяция Лагранжа" href="lagrange-interpolation.html" />
+    <link rel="prev" title="Метод Дорманда-Принса" href="dormand-prince-method.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Поиск корней</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Метод хорд</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интеграл</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Интегральное приближение - правило Симпсона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск минимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск максимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Линейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Метод исключения Гаусса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Нелинейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Метод Ньютона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Обыкновенные дифференциальные уравнения.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Метод Дорманда-Принса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Регрессия</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Линейная регрессия</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-simple-linear-regression-model">Модель простой линейной регрессии</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-linear-probabilistic-model">Линейная вероятностная модель</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estimating-model-parameters">Оценка параметров модели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Использование</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Интерполяция</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lagrange-interpolation.html">Интерполяция Лагранжа</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Дифференцирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Численное дифференцирование. Расчет первой производной.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Другие</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Неполная гамма-функция</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Линейная регрессия</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/linear-regression.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linear-regression">
+<h1>Линейная регрессия<a class="headerlink" href="#linear-regression" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Введение<a class="headerlink" href="#introduction" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В статистике линейная регрессия - это линейный подход к моделированию взаимосвязи между скалярным откликом (или зависимой переменной) и одной или несколькими независимыми переменными (или независимыми переменными). Случай одной независимой переменной называется простой линейной регрессией. Для нескольких независимых переменных процесс называется множественной линейной регрессией. Этот термин отличается от многомерной линейной регрессии, в которой прогнозируются несколько коррелированных зависимых переменных, а не одна скалярная переменная.</p>
+<a class="reference internal image-reference" href="_images/linear-regression-1.png"><img alt="Linear Regression" class="align-center" src="_images/linear-regression-1.png" style="width: 366.0px; height: 227.60000000000002px;" /></a>
+</div>
+<div class="section" id="the-simple-linear-regression-model">
+<h2>Модель простой линейной регрессии<a class="headerlink" href="#the-simple-linear-regression-model" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Простейшая детерминированная математическая связь между двумя переменными <span class="math notranslate nohighlight">\(x\)</span> и <span class="math notranslate nohighlight">\(y\)</span> - это линейная зависимость: <span class="math notranslate nohighlight">\(y = \beta_0 + \beta_1 x\)</span>.</p>
+<p>Цель этого раздела - разработать эквивалентную <em>линейную вероятностную модель</em>.</p>
+<p>Если две (случайные) переменные вероятностно связаны, то для фиксированного значения <span class="math notranslate nohighlight">\(x\)</span> существует неопределенность в значении второй переменной.</p>
+<p>Итак, мы предполагаем <span class="math notranslate nohighlight">\(Y = \beta_0 + \beta_1 x + \varepsilon\)</span>, где <span class="math notranslate nohighlight">\(\varepsilon\)</span> - случайная величина.</p>
+<p>Две переменные связаны линейно «в среднем», если для фиксированного <span class="math notranslate nohighlight">\(x\)</span> фактическое значение Y отличается от его ожидаемого значения на случайную величину (т.е. имеется случайная ошибка).</p>
+</div>
+<div class="section" id="a-linear-probabilistic-model">
+<h2>Линейная вероятностная модель<a class="headerlink" href="#a-linear-probabilistic-model" title="Ссылка на этот заголовок">¶</a></h2>
+<p><strong>Определение:</strong> (Модель простой линейной регрессии)</p>
+<p>Существуют параметры <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span> и <span class="math notranslate nohighlight">\(\sigma^2\)</span>, такие, что для любого фиксированного значения независимой переменной <span class="math notranslate nohighlight">\(x\)</span> зависимая переменная является случайной величиной, связанной с <span class="math notranslate nohighlight">\(x\)</span> через уравнение модели</p>
+<a class="reference internal image-reference" href="_images/linear-regression-2.png"><img alt="Model equation" class="align-center" src="_images/linear-regression-2.png" style="width: 359.0px; height: 177.0px;" /></a>
+<p>Величина <span class="math notranslate nohighlight">\(\varepsilon\)</span> в уравнении модели является «ошибкой» - случайной величиной, симметрично распределенной с</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    E(\varepsilon)=0 \text { and } V(\varepsilon)=\sigma_{\varepsilon}^{2}=\sigma^{2}
+\end{equation}</div><p>(пока никаких предположений о распределении <span class="math notranslate nohighlight">\(\varepsilon\)</span> не делалось)</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>: независимая, предикторная или объясняющая переменная (обычно известная).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{Y}\)</span>: зависимая переменная или переменная ответа. При фиксированном <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> будет случайной величиной.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span>: случайное отклонение или случайная ошибка. При фиксированном <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\varepsilon\)</span> будет случайной величиной.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\beta_0}\)</span>: среднее значение <span class="math notranslate nohighlight">\(Y\)</span>, когда <span class="math notranslate nohighlight">\(x\)</span> равно нулю (пересечение истинной линии регрессии)</p></li>
+<li><p>ожидаемое (среднее) изменение <span class="math notranslate nohighlight">\(Y\)</span>, связанное с увеличением на 1 единицу значения <span class="math notranslate nohighlight">\(x\)</span>. (наклон истинной линии регрессии)</p></li>
+</ul>
+<p>Точки <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span>, полученные в результате <span class="math notranslate nohighlight">\(n\)</span> независимых наблюдений, затем будут разбросаны вокруг истинной линии регрессии:</p>
+<a class="reference internal image-reference" href="_images/linear-regression-3.png"><img alt="True Regression Line" class="align-center" src="_images/linear-regression-3.png" style="width: 441.1px; height: 231.55px;" /></a>
+</div>
+<div class="section" id="estimating-model-parameters">
+<h2>Оценка параметров модели<a class="headerlink" href="#estimating-model-parameters" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Значения <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span> и <span class="math notranslate nohighlight">\(\sigma\)</span> почти никогда не будут известны исследователю.</p>
+<p>Вместо этого выборочные данные состоят из <span class="math notranslate nohighlight">\(n\)</span> наблюдаемых пар <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span>, по которым можно оценить параметры модели и саму истинную линию регрессии.</p>
+<p>Предполагается, что данные (пары) были получены независимо друг от друга.</p>
+<p>Линия «наилучшего соответствия» основана на принципе <strong>наименьших квадратов</strong>, который восходит к немецкому математику <strong>Гауссу</strong> (1777–1855):</p>
+<p>Линия обеспечивает наилучшее соответствие данным, если сумма квадратов вертикальных расстояний (отклонений) от наблюдаемых точек до этой линии настолько мала, насколько это возможно.</p>
+<a class="reference internal image-reference" href="_images/linear-regression-4.png"><img alt="Squared Vertical Distances" class="align-center" src="_images/linear-regression-4.png" style="width: 317.90000000000003px; height: 253.00000000000003px;" /></a>
+<p>Сумма квадратов вертикальных отклонений от точек <span class="math notranslate nohighlight">\((x_1, y_1),\dots,(x_n, y_n)\)</span></p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f\left(b_{0}, b_{1}\right)=\sum_{i=1}^{n}\left[y_{i}-\left(b_{0}+b_{1} x_{i}\right)\right]^{2}
+\end{equation}</div><p>Точечные оценки <span class="math notranslate nohighlight">\(\beta_0\)</span> и <span class="math notranslate nohighlight">\(\beta_1\)</span>, обозначенные как и, называются оценками наименьших квадратов - это те значения, которые минимизируют <span class="math notranslate nohighlight">\(f(b_0, b_1)\)</span>.</p>
+<p>Подгоняемая <strong>линия регрессии</strong> или линия <strong>наименьших квадратов</strong> - это линия, уравнение которой имеет вид <span class="math notranslate nohighlight">\(y=\hat{\beta}_{0}+\hat{\beta}_{1} x\)</span>.</p>
+<p>Минимизирующие значения <span class="math notranslate nohighlight">\(b_0\)</span> и <span class="math notranslate nohighlight">\(b_1\)</span> находятся путем взятия частных производных от <span class="math notranslate nohighlight">\(f(b_0, b_1)\)</span> как по <span class="math notranslate nohighlight">\(b_0\)</span>, так и по <span class="math notranslate nohighlight">\(b_1\)</span>, приравнивания их обоих к нулю [аналогично <span class="math notranslate nohighlight">\(f'(b)=0\)</span> в одномерном исчислении] и решения уравнения</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \begin{array}{l}
+        \frac{\partial f\left(b_{0}, b_{1}\right)}{\partial b_{0}}=\sum 2\left(y_{i}-b_{0}-b_{1} x_{i}\right)(-1)=0 \\
+
+        \frac{\partial f\left(b_{0}, b_{1}\right)}{\partial b_{1}}=\sum 2\left(y_{i}-b_{0}-b_{1} x_{i}\right)\left(-x_{i}\right)=0
+    \end{array}
+\end{equation}</div><p>Оценка методом наименьших квадратов коэффициента наклона <span class="math notranslate nohighlight">\(\beta_1\)</span> истинной линии регрессии равна</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    b_{1}=\hat{\beta}_{1}=\frac{\sum\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)}{\sum\left(x_{i}-\bar{x}\right)^{2}}=\frac{S_{x y}}{S_{x x}}
+\end{equation}</div><p>Краткие формулы для числителя и знаменателя <span class="math notranslate nohighlight">\(\hat{\beta_1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    S_{x y}=\sum{x_{i} y_{i}}-\frac{\left(\sum{x_{i}}\right)\left(\sum{y_{i}}\right)}{n} \quad \text { and } \quad S_{x x}=\sum{x_{i}^{2}}-\frac{\left(\sum{x_{i}}\right)^2}{n}
+\end{equation}</div><p>Оценка методом наименьших квадратов точки пересечения <span class="math notranslate nohighlight">\(b_0\)</span> истинной линии регрессии равна</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    b_{0}=\hat{\beta}_{0}=\frac{\sum y_{i}-\hat{\beta}_{1} \sum x_{i}}{n}=\bar{y}-\hat{\beta}_{1} \bar{x}
+\end{equation}</div></div>
+<div class="section" id="usage">
+<h2>Использование<a class="headerlink" href="#usage" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представьте, что у нас есть следующие точки, и мы хотим построить линейную регрессионную модель:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.0</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-even"><td><p>3.0</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.0</p></td>
+<td><p>3.75</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>2.25</p></td>
+</tr>
+</tbody>
+</table>
+<p>Тогда код будет выглядеть так:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_linear_regression.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// Number of points</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">X</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="o">*</span><span class="n">Y</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="o">*</span><span class="n">predicted_kc</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.3</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.75</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.25</span><span class="p">;</span>
+
+
+    <span class="c1">// Get predicted linear regression line</span>
+    <span class="n">predicted_kc</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+
+    <span class="c1">// Equation of regression line</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;y = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">predicted_kc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;*x + &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">predicted_kc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">// Reallocate memory</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">X</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">Y</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">predicted_kc</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lagrange-interpolation.html" class="btn btn-neutral float-right" title="Интерполяция Лагранжа" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dormand-prince-method.html" class="btn btn-neutral float-left" title="Метод Дорманда-Принса" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Метод деления пополам &mdash; документация Numerary 0.0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Метод хорд" href="root-secant-method.html" />
+    <link rel="prev" title="Добро пожаловать в документацию Numerary!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Поиск корней</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Метод деления пополам</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Обзор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-method">Метод</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iteration-tasks">Итерационные задачи</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Использование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Метод хорд</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интеграл</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Интегральное приближение - правило Симпсона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск минимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск максимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Линейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Метод исключения Гаусса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Нелинейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Метод Ньютона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Обыкновенные дифференциальные уравнения.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Метод Дорманда-Принса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Регрессия</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интерполяция</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lagrange-interpolation.html">Интерполяция Лагранжа</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Дифференцирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Численное дифференцирование. Расчет первой производной.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Другие</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Неполная гамма-функция</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Метод деления пополам</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/root-bisection-method.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bisection-method">
+<h1>Метод деления пополам<a class="headerlink" href="#bisection-method" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="overview">
+<h2>Обзор<a class="headerlink" href="#overview" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В математике <strong>метод деления пополам</strong> - это метод поиска корней, который применяется к любым непрерывным функциям, для которых известны два значения с противоположными знаками. Метод состоит из многократного деления пополам интервала, определяемого этими значениями, и последующего выбора подинтервала, в котором функция меняет знак и, следовательно, должна содержать корень. Это очень простой и надежный метод, но он также относительно медленный. Из-за этого его часто используют для получения грубого приближения к решению, которое затем используется в качестве отправной точки для более быстро сходящихся методов. Этот метод также называют <strong>методом деления интервала вдвое</strong>, <strong>методом двоичного поиска</strong> или <strong>методом дихотомии</strong>.</p>
+<img alt="Bisection Method Visualization" class="align-center" src="_images/bisection-method.png" />
+</div>
+<div class="section" id="the-method">
+<h2>Метод<a class="headerlink" href="#the-method" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Метод применим для численного решения уравнения <span class="math notranslate nohighlight">\(f(x) для действительной переменной :math:\)</span>,, где <span class="math notranslate nohighlight">\(f\)</span> - непрерывная функция, определенная на интервале <span class="math notranslate nohighlight">\([a, b]\)</span>, а <span class="math notranslate nohighlight">\(f(a)\)</span> и <span class="math notranslate nohighlight">\(f(b)\)</span> имеют противоположные знаки. . В этом случае говорят, что <span class="math notranslate nohighlight">\(a\)</span> и <span class="math notranslate nohighlight">\(b\)</span> заключают в скобки корень, поскольку по теореме о промежуточном значении непрерывная функция <span class="math notranslate nohighlight">\(f\)</span> должна иметь хотя бы один корень в интервале <span class="math notranslate nohighlight">\((a, b)\)</span>.</p>
+<p>На каждом шаге метод делит интервал на две части, вычисляя среднюю точку <span class="math notranslate nohighlight">\(c = \frac{a+b}{2}\)</span> интервала и значение функции <span class="math notranslate nohighlight">\(f(c)\)</span> в этой точке. Если только c не является корнем (что очень маловероятно, но возможно), теперь есть только две возможности: либо <span class="math notranslate nohighlight">\(f(a)\)</span> и <span class="math notranslate nohighlight">\(f(c)\)</span> имеют противоположные знаки и скобки для корня, либо <span class="math notranslate nohighlight">\(f(c)\)</span> и <span class="math notranslate nohighlight">\(f(b)\)</span> иметь противоположные знаки и заключать в скобки корень. Метод выбирает подинтервал, который гарантированно является скобкой, в качестве нового интервала, который будет использоваться на следующем шаге. Таким образом, интервал, содержащий ноль <span class="math notranslate nohighlight">\(f\)</span>, уменьшается по ширине на <em>50%</em> на каждом шаге. Процесс продолжается до тех пор, пока интервал не станет достаточно малым.</p>
+<p>Явно, если <span class="math notranslate nohighlight">\(f(a)\)</span> и <span class="math notranslate nohighlight">\(f(c)\)</span> имеют противоположные знаки, тогда метод устанавливает <span class="math notranslate nohighlight">\(c\)</span> как новое значение для <span class="math notranslate nohighlight">\(b\)</span>, а если <span class="math notranslate nohighlight">\(f(b)\)</span> и <span class="math notranslate nohighlight">\(f(c)\)</span> имеют противоположные знаки, то метод устанавливает c как новое значение а. (Если <span class="math notranslate nohighlight">\(f(c) = 0\)</span>, то c может быть принято как решение, и процесс останавливается.) В обоих случаях новые <span class="math notranslate nohighlight">\(f(a)\)</span> и <span class="math notranslate nohighlight">\(f(b)\)</span> имеют противоположные знаки, поэтому метод применим к этому меньшему интервалу .</p>
+<div class="section" id="iteration-tasks">
+<h3>Итерационные задачи<a class="headerlink" href="#iteration-tasks" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Вычислите <span class="math notranslate nohighlight">\(c\)</span>, середину интервала, <span class="math notranslate nohighlight">\(c=\frac{a+b}{2}\)</span>.</p></li>
+<li><p>Вычислить значение функции в средней точке, <span class="math notranslate nohighlight">\(f(c)\)</span>.</p></li>
+<li><p>Если сходимость удовлетворительная (т. е. <span class="math notranslate nohighlight">\(c-a\)</span> достаточно мало или <span class="math notranslate nohighlight">\(|f(c)|\)</span> достаточно мало), верните c и прекратите повторение.</p></li>
+<li><p>Изучите знак <span class="math notranslate nohighlight">\(f(c)\)</span> и замените <span class="math notranslate nohighlight">\((a, f(a))\)</span> или <span class="math notranslate nohighlight">\((b, f(b))\)</span> на <span class="math notranslate nohighlight">\((c, f(c))\)</span> так, чтобы в новом интервале было пересечение нуля.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Использование<a class="headerlink" href="#usage" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представьте, что мы хотим найти корень следующей функции:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x) = \sin{(x)}, x \in [-1, 1]
+\end{equation}</div><p>Тогда код будет выглядеть так:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_root_bisection.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* Function to found the root */</span>
+<span class="kt">double</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-9</span><span class="p">;</span> <span class="c1">// eps value for method (1.e-9 by default)</span>
+    <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// &quot;a&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// &quot;b&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">root</span><span class="p">;</span>
+    <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_found</span><span class="p">;</span>
+
+    <span class="n">is_found</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">,</span> <span class="s">&quot;bisection&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_found</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Root is in x = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">root</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Method not allowed!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="root-secant-method.html" class="btn btn-neutral float-right" title="Метод хорд" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Добро пожаловать в документацию Numerary!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

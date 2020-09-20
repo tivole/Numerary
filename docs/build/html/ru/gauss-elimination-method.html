@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Метод исключения Гаусса &mdash; документация Numerary 0.0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Метод Ньютона" href="newton-method.html" />
+    <link rel="prev" title="Метод золотого сечения" href="maximum-golden-ratio-method.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Поиск корней</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Метод хорд</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интеграл</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Интегральное приближение - правило Симпсона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск минимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск максимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Линейная система уравнений</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Метод исключения Гаусса</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#algorithm">Алгоритм</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sequential-exception">Последовательное исключение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-substitution">Обратная подстановка</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Использование</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Нелинейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Метод Ньютона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Обыкновенные дифференциальные уравнения.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Метод Дорманда-Принса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Регрессия</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интерполяция</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lagrange-interpolation.html">Интерполяция Лагранжа</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Дифференцирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Численное дифференцирование. Расчет первой производной.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Другие</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Неполная гамма-функция</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Метод исключения Гаусса</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gauss-elimination-method.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gauss-elimination-method">
+<h1>Метод исключения Гаусса<a class="headerlink" href="#gauss-elimination-method" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="algorithm">
+<h2>Алгоритм<a class="headerlink" href="#algorithm" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Метод Гаусса - классический метод решения системы линейных алгебраических уравнений (СЛАУ). Рассмотрим систему линейных уравнений с действительными постоянными коэффициентами</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+    \left\{
+        \begin{array}{ccc}
+            a_{11}  \cdot x_{1}  + a_{12}  \cdot x_{2}  + &amp; \cdots &amp; +  a_{1 n} \cdot x_{n}=y_{1} \\
+            a_{21}  \cdot x_{1}  + a_{22}  \cdot x_{2}  + &amp; \cdots &amp; +  a_{2 n} \cdot x_{n}=y_{2} \\
+                                                          &amp; \cdots &amp; \\
+            a_{n 1} \cdot x_{1}  + a_{n 2} \cdot x_{2}  + &amp; \cdots &amp; +  a_{n n} \cdot x_{n}=y_{n}
+        \end{array}
+    \right.
+\end{align*}</div><p>или в матричной форме</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+    A x = y,
+\end{align*}</div><p>где</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+    A=\left(
+        \begin{array}{ccc}
+            a_{11}  &amp; \dots &amp; a_{1 n} \\
+                    &amp; \dots &amp; \\
+            a_{n 1} &amp; \dots &amp; a_{n n}
+        \end{array}
+    \right),
+    \quad x=\left(
+        \begin{array}{c}
+            x_{1} \\
+            \vdots \\
+            x_{n}
+        \end{array}
+    \right),
+    \quad y=\left(
+        \begin{array}{c}
+            y_{1} \\
+            \vdots \\
+            y_{m}
+        \end{array}
+    \right).
+\end{align*}</div><p>Метод Гаусса решения системы линейных уравнений включает в себя 2 стадии:</p>
+<ul class="simple">
+<li><p>последовательное (прямое) исключение;</p></li>
+<li><p>обратная подстановка.</p></li>
+</ul>
+<div class="section" id="sequential-exception">
+<h3>Последовательное исключение<a class="headerlink" href="#sequential-exception" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Исключения Гаусса основаны на идее последовательного исключения переменных по одной до тех пор, пока не останется только одно уравнение с одной переменной в левой части. Затем это уравнение решается относительно единственной переменной. Таким образом, систему уравнений приводят к треугольной (ступенчатой) форме. Для этого среди элементов первого столбца матрицы выбирают ненулевой (а чаще максимальный) элемент и перемещают его на крайнее верхнее положение перестановкой строк. Затем нормируют все уравнения, разделив его на коэффициент ai1, где i– номер столбца.</p>
+<div class="math notranslate nohighlight">
+ \begin{align*}
+        \left\{
+            \begin{array}{ccc}
+                x_{1}+\frac{a_{12}}{a_{11}}   \cdot x_{2} + &amp; \cdots &amp; + \frac{a_{1 n}}{a_{11}}  \cdot x_{n}=\frac{y_{1}}{a_{11}} \\
+                x_{1}+\frac{a_{22}}{a_{21}}   \cdot x_{2} + &amp; \cdots &amp; + \frac{a_{2 n}}{a_{21}}  \cdot x_{n}=\frac{y_{2}}{a_{21}} \\
+                                                            &amp; \cdots &amp; \\
+                x_{1}+\frac{a_{n 2}}{a_{n 1}} \cdot x_{2} + &amp; \cdots &amp; + \frac{a_{n n}}{a_{n 1}} \cdot x_{n}=\frac{y_{n}}{a_{n 1}}
+            \end{array}
+        \right.
+\end{align*}</div><p>Затем вычитают получившуюся после перестановки первую строку из остальных строк:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+        \left\{
+            \begin{array}{r c r c r c l}
+                x_{1} &amp; + &amp; \frac{a_{12}}{a_{11}} \cdot x_{2}                                      &amp; + \cdots + &amp; \frac{a_{1 n}}{a_{11}} \cdot x_{n}                                       &amp; = &amp; \frac{y_{1}}{a_{11}} \\
+                0     &amp; + &amp; \left(\frac{a_{22}}{a_{21}}-\frac{a_{12}}{a_{11}}\right) \cdot x_{2}   &amp; + \cdots + &amp;  \left(\frac{a_{2 n}}{a_{21}}-\frac{a_{1 n}}{a_{11}}\right) \cdot x_{n}  &amp; = &amp; \left(\frac{y_{2}}{a_{21}}-\frac{y_{1}}{a_{11}}\right) \\
+                      &amp;&amp;                                                                           &amp;   \cdots   &amp; \\
+                0     &amp; + &amp; \left(\frac{a_{n 2}}{a_{n 1}}-\frac{a_{12}}{a_{11}}\right) \cdot x_{2} &amp; + \cdots + &amp;  \left(\frac{a_{n n}}{a_{n 1}}-\frac{a_{1 n}}{a_{11}}\right) \cdot x_{n} &amp; = &amp; \left(\frac{y_{n}}{a_{n 1}}-\frac{y_{1}}{a_{11}}\right)
+            \end{array}
+        \right.
+\end{align*}</div><p>Получают новую систему уравнений, в которой заменены соответствующие коэффициенты.</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+        \left\{
+            \begin{array}{r c r c r c r}
+                x_{1} &amp; + &amp; a_{12}^{\prime} \cdot x_{2}  &amp; + \cdots + &amp; a_{1 n}^{\prime} \cdot x_{n} &amp; = &amp; y_{1}^{\prime} \\
+                0     &amp; + &amp; a_{22}^{\prime} \cdot x_{2}  &amp; + \cdots + &amp; a_{2 n}^{\prime} \cdot x_{n} &amp; = &amp; y_{2}^{\prime} \\
+                      &amp;&amp;                                 &amp;   \cdots   &amp; \\
+                0     &amp; + &amp; a_{n 2}^{\prime} \cdot x_{2} &amp; + \cdots + &amp; a_{n n}^{\prime} \cdot x_{n} &amp; = &amp; y_{n}^{\prime}
+            \end{array}
+        \right.
+\end{align*}</div><p>После того, как указанные преобразования были совершены, первую строку и первый столбец мысленно вычёркивают и продолжают указанный процесс для всех последующих уравнений пока не останется уравнение с одной неизвестной:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+        \left\{
+            \begin{array}{r c r c r c r c r}
+                x_{1} &amp; + &amp; a_{12}^{\prime} \cdot x_{2} &amp; + &amp; a_{13}^{\prime} \cdot x_{3}        &amp; + \cdots + &amp; a_{1 n}^{\prime} \cdot x_{n}               &amp; = &amp; y_{1}^{\prime} \\
+                0     &amp; + &amp; x_{2}                       &amp; + &amp; a_{23}^{\prime \prime} \cdot x_{3} &amp; + \cdots + &amp; a_{2 n}^{\prime \prime} \cdot x_{n}        &amp; = &amp; y_{2}^{\prime \prime} \\
+                0     &amp; + &amp; 0                           &amp; + &amp; x_{3}                              &amp; + \cdots + &amp; a_{3 n}^{\prime \prime \prime} \cdot x_{n} &amp; = &amp; y_{3}^{\prime \prime \prime} \\
+                      &amp;&amp;                                &amp;&amp;                                       &amp;   \cdots   &amp; \\
+                0     &amp; + &amp; 0                           &amp; + &amp; 0                                  &amp; + \cdots + &amp; x_{n}                                      &amp; = &amp; y_{n}^{n \prime}
+            \end{array}
+        \right.
+\end{align*}</div></div>
+<div class="section" id="reverse-substitution">
+<h3>Обратная подстановка<a class="headerlink" href="#reverse-substitution" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Обратная подстановка предполагает подстановку полученного на предыдущем шаге значения переменной <span class="math notranslate nohighlight">\(xn\)</span> в предыдущие уравнения:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+        \begin{array}{rcl}
+            x_{n-1}                                                                                                 &amp; = &amp; y_{n-1}^{(n-1)^{\prime}}-a_{(n-1) n}^{(n-1) \prime} \cdot x_{n} \\
+            x_{n-2}+a_{(n-2)(n-1)}^{(n-2) \prime} \cdot x_{n-1}                                                     &amp; = &amp; y_{n-2}^{(n-2)^{\prime}}-a_{(n-2) n}^{(n-2) \prime} \cdot x_{n} \\
+            \cdots \\
+            x_{2}+a_{23}^{\prime \prime} \cdot x_{3}+\cdots+a_{2(n-1)}^{\prime \prime} \cdot x_{n-1}                &amp; = &amp; y_{2}^{\prime \prime}-a_{2 n}^{\prime \prime} \cdot x_{n} \\
+            x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots+a_{1(n-1)}^{\prime} \cdot x_{n-1}  &amp; = &amp; y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}
+        \end{array}
+\end{align*}</div><p>Эта процедура повторяется для всех оставшихся решений:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+    \begin{array}{rcl}
+        x_{n-2}                                                              &amp; = &amp; \left(y_{n-2}^{(n-2)^{\prime}}-a_{(n-2) n}^{(n-2)^{\prime}} \cdot x_{n}\right)-a_{(n-2)(n-1)}^{(n-2) \prime} \cdot x_{n-1} \\
+        &amp; \cdots &amp; \\
+        x_{2}+a_{23}^{\prime \prime} \cdot x_{3}+\cdots                      &amp; = &amp; \left(y_{2}^{\prime \prime}-a_{2 n}^{\prime \prime} \cdot x_{n}\right)-a_{2(n-1)}^{\prime \prime} \cdot x_{n-1} \\
+        x_{1}+a_{12}^{\prime} \cdot x_{2}+a_{13}^{\prime} \cdot x_{3}+\cdots &amp; = &amp; \left(y_{1}^{\prime}-a_{1 n}^{\prime} \cdot x_{n}\right)-a_{1(n-1)}^{\prime} \cdot x_{n-1}
+    \end{array}
+\end{align*}</div></div>
+</div>
+<div class="section" id="usage">
+<h2>Использование<a class="headerlink" href="#usage" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представьте, что мы хотим решить следующую линейную систему уравнений:</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+    \left(
+        \begin{array}{cc}
+            2  &amp; 1 \\
+            -1 &amp; 1
+        \end{array}
+    \right)
+    \left(
+        \begin{array}{c}
+            x_{1} \\
+            x_{2}
+        \end{array}
+    \right)
+    =
+    \left(
+        \begin{array}{c}
+            5 \\
+            2
+        \end{array}
+    \right).
+\end{align*}</div><p>Тогда код будет выглядеть так:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_gauss_elimination.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kt">double</span> <span class="o">**</span><span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">*</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_solved</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">++</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+
+    <span class="c1">// Initialize matrix A</span>
+    <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Initialize vector y</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="n">is_solved</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">linear_systems_of_equations</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;gauss&quot;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_solved</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;System solved!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;x = (&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;)&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Method is not allowed!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="k">delete</span><span class="p">[]</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">y</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="newton-method.html" class="btn btn-neutral float-right" title="Метод Ньютона" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="maximum-golden-ratio-method.html" class="btn btn-neutral float-left" title="Метод золотого сечения" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

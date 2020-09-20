@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Интегральное приближение - правило Симпсона &mdash; документация Numerary 0.0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Метод деления пополам" href="minimum-bisection-method.html" />
+    <link rel="prev" title="Метод хорд" href="root-secant-method.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Поиск корней</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Метод хорд</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интеграл</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Интегральное приближение - правило Симпсона</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definition">Определение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Использование</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск минимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск максимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Линейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Метод исключения Гаусса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Нелинейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Метод Ньютона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Обыкновенные дифференциальные уравнения.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Метод Дорманда-Принса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Регрессия</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интерполяция</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lagrange-interpolation.html">Интерполяция Лагранжа</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Дифференцирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Численное дифференцирование. Расчет первой производной.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Другие</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Неполная гамма-функция</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Интегральное приближение - правило Симпсона</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/integral-approximation-simpson.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="integral-approximation-simpson-s-rule">
+<h1>Интегральное приближение - правило Симпсона<a class="headerlink" href="#integral-approximation-simpson-s-rule" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="definition">
+<h2>Определение<a class="headerlink" href="#definition" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Предположим, что <span class="math notranslate nohighlight">\(f(x)\)</span> определена на интервале <span class="math notranslate nohighlight">\([a, b]\)</span>. Тогда правило Симпсона на всем интервале приближает определенный интеграл от <span class="math notranslate nohighlight">\(f(x)\)</span> на интервале по формуле</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{a}^{b} f(x) d x \approx \frac{b-a}{6}\left(f(a)+4 f\left(\frac{a+b}{2}\right)+f(b)\right)
+\end{equation}</div><p>Идея состоит в том, что если <span class="math notranslate nohighlight">\(f(x) = 1, x, x^2\)</span>, эта формула является точным равенством. Итак, правило Симпсона дает правильный интеграл от любой квадратичной функции. В общем, правило Симпсона приближает <span class="math notranslate nohighlight">\(f(x)\)</span> параболой через точки на графике <span class="math notranslate nohighlight">\(f(x)\)</span> с <span class="math notranslate nohighlight">\(x\)</span>-координатами <span class="math notranslate nohighlight">\(a, \frac{a+b}{2}, b\)</span>.</p>
+<p>Правило Симпсона обычно применяется путем разбиения интервала на <span class="math notranslate nohighlight">\(N\)</span> подинтервалов одинакового размера, где <span class="math notranslate nohighlight">\(N\)</span> - четное число, и аппроксимации интеграла по каждой паре смежных подынтервалов с использованием приведенной выше оценки.</p>
+<p>То есть пусть <span class="math notranslate nohighlight">\(x_0=a, x_1=a+\frac{b-a}{N}, x_2=a+2\frac{b-x}{N}, \dots, x_{N-1}=a+(N-1)\frac{b-a}{N}, x_N=b\)</span>. Тогда</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{a}^{x_{2}} f(x) d x \approx \frac{b-a}{3 N}\left(f(a)+4 f\left(x_{1}\right)+f\left(x_{2}\right)\right)
+\end{equation}</div><div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{x_2}^{x_{4}} f(x) d x \approx \frac{b-a}{3 N}\left(f(x_2)+4 f\left(x_{3}\right)+f\left(x_{4}\right)\right)
+\end{equation}</div><p>и так далее. Сложение дает</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{a}^{b} f(x) d x \approx \frac{b-a}{3 N}\left(f(a)+4 f\left(x_{1}\right)+2 f\left(x_{2}\right)+4 f\left(x_{3}\right)+2 f\left(x_{4}\right)+\cdots+4 f\left(x_{N-1}\right)+f(b)\right).
+\end{equation}</div></div>
+<div class="section" id="usage">
+<h2>Использование<a class="headerlink" href="#usage" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представьте, что мы хотим интегрировать следующее выражение:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \int_{0}^{1} (5x^3 + 2\cos{x}) dx.
+\end{equation}</div><p>Тогда код будет выглядеть так:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_integral_simpson.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* Function to be integrated */</span>
+<span class="kt">double</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">5</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">from</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Lower bound of integral</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">to</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Upper bound of integral</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;simpson&quot;</span><span class="p">;</span> <span class="c1">// Numerical method we will use for integration (&quot;simpson&quot; by default)</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-9</span><span class="p">;</span> <span class="c1">// eps value for integration (1.e-9 by default)</span>
+
+    <span class="kt">double</span> <span class="o">*</span><span class="n">I</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">eps</span><span class="p">);</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ans = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// Value of calculated integral</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;err = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// Error of calculated integral value</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="minimum-bisection-method.html" class="btn btn-neutral float-right" title="Метод деления пополам" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="root-secant-method.html" class="btn btn-neutral float-left" title="Метод хорд" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -10,7 +10,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
+import os
+
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 from sphinx.builders.html import StandaloneHTMLBuilder
@@ -42,9 +43,24 @@ master_doc = "index"
 extensions = ["sphinx.ext.mathjax"]
 
 # Localization conf
-language = "en"
+# language = "en"
 locale_dirs = ["locale/"]
 gettext_compact = False
+gettext_uuid = True
+
+supported_languages = {
+    "en": "Numerary (%s) documentation in English",
+    "ru": "Документация Numerary (%s) на русском языке",
+}
+
+language = os.getenv("READTHEDOCS_LANGUAGE", "en")
+if not language in supported_languages.keys():
+    print("Unknown language: " + language)
+    print("Supported languages: " + ", ".join(supported_languages.keys()))
+    print(
+        "The configured language is either wrong, or it should be added to supported_languages in conf.py. Falling back to 'en'."
+    )
+    language = "en"
 
 
 # Add any paths that contain templates here, relative to this directory.

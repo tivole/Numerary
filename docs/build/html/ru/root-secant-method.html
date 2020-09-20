@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Метод хорд &mdash; документация Numerary 0.0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Интегральное приближение - правило Симпсона" href="integral-approximation-simpson.html" />
+    <link rel="prev" title="Метод деления пополам" href="root-bisection-method.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Поиск корней</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Метод хорд</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Обзор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-method">Метод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#derivation-of-the-method">Вывод метода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Использование</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Интеграл</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Интегральное приближение - правило Симпсона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск минимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск максимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Линейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Метод исключения Гаусса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Нелинейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Метод Ньютона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Обыкновенные дифференциальные уравнения.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Метод Дорманда-Принса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Регрессия</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интерполяция</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lagrange-interpolation.html">Интерполяция Лагранжа</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Дифференцирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Численное дифференцирование. Расчет первой производной.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Другие</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Неполная гамма-функция</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Метод хорд</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/root-secant-method.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="secant-method">
+<h1>Метод хорд<a class="headerlink" href="#secant-method" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="overview">
+<h2>Обзор<a class="headerlink" href="#overview" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В численном анализе <strong>метод секущих</strong> - это алгоритм поиска корней, который использует последовательность корней секущих линий для лучшего приближения корня функции <span class="math notranslate nohighlight">\(f\)</span>. Метод секущих можно рассматривать как конечно-разностную аппроксимацию метода Ньютона. Однако этот метод был разработан независимо от метода Ньютона и предшествовал ему более чем на 3000 лет.</p>
+<a class="reference internal image-reference" href="_images/secant-method.png"><img alt="Secant Method Visualization" class="align-center" src="_images/secant-method.png" style="width: 240.0px; height: 215.4px;" /></a>
+</div>
+<div class="section" id="the-method">
+<h2>Метод<a class="headerlink" href="#the-method" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Метод секанса определяется рекуррентным соотношением</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    x_{n}=x_{n-1}-f\left(x_{n-1}\right) \frac{x_{n-1}-x_{n-2}}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}=\frac{x_{n-2} f\left(x_{n-1}\right)-x_{n-1} f\left(x_{n-2}\right)}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}.
+\end{equation}</div><p>Как видно из рекуррентного соотношения, метод секущей требует двух начальных значений <span class="math notranslate nohighlight">\(x_0\)</span> и <span class="math notranslate nohighlight">\(x_1\)</span>, которые в идеале следует выбирать так, чтобы они лежали близко к корню.</p>
+</div>
+<div class="section" id="derivation-of-the-method">
+<h2>Вывод метода<a class="headerlink" href="#derivation-of-the-method" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Начиная с начальных значений <span class="math notranslate nohighlight">\(x_0\)</span> и <span class="math notranslate nohighlight">\(x_1\)</span>, мы строим линию через точки <span class="math notranslate nohighlight">\((x0, f(x0))\)</span> and <span class="math notranslate nohighlight">\((x1, f(x1))\)</span>, как показано на рисунке выше. В форме наклон-пересечение уравнение этой прямой имеет вид</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    y=\frac{f\left(x_{1}\right)-f\left(x_{0}\right)}{x_{1}-x_{0}}\left(x-x_{1}\right)+f\left(x_{1}\right).
+\end{equation}</div><p>Корень этой линейной функции, то есть значение <span class="math notranslate nohighlight">\(x\)</span> такое, что <span class="math notranslate nohighlight">\(y=0\)</span>, равно</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    x=x_{1}-f\left(x_{1}\right) \frac{x_{1}-x_{0}}{f\left(x_{1}\right)-f\left(x_{0}\right)}.
+\end{equation}</div><p>Затем мы используем это новое значение <span class="math notranslate nohighlight">\(x\)</span> как <span class="math notranslate nohighlight">\(x_2\)</span> и повторяем процесс, используя <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span> вместо <span class="math notranslate nohighlight">\(x_0\)</span> и <span class="math notranslate nohighlight">\(x_1\)</span>. Мы продолжаем этот процесс, решая для <span class="math notranslate nohighlight">\(x_3\)</span>, <span class="math notranslate nohighlight">\(x_4\)</span> и т. Д., Пока не достигнем достаточно высокого уровня точности (достаточно малая разница между <span class="math notranslate nohighlight">\(x_n\)</span> и <span class="math notranslate nohighlight">\(x_n-1\)</span>):</p>
+<div class="math notranslate nohighlight">
+\begin{equation}\begin{aligned}
+    x_{2} &amp;=x_{1}-f\left(x_{1}\right) \frac{x_{1}-x_{0}}{f\left(x_{1}\right)-f\left(x_{0}\right)} \\
+    x_{3} &amp;=x_{2}-f\left(x_{2}\right) \frac{x_{2}-x_{1}}{f\left(x_{2}\right)-f\left(x_{1}\right)} \\
+    &amp; \vdots \\
+    x_{n} &amp;=x_{n-1}-f\left(x_{n-1}\right) \frac{x_{n-1}-x_{n-2}}{f\left(x_{n-1}\right)-f\left(x_{n-2}\right)}.
+\end{aligned}\end{equation}</div></div>
+<div class="section" id="usage">
+<h2>Использование<a class="headerlink" href="#usage" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представьте, что мы хотим минимизировать следующую функцию:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    f(x) = \sin{x}, x \in [-1, 1]
+\end{equation}</div><p>Тогда код будет выглядеть так:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_root_secant.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* Function to found the root */</span>
+<span class="kt">double</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-9</span><span class="p">;</span> <span class="c1">// eps value for method (1.e-9 by default)</span>
+    <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// &quot;a&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// &quot;b&quot; value of segment [a, b]</span>
+    <span class="kt">double</span> <span class="n">root</span><span class="p">;</span>
+    <span class="kt">short</span> <span class="kt">int</span> <span class="n">is_found</span><span class="p">;</span>
+
+    <span class="n">is_found</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">,</span> <span class="s">&quot;secant&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_found</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Root is in x = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">root</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Method not allowed!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="integral-approximation-simpson.html" class="btn btn-neutral float-right" title="Интегральное приближение - правило Симпсона" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="root-bisection-method.html" class="btn btn-neutral float-left" title="Метод деления пополам" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

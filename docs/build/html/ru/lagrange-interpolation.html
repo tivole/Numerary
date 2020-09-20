@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Интерполяция Лагранжа &mdash; документация Numerary 0.0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Численное дифференцирование. Расчет первой производной." href="differentiation-first-order.html" />
+    <link rel="prev" title="Линейная регрессия" href="linear-regression.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Numerary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Поиск корней</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="root-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="root-secant-method.html">Метод хорд</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интеграл</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integral-approximation-simpson.html">Интегральное приближение - правило Симпсона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск минимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="minimum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Поиск максимума</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="maximum-bisection-method.html">Метод деления пополам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-golden-ratio-method.html">Метод золотого сечения</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Линейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gauss-elimination-method.html">Метод исключения Гаусса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Нелинейная система уравнений</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Метод Ньютона</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Обыкновенные дифференциальные уравнения.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dormand-prince-method.html">Метод Дорманда-Принса</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Регрессия</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Интерполяция</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Интерполяция Лагранжа</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lagrange-polynomial">Полином Лагранжа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definition">Определение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#runge-s-example">Пример Рунге</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Использование</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Дифференцирование</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="differentiation-first-order.html">Численное дифференцирование. Расчет первой производной.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Другие</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="incomplete-gamma-function.html">Неполная гамма-функция</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Numerary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Интерполяция Лагранжа</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/lagrange-interpolation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lagrange-s-interpolation">
+<h1>Интерполяция Лагранжа<a class="headerlink" href="#lagrange-s-interpolation" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="lagrange-polynomial">
+<h2>Полином Лагранжа<a class="headerlink" href="#lagrange-polynomial" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В численном анализе полиномы Лагранжа используются для полиномиальной интерполяции. Для данного набора точек <span class="math notranslate nohighlight">\((x_j, y_j)\)</span>, в котором нет двух одинаковых значений <span class="math notranslate nohighlight">\(x_j\)</span>, многочлен Лагранжа является многочленом самой низкой степени, который принимает для каждого значения <span class="math notranslate nohighlight">\(x_j\)</span> соответствующее значение <span class="math notranslate nohighlight">\(x_j\)</span>, так что функции совпадают в каждой точке.</p>
+</div>
+<div class="section" id="definition">
+<h2>Определение<a class="headerlink" href="#definition" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для набора из <span class="math notranslate nohighlight">\(k+1\)</span> точек данных <span class="math notranslate nohighlight">\((x_0, y_0),\dots,(x_j, y_j),\dots,(x_k, y_k)\)</span>, где нет двух одинаковых <span class="math notranslate nohighlight">\(x_j\)</span>, интерполяционный многочлен в форме Лагранжа представляет собой линейную комбинацию <span class="math notranslate nohighlight">\(L(x):=\sum_{j=0}^{k} y_{j} \ell_{j}(x)\)</span>, базисных полиномов Лагранжа</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \ell_{j}(x):=\prod_{0 \leq m \leq k \atop m \neq j} \frac{x-x_{m}}{x_{j}-x_{m}}=\frac{\left(x-x_{0}\right)}{\left(x_{j}-x_{0}\right)} \cdots \frac{\left(x-x_{j-1}\right)}{\left(x_{j}-x_{j-1}\right)} \frac{\left(x-x_{j+1}\right)}{\left(x_{j}-x_{j+1}\right)} \cdots \frac{\left(x-x_{k}\right)}{\left(x_{j}-x_{k}\right)}
+\end{equation}</div><p>где <span class="math notranslate nohighlight">\(0 \leq j \leq k\)</span>. Обратите внимание на то, что при исходном предположении, что нет двух одинаковых <span class="math notranslate nohighlight">\(x_j\)</span>, <span class="math notranslate nohighlight">\(x_j - x_m \neq 0\)</span>, поэтому это выражение всегда хорошо определено. Причина, по которой пары <span class="math notranslate nohighlight">\(x_i = x_j\)</span> с <span class="math notranslate nohighlight">\(y_i \neq y_j\)</span> недопустимы, заключается в том, что не существует интерполяционной функции <span class="math notranslate nohighlight">\(L\)</span>, такой что <span class="math notranslate nohighlight">\(y_i=L(x_i)\)</span>; функция может получить только одно значение для каждого аргумента <span class="math notranslate nohighlight">\(x_i\)</span>. С другой стороны, если также <span class="math notranslate nohighlight">\(y_i = y_j\)</span>, то эти две точки фактически будут одной точкой.</p>
+<p>Для всех <span class="math notranslate nohighlight">\(i \neq j\)</span>, <span class="math notranslate nohighlight">\(\ell(x)\)</span> включает член <span class="math notranslate nohighlight">\((x-x_i)\)</span> в числителе, поэтому все произведение будет равно нулю при <span class="math notranslate nohighlight">\(x = x_i\)</span></p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \ell_{j \neq i}\left(x_{i}\right)=\prod_{m \neq j} \frac{x_{i}-x_{m}}{x_{j}-x_{m}}=\frac{\left(x_{i}-x_{0}\right)}{\left(x_{j}-x_{0}\right)} \cdots \frac{\left(x_{i}-x_{i}\right)}{\left(x_{j}-x_{i}\right)} \cdots \frac{\left(x_{i}-x_{k}\right)}{\left(x_{j}-x_{k}\right)}=0
+\end{equation}</div><p>С другой стороны,</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \ell_{i}\left(x_{i}\right):=\prod_{m \neq i} \frac{x_{i}-x_{m}}{x_{i}-x_{m}}=1
+\end{equation}</div><p>Другими словами, все базисные полиномы равны нулю при <span class="math notranslate nohighlight">\(x = x_i\)</span>, за исключением <span class="math notranslate nohighlight">\(\ell_i(x)\)</span>, для которого выполняется <span class="math notranslate nohighlight">\(\ell_i(x_i) = 1\)</span>, поскольку в нем отсутствует член <span class="math notranslate nohighlight">\((x - x_i)\)</span>.</p>
+<p>Отсюда следует, что <span class="math notranslate nohighlight">\(\ell_i(x_i) = y_i\)</span>, поэтому в каждой точке <span class="math notranslate nohighlight">\(x_i\)</span> <span class="math notranslate nohighlight">\(L(x_i) = y_i + 0 + 0 + \dots + 0 = y_i\)</span>, показывая, что <span class="math notranslate nohighlight">\(L\)</span> точно интерполирует функцию.</p>
+</div>
+<div class="section" id="runge-s-example">
+<h2>Пример Рунге<a class="headerlink" href="#runge-s-example" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Функция <span class="math notranslate nohighlight">\(f(x) = \frac{1}{1+x^2}\)</span> не может быть точно интерполирована на <span class="math notranslate nohighlight">\([−5, 5]\)</span> с использованием многочлена десятой степени (пунктирная кривая) с равноотстоящими точками интерполяции. Этот пример, иллюстрирующий сложность, которую обычно можно ожидать от полиномиальной интерполяции высокой степени с равноотстоящими точками, известен как <em>пример Рунге</em>.</p>
+<a class="reference internal image-reference" href="_images/runge-example.png"><img alt="Runge Example" class="align-center" src="_images/runge-example.png" style="width: 576.0px; height: 324.0px;" /></a>
+</div>
+<div class="section" id="usage">
+<h2>Использование<a class="headerlink" href="#usage" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представьте, что у нас есть следующие точки, и мы хотим построить многочлен Лагранжа из этих точек:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.0</p></td>
+<td><p>10.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.0</p></td>
+<td><p>15.0</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>25.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>8.0</p></td>
+<td><p>40.0</p></td>
+</tr>
+<tr class="row-even"><td><p>12.0</p></td>
+<td><p>60.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Тогда код будет выглядеть так:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// example_lagrange_polynomial.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../src/numerary.hpp&quot; // Numerary library</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">numerary</span><span class="p">;</span>
+
+<span class="cm">/* The main function */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="o">*</span><span class="n">X</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="o">*</span><span class="n">Y</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">;</span>
+
+    <span class="c1">// Points to interpolate</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">15.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">25.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">8.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">40.0</span><span class="p">;</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">12.0</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">;</span>
+
+    <span class="c1">// Point where we want to get value of Lagrange Polynomial</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mf">7.0</span><span class="p">;</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Numerary</span><span class="o">::</span><span class="n">lagrange_polynomial</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;y(&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;) = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">X</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">Y</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="differentiation-first-order.html" class="btn btn-neutral float-right" title="Численное дифференцирование. Расчет первой производной." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="linear-regression.html" class="btn btn-neutral float-left" title="Линейная регрессия" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Авторские права 2020, Kamran Asgarov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
